@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "NF/1+t0wobp0resJkuE68a8Y19qaAr9miFnJ2tut9s9TzjTGIgBo6lsFY1pZJsu0OPCal3DLdOdKi+3xK6oLVg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\samil.akpinar\\source\\repos\\MovieProject\\DataAccess\\DataAccess.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\samil.akpinar\\.nuget\\packages\\nlog\\4.7.10\\nlog.4.7.10.nupkg.sha512"
+  ],
+  "logs": []
+}

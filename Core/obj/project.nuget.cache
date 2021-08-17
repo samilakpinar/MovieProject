@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "Mm/C2WV34CcZoW43p58UsX837lhuO+UWbszsQDG+5Oj+rK/a5HiKrZChHA3FwH86wh9OmVlW5igAU4eJZdBxNQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\samil.akpinar\\source\\repos\\MovieProject\\Core\\Core.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\samil.akpinar\\.nuget\\packages\\nlog\\4.7.10\\nlog.4.7.10.nupkg.sha512"
+  ],
+  "logs": []
+}

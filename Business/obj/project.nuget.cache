@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "oeo8SRLedTVfVJEocibXHsbCe5V6E0gfzonyb6g34+TKnlDsbekehMsbVnnmOaYEFcq8qafZQUZ58vHVCzMUTw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\samil.akpinar\\source\\repos\\MovieProject\\Business\\Business.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\samil.akpinar\\.nuget\\packages\\nlog\\4.7.10\\nlog.4.7.10.nupkg.sha512"
+  ],
+  "logs": []
+}
