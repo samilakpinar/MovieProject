@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Business.Abstract
+namespace Business.Responses
 {
-    public interface ICastService
+    class PopulerCastResponse
     {
-        Task<List<Cast>> GetPopulerCast(int movieId);
+        public int Id { get; set; }
+        public List<Cast> Cast { get; set; }
     }
 }

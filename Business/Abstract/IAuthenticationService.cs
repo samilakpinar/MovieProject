@@ -1,4 +1,4 @@
-﻿using Business.Models;
+﻿using Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace Business.Abstract
 {
-    public interface ICastService
+    public interface IAuthenticationService
     {
-        Task<List<Cast>> GetPopulerCast(int movieId);
+        Task<string> CreateToken();
+        Task<string> CreateSession(CreateSession token);
     }
 }

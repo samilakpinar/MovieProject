@@ -1,4 +1,8 @@
 ﻿using Business.Abstract;
+using Business.Models;
+using Business.Responses;
+using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,12 +14,25 @@ namespace Business.Concrete
 {
     public class CastManager : ICastService
     {
-        public async Task<string> GetPopulerCast(int movieId)
+        private readonly AppSettings _appSettings;
+
+
+        public CastManager(IOptions<AppSettings> appSettings)
         {
-            var url = $"https://api.themoviedb.org/3/movie/{movieId}/credits?api_key=a87921328b55114d690b35cec33d3aae";
+            _appSettings = appSettings.Value;
+        }
+
+
+        public async Task<List<Cast>> GetPopulerCast(int movieId)
+        {
+            var url = $"{_appSettings.Url}movie/{movieId}/credits?api_key=a87921328b55114d690b35cec33d3aae";
             var httpClient = new HttpClient();
             var response = await httpClient.GetAsync(url);
-            return await response.Content.ReadAsStringAsync();
+            var jsonAsString = await response.Content.ReadAsStringAsync();
+            var castModel = JsonConvert.DeserializeObject<PopulerCastResponse>(jsonAsString);
+            return castModel.Cast;
+
+
         }
     }
 }

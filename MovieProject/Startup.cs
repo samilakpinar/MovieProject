@@ -1,5 +1,6 @@
 using Business.Abstract;
 using Business.Concrete;
+using Business.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -29,8 +30,14 @@ namespace MovieProject
         public void ConfigureServices(IServiceCollection services)
         {
 
+            var appSettingsSection = Configuration.GetSection("AppSettings");
+            services.Configure<AppSettings>(appSettingsSection);
+
+            services.AddSingleton<IAuthenticationService,AuthenticationManager>();
             services.AddSingleton<IMovieService, MovieManager>();
             services.AddSingleton<ICastService, CastManager>();
+
+
             services.AddControllers();
             services.AddCors(options =>
             {

@@ -1,4 +1,5 @@
-﻿using Entities;
+﻿using Business.Models;
+using Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,9 @@ namespace Business.Abstract
 {
     public interface IMovieService
     {
-        Task<string> CreateToken();
-        Task<string> CreateSession(CreateSession token);
-        Task<string> GetAllPopulerMovies(int page);
-        Task<string> GetMovieById(string movie_id);
+       
+        Task<List<Movie>> GetAllPopulerMovies(int page);
+        Task<Movie> GetMovieById(string movie_id);
         Task<string> GetRateMovie(int movieId, string sessionId, string guestId);
         Task<string> RateMovie(RateMovie rateMovie);
     }

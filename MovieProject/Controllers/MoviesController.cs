@@ -1,6 +1,9 @@
 ﻿using Business.Abstract;
+using Business.Models;
 using Entities;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,38 +14,20 @@ namespace MovieProject.Controllers
     public class MoviesController : ControllerBase
     {
         private IMovieService _movieService;
-        private ICastService _castService;
-       
 
-        public MoviesController(IMovieService movieService,ICastService castService)
+        public MoviesController(IMovieService movieService)
         {
             this._movieService = movieService;
-            this._castService = castService;
-        }
-
-        [HttpGet("createToken")]
-        public Task<string> CreateToken()
-        {
-            var logger = NLog.LogManager.GetCurrentClassLogger();
-            logger.Info("create token error");
-
-            return _movieService.CreateToken();
-        }
-
-        [HttpPost("createSession")]
-        public Task<string> CreateSession([FromBody] CreateSession token)
-        {
-            return _movieService.CreateSession(token);
         }
 
         [HttpGet("getPopulerMovie")]
-        public Task<string> GetPopulerMovie(int page)
+        public Task<List<Movie>> GetPopulerMovie(int page)
         {
             return _movieService.GetAllPopulerMovies(page);
         }
 
         [HttpGet("getMovieById")]
-        public Task<string> GetMovieById(string movie_id)
+        public Task<Movie> GetMovieById(string movie_id)
         {
             return _movieService.GetMovieById(movie_id);
         }
@@ -61,15 +46,7 @@ namespace MovieProject.Controllers
             return _movieService.RateMovie(rateMovie);
         }
 
-        [HttpGet("getPopulerCast")]
-        public Task<string> GetPopulerCast(int movieId)
-        {
-            return _castService.GetPopulerCast(movieId);
-        }
-
-        //oyuncu adı ile girilen oyuncuyu getirecek NOT: yukarıda tüm popüler oyuncularun listesi dönüyor. Buradan arama işlemi yapılacaktır.
-
-
+        
         //film adına göre filtreleme eklenmesi NOT: Tüm filmleri getirilecek sistem arkada tüm filmleri dolaşığ aranan filmi bulup kullanıcıya dönecektir.
 
 

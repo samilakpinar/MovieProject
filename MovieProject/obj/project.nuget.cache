@@ -1,11 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "ZrEBB8+srJHuYcJ5juwgFW86t7Fwt9AfviaUrBXuti8KnpTk/4WVKHnfMOtsnvJYO5a1KrAYOlf6yiyiuXpbMA==",
+  "dgSpecHash": "eBVYZaXayJh+uQVAQucFi37GzaL9rgvo/8IvVC8BFcBKQIIWPIosTX0J6HRx7s7Sl626poBel5LWvqDj+59K+Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\samil.akpinar\\source\\repos\\MovieProject\\MovieProject\\MovieProject.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\samil.akpinar\\.nuget\\packages\\log4net\\2.0.8\\log4net.2.0.8.nupkg.sha512",
     "C:\\Users\\samil.akpinar\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\samil.akpinar\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0\\microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\samil.akpinar\\.nuget\\packages\\microsoft.extensions.options\\5.0.0\\microsoft.extensions.options.5.0.0.nupkg.sha512",
+    "C:\\Users\\samil.akpinar\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512",
     "C:\\Users\\samil.akpinar\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\samil.akpinar\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\samil.akpinar\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
