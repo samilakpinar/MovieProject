@@ -27,7 +27,7 @@ namespace Business.Concrete
         public async Task<List<Movie>> GetAllPopulerMovies(int page)
         {
             
-            var url = $"{_appSettings.Url}movie/popular?api_key=a87921328b55114d690b35cec33d3aae&language=en-US&page={page}";
+            var url = $"{_appSettings.Url}movie/popular?api_key={_appSettings.ApiKey}&language=en-US&page={page}";
             var response = await httpClient.GetAsync(url);
             var jsonAsString = await response.Content.ReadAsStringAsync();
             var movies = JsonConvert.DeserializeObject<PopularMoviesResponse>(jsonAsString);
@@ -36,7 +36,7 @@ namespace Business.Concrete
 
         public async Task<Movie> GetMovieById(string movie_id)
         {
-            var url = $"{_appSettings.Url}movie/{movie_id}?api_key=a87921328b55114d690b35cec33d3aae";
+            var url = $"{_appSettings.Url}movie/{movie_id}?api_key={_appSettings.ApiKey}";
             var response = await httpClient.GetAsync(url);
             var jsonAsString = await response.Content.ReadAsStringAsync();
             var movie = JsonConvert.DeserializeObject<Movie>(jsonAsString);
@@ -45,7 +45,7 @@ namespace Business.Concrete
 
         public async Task<string> GetRateMovie(int movieId, string sessionId, string guestId)
         {
-            var url = $"{_appSettings.Url}movie/{movieId}/account_states?api_key=a87921328b55114d690b35cec33d3aae&session_id={sessionId}&guest_session_id={guestId}";
+            var url = $"{_appSettings.Url}movie/{movieId}/account_states?api_key={_appSettings.ApiKey}&session_id={sessionId}&guest_session_id={guestId}";
             var response = await httpClient.GetAsync(url);
             return await response.Content.ReadAsStringAsync();
         }
@@ -57,7 +57,7 @@ namespace Business.Concrete
                 return "Geçersiz Puan Değeri";
             }
 
-            var url = $"{_appSettings.Url}movie/{rateMovie.MovieId}/rating?api_key=a87921328b55114d690b35cec33d3aae&guest_session_id={rateMovie.GuestId}&session_id={rateMovie.SessionId}";
+            var url = $"{_appSettings.Url}movie/{rateMovie.MovieId}/rating?api_key={_appSettings.ApiKey}&guest_session_id={rateMovie.GuestId}&session_id={rateMovie.SessionId}";
             var json = System.Text.Json.JsonSerializer.Serialize(rateMovie);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
             var response = await httpClient.PostAsync(url, content);

@@ -1,0 +1,1 @@
+2021-08-19 11:58:14.7812    4  INFO MovieProject.Controllers.AuthenticationController create token error 

@@ -1,4 +1,6 @@
-﻿using Entities;
+﻿using Business.Models;
+using Business.Responses;
+using Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +11,9 @@ namespace Business.Abstract
 {
     public interface IAuthenticationService
     {
+        User UserLogin(User user);
         Task<string> CreateToken();
         Task<string> CreateSession(CreateSession token);
+        bool ValidationEmail(ValidationEmail validationEmail);
     }
 }

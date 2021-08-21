@@ -25,7 +25,7 @@ namespace Business.Concrete
 
         public async Task<List<Cast>> GetPopulerCast(int movieId)
         {
-            var url = $"{_appSettings.Url}movie/{movieId}/credits?api_key=a87921328b55114d690b35cec33d3aae";
+            var url = $"{_appSettings.Url}movie/{movieId}/credits?api_key={_appSettings.ApiKey}";
             var httpClient = new HttpClient();
             var response = await httpClient.GetAsync(url);
             var jsonAsString = await response.Content.ReadAsStringAsync();

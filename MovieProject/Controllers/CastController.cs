@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Models;
+using Business.Responses;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -8,7 +10,8 @@ using System.Threading.Tasks;
 
 namespace MovieProject.Controllers
 {
-    [Route("api/[controller]")]
+    [Authorize]
+    [Route("api/v1/cast")]
     [ApiController]
     public class CastController : Controller
     {
@@ -18,10 +21,15 @@ namespace MovieProject.Controllers
             _castService = castService;
         }
 
-        [HttpGet("getPopulerCast")]
-        public Task<List<Cast>> GetPopulerCast(int movieId)
+        [HttpGet("get-populer-cast")]
+        public async Task<BaseResponse<List<Cast>>> GetPopulerCast(int movieId)
         {
-            return _castService.GetPopulerCast(movieId);
+            
+            BaseResponse<List<Cast>> baseResponse = new BaseResponse<List<Cast>>();
+
+            baseResponse.Data  = await _castService.GetPopulerCast(movieId);
+            baseResponse.ErrorMessages = null;
+            return baseResponse;
         }
 
         //oyuncu adı ile girilen oyuncuyu getirecek NOT: yukarıda tüm popüler oyuncularun listesi dönüyor. Buradan arama işlemi yapılacaktır.

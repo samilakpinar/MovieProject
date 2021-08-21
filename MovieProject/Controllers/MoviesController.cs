@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MovieProject.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/movies")]
     [ApiController]
     public class MoviesController : ControllerBase
     {
@@ -20,19 +20,19 @@ namespace MovieProject.Controllers
             this._movieService = movieService;
         }
 
-        [HttpGet("getPopulerMovie")]
+        [HttpGet("get-populer-movie")]
         public Task<List<Movie>> GetPopulerMovie(int page)
         {
             return _movieService.GetAllPopulerMovies(page);
         }
 
-        [HttpGet("getMovieById")]
+        [HttpGet("get-movie-by-id")]
         public Task<Movie> GetMovieById(string movie_id)
         {
             return _movieService.GetMovieById(movie_id);
         }
 
-        [HttpGet("getRateMovie")]
+        [HttpGet("get-rate-movie")]
         public Task<string> GetRateMovie(int movieId, string sessionId, string guestId)
         {
             return _movieService.GetRateMovie(movieId, sessionId, guestId);
@@ -40,7 +40,7 @@ namespace MovieProject.Controllers
 
         //Business alanında iş kodu yazılması gerekli çünkü verebileceği puan 1 ile 10 arasıdır. 1 ile 10 arası değil ise request atılmayacak.
         //Not ekleme olayı buarada yapılmalı, şuan puan ekleme oluyor
-        [HttpPost("rateMovie")]
+        [HttpPost("rate-movie")]
         public Task<string> RateMovie([FromBody] RateMovie rateMovie)
         {
             return _movieService.RateMovie(rateMovie);

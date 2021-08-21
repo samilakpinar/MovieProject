@@ -37,3 +37,14 @@ C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\bin\Debug\net5.0\E
 C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\bin\Debug\net5.0\log4net.dll
 C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\bin\Debug\net5.0\nlog.config
 C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\bin\Debug\net5.0\NLog.dll
+C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\bin\Debug\net5.0\MailKit.dll
+C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\bin\Debug\net5.0\MimeKit.dll
+C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\bin\Debug\net5.0\BouncyCastle.Crypto.dll
+C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\bin\Debug\net5.0\MovieProject.xml

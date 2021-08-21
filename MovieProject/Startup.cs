@@ -13,7 +13,12 @@ using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Reflection;
+using System.IO;
 
 namespace MovieProject
 {
@@ -29,13 +34,60 @@ namespace MovieProject
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
 
+            
+
+            //appsettings tanýmlama 1.yöntem.
             var appSettingsSection = Configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSection);
 
-            services.AddSingleton<IAuthenticationService,AuthenticationManager>();
+
+            //appsetting tanýmlama 2. yöntem.
+            AppSettings appSettings = new AppSettings();
+            Configuration.GetSection("AppSettings").Bind(appSettings);
+
+            //token içindeki secret kullanmak için 
+            TokenSettings tokenSettings1 = new TokenSettings();
+            Configuration.GetSection("TokenSettings").Bind(tokenSettings1);
+
+            //Create singleton from instance
+            services.AddSingleton<AppSettings>(appSettings);
+
+            //for dependency injection
+            services.AddSingleton<IJwtAuthenticationService, JwtAuthenticationManager>();
+            services.AddSingleton<IAuthenticationService, AuthenticationManager>();
             services.AddSingleton<IMovieService, MovieManager>();
             services.AddSingleton<ICastService, CastManager>();
+            services.AddSingleton<ISidebarMenuService, SidebarMenuManager>();
+
+            //JWT token settings
+            var tokenSettingsSection = Configuration.GetSection("TokenSettings");
+            services.Configure<TokenSettings>(tokenSettingsSection);
+
+            //JWT authentication settings
+            var tokenSettings = tokenSettingsSection.Get<TokenSettings>();
+            var key = Encoding.ASCII.GetBytes(tokenSettings.Secret);
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+                .AddJwtBearer(x =>
+                {
+                    x.RequireHttpsMetadata = false;
+                    x.SaveToken = true;
+                    x.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(key),
+                        ValidateIssuer = false,
+                        ValidateAudience = false
+                    };
+                });
+
+
+            
 
 
             services.AddControllers();
@@ -47,9 +99,18 @@ namespace MovieProject
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "MovieProject", Version = "v1" });
+
+                
+                // Set the comments path for the Swagger JSON and UI.
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
+
             });
 
             
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,7 +118,7 @@ namespace MovieProject
         {
             if (env.IsDevelopment())
             {
-                
+
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "MovieProject v1"));
@@ -66,6 +127,14 @@ namespace MovieProject
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(x => x
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .SetIsOriginAllowed(origin => true)
+            .AllowCredentials());
+
+            app.UseAuthentication(); //user login
 
             app.UseAuthorization();
 

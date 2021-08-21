@@ -8,9 +8,10 @@ namespace Business.Responses
 {
     public class BaseResponse<T>
     {
-        public bool IsSuccess { get; set; }
-        public string Message { get; set; }
-        public T Data { get; set; }
+        public bool IsSuccess => Data != null && ErrorMessages == null ? true : false;
+        public string ErrorMessages { get; set; } //dolu ise ıs IsSucess false olur.
+        public T Data { get; set; } // dolu ise isSuccess true olur. + 
 
     }
-}
+
+    }
