@@ -1,7 +1,6 @@
 ﻿using Business.Abstract;
 using Business.Models;
 using Business.Responses;
-using Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -28,23 +27,20 @@ namespace MovieProject.Controllers
         /// <summary>
         /// login with email and password
         /// </summary>
+        /// <param name="user"></param>
+        /// <returns>BaseResponse</returns>
         [AllowAnonymous]
         [HttpPost("authenticate")]
-        public BaseResponse<string> Authenticate([FromBody] User user)
+        public BaseResponse<User> Authenticate([FromBody] User user)
         {
-            //3- kullanıcı burada oluşacak. frontend tarafından email, şifre, session id ve boş bir token değeri gelecek.
-            //login diye bir tane class oluştur. User diye bir tane class oluştur.
-            //kullanıcı return olarak email, token değeri ve session değeri döner
-
-            // servise email ve şifre gönderilecel
-
-            BaseResponse<string> response = new BaseResponse<string>();
+            
+            BaseResponse<User> response = new BaseResponse<User>();
 
             var findUser = _authenticationService.UserLogin(user);
 
             if(findUser == null)
             {
-                response.Data = "";
+                response.Data = null;
                 response.ErrorMessages = "Kullanıcı bulunamadı.";
                 return response;
             }
@@ -52,38 +48,57 @@ namespace MovieProject.Controllers
             var token = _jwtAuthenticationService.Authenticate(findUser);
             if(token == null)
             {
-                response.Data = Unauthorized().ToString();
+                //response.Data = Unauthorized();
+                response.Data = null;
                 response.ErrorMessages = "izin reddedildi";
                 return response;
             }
 
-            response.Data = token;
+            findUser.Token = token; //oluşturulan token değeri kullanıcıya eklendi
+            findUser.Password = null; //password null yapıldı.
+
+            response.Data = findUser;
             response.ErrorMessages = null;
-            return response; //token değeri döndürülür.
+            return response; //user değeri döndürülür.
 
         }
 
         /// <summary>
-        /// create token
+        /// Create film token
         /// </summary>
-        /// <returns></returns>
+        /// <returns>BaseResponse</returns>
+        [AllowAnonymous]
         [HttpGet("create-token")]
-        public Task<string> CreateToken()
+        public async Task<BaseResponse<string>> CreateToken()
         {
             var logger = NLog.LogManager.GetCurrentClassLogger();
-            logger.Info("create token error");
+            //logger.Info("create token error");
 
-            return _authenticationService.CreateToken();
+            BaseResponse<string> response = new BaseResponse<string>();
+            response.Data = await _authenticationService.CreateToken();
+            response.ErrorMessages = null;
+
+            return response;
         }
 
-      
-
+        /// <summary>
+        /// User create session after film token
+        /// </summary>
+        /// <param name="token"></param>
+        /// <returns>String session value</returns>
+        [AllowAnonymous]
         [HttpPost("create-session")]
         public Task<string> CreateSession([FromBody] CreateSession token)
         {
             return _authenticationService.CreateSession(token);
         }
 
+        /// <summary>
+        /// User validation email for create session
+        /// </summary>
+        /// <param name="validationEmail"></param>
+        /// <returns>Boolean</returns>
+        [AllowAnonymous]
         [HttpPost("validation-email")]
         public bool CheckEmail([FromBody] ValidationEmail validationEmail )
         {

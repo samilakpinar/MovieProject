@@ -3,8 +3,10 @@ using Business.Models;
 using Business.Responses;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -25,23 +27,65 @@ namespace MovieProject.Controllers
         /// get menu list
         /// </summary>
         /// <returns>menu list</returns>
-        [AllowAnonymous]
         [HttpGet("get-menu")]
-        public BaseResponse<List<SidebarMenu>> GetMenu()
+        public BaseResponse<List<SidebarMenu>> GetMenu(string token)
         {
-            //var tokenValue = new JwtSecurityToken(jwtEncodedString: token);
-            //var role = tokenValue.Claims.First(c => c.Type == "role").Value;
-            //Console.WriteLine("email => " + tokenValue.Claims.FirstOrDefault(c => c.Value == "role").Value);
-
-            //BaseResponse<string> response = new BaseResponse<string>();
-            //response.Data = role;
-            //response.ErrorMessages = null;
-            //return response;
-
             BaseResponse<List<SidebarMenu>> response = new BaseResponse<List<SidebarMenu>>();
-            response.Data = _sidebarMenu.GetMenu();
-            response.ErrorMessages = null;
-            return response;
+
+            List<SidebarMenu> sidebarMenu = new List<SidebarMenu>();
+
+            try
+            {
+                var tokenValue = new JwtSecurityToken(jwtEncodedString: token);
+                var role = tokenValue.Claims.FirstOrDefault(c => c.Type == "role").Value;
+
+                var menuList = _sidebarMenu.GetMenu();
+
+                
+
+                if (role == "1")
+                {
+                    sidebarMenu.Add(menuList.FirstOrDefault(x => x.Id == 1));
+
+                    response.Data = sidebarMenu;
+                    response.ErrorMessages = null;
+
+                    return response;
+                }
+                else if (role == "2")
+                {
+                    sidebarMenu.Clear();
+                    sidebarMenu.Add(menuList.FirstOrDefault(x => x.Id == 2));
+
+                    response.Data = sidebarMenu;
+                    response.ErrorMessages = null;
+
+                    return response;
+                }
+                else if (role == "3")
+                {
+                    response.Data = menuList;
+                    response.ErrorMessages = null;
+
+                    return response;
+                }
+                else
+                {
+                    response.Data = null;
+                    response.ErrorMessages = "Access Denied";
+                    return response;
+                }
+
+            }
+            catch
+            {
+                response.Data = null;
+                response.ErrorMessages = "Invalid Token Value";
+
+                return response;
+            }
+
+
         }
     }
 }

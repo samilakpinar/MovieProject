@@ -1,6 +1,5 @@
 ﻿using Business.Abstract;
 using Business.Models;
-using Entities;
 using Microsoft.Extensions.Options;
 using MimeKit;
 using MimeKit.Text;
@@ -16,6 +15,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 
 namespace Business.Concrete
 {
@@ -38,7 +38,10 @@ namespace Business.Concrete
 
             var url = $"{httpUrl}authentication/token/new?api_key={apiKey}";
             var response = await httpClient.GetAsync(url);
+            
             return await response.Content.ReadAsStringAsync();
+
+
         }
 
        
@@ -56,6 +59,7 @@ namespace Business.Concrete
             
         }
 
+        
         public bool ValidationEmail(ValidationEmail validationEmail)
         {
 
@@ -69,7 +73,7 @@ namespace Business.Concrete
 
             email.Body = new TextPart(TextFormat.Html) { Text = "Validation Email: "+url+" " };
 
-            // send email
+            //send email
             using var smtp = new SmtpClient();
             smtp.Connect("smtp.gmail.com", 587, false);
 

@@ -8,18 +8,55 @@
             <summary>
             login with email and password
             </summary>
+            <param name="user"></param>
+            <returns>BaseResponse</returns>
         </member>
         <member name="M:MovieProject.Controllers.AuthenticationController.CreateToken">
             <summary>
-            create token
+            Create film token
             </summary>
-            <returns></returns>
+            <returns>BaseResponse</returns>
         </member>
-        <member name="M:MovieProject.Controllers.HomeController.GetMenu">
+        <member name="M:MovieProject.Controllers.AuthenticationController.CreateSession(Business.Models.CreateSession)">
+            <summary>
+            User create session after film token
+            </summary>
+            <param name="token"></param>
+            <returns>String session value</returns>
+        </member>
+        <member name="M:MovieProject.Controllers.AuthenticationController.CheckEmail(Business.Models.ValidationEmail)">
+            <summary>
+            User validation email for create session
+            </summary>
+            <param name="validationEmail"></param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:MovieProject.Controllers.CastController.GetPopulerCast(System.Int32)">
+            <summary>
+            Get populer cast
+            </summary>
+            <param name="movieId"></param>
+            <returns>List Cast</returns>
+        </member>
+        <member name="M:MovieProject.Controllers.HomeController.GetMenu(System.String)">
             <summary>
             get menu list
             </summary>
             <returns>menu list</returns>
+        </member>
+        <member name="M:MovieProject.Controllers.MoviesController.GetPopulerMovie(System.Int32)">
+            <summary>
+            Get populer movie
+            </summary>
+            <param name="page"></param>
+            <returns>List Movie</returns>
+        </member>
+        <member name="M:MovieProject.Controllers.MoviesController.GetMovieById(System.String)">
+            <summary>
+            Get Movie By Id
+            </summary>
+            <param name="movie_id"></param>
+            <returns>BaseResponse Movie</returns>
         </member>
     </members>
 </doc>

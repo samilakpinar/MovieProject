@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities
+namespace Business.Models
 {
     public class RateMovie
     {
@@ -13,7 +13,5 @@ namespace Entities
         public string GuestId { get; set; }
         public int value { get; set; }
         public string Note { get; set; }
- 
     }
-
 }
