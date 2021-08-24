@@ -1,6 +1,5 @@
 ﻿using Business.Abstract;
 using Business.Models;
-using Microsoft.Extensions.Options;
 using MimeKit;
 using MimeKit.Text;
 using System;
@@ -9,13 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using MailKit.Net.Smtp;
 using Microsoft.Extensions.Configuration;
-using Business.Responses;
-using System.IdentityModel.Tokens.Jwt;
-using Microsoft.IdentityModel.Tokens;
-using System.Security.Claims;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.Json;
 
 namespace Business.Concrete
 {
@@ -38,13 +32,11 @@ namespace Business.Concrete
 
             var url = $"{httpUrl}authentication/token/new?api_key={apiKey}";
             var response = await httpClient.GetAsync(url);
-            
+
             return await response.Content.ReadAsStringAsync();
 
-
         }
-
-       
+               
         public async Task<string> CreateSession(CreateSession token)
         {
 
@@ -96,12 +88,10 @@ namespace Business.Concrete
 
         public User UserLogin(User user)
         {
-            //loginden email ve şifre gelecek
-
             List<User> users = new List<User>();
-            users.Add(new User(1, "Şamil", "Akpınar", "samilakpinar6@gmail.com", "12345", "", "", 1));
-            users.Add(new User(2, "Ahmet", "Uluçay", "ahmet@gmail.com", "12345", "", "", 2));
-            users.Add(new User(3, "Ali", "Tepe", "ali@gmail.com", "12345", "", "", 3));
+            users.Add(new User(1, "Şamil", "Akpınar", "samilakpinar7@gmail.com", "12345", "", "", 1));
+            users.Add(new User(2, "Ahmet", "Uluçay", "samilakpinar8@gmail.com", "12345", "", "", 2));
+            users.Add(new User(3, "Ali", "Tepe", "samilakpinar6@gmail.com", "12345", "", "", 3));
 
             var findUser = users.FirstOrDefault(x => x.Email == user.Email && x.Password == user.Password);
 
@@ -110,9 +100,6 @@ namespace Business.Concrete
                 return null;
             }
 
-            //şuan kullanıcı elimizde var ve token üretmeyi bekliyor.
-            
-            //oluşan user için token oluştur ve session oluştur.
             return findUser;
         }
 

@@ -24,9 +24,10 @@ namespace MovieProject.Controllers
         }
 
         /// <summary>
-        /// get menu list
+        /// Get menu list
         /// </summary>
-        /// <returns>menu list</returns>
+        /// <param name="token"></param>
+        /// <returns>menu or menu list</returns>
         [HttpGet("get-menu")]
         public BaseResponse<List<SidebarMenu>> GetMenu(string token)
         {
@@ -41,8 +42,7 @@ namespace MovieProject.Controllers
 
                 var menuList = _sidebarMenu.GetMenu();
 
-                
-
+          
                 if (role == "1")
                 {
                     sidebarMenu.Add(menuList.FirstOrDefault(x => x.Id == 1));

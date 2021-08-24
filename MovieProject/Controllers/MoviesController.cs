@@ -52,18 +52,30 @@ namespace MovieProject.Controllers
             return response;
         }
 
+        /// <summary>
+        /// Get rate movie
+        /// </summary>
+        /// <param name="movieId"></param>
+        /// <param name="sessionId"></param>
+        /// <param name="guestId"></param>
+        /// <returns></returns>
         [HttpGet("get-rate-movie")]
-        public Task<string> GetRateMovie(int movieId, string sessionId, string guestId)
+        public async Task<string> GetRateMovie(int movieId, string sessionId, string guestId)
         {
-            return _movieService.GetRateMovie(movieId, sessionId, guestId);
+            return await _movieService.GetRateMovie(movieId, sessionId, guestId);
         }
 
-        //Business alanında iş kodu yazılması gerekli çünkü verebileceği puan 1 ile 10 arasıdır. 1 ile 10 arası değil ise request atılmayacak.
-        //Not ekleme olayı buarada yapılmalı, şuan puan ekleme oluyor
+        
+        /// <summary>
+        /// User vote for the movie 
+        /// </summary>
+        /// <param name="rateMovie"></param>
+        /// <returns>string rate movie</returns>
         [HttpPost("rate-movie")]
         public Task<string> RateMovie([FromBody] RateMovie rateMovie)
         {
             return _movieService.RateMovie(rateMovie);
+
         }
 
         

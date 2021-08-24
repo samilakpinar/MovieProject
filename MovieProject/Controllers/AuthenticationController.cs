@@ -3,9 +3,6 @@ using Business.Models;
 using Business.Responses;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace MovieProject.Controllers
@@ -41,7 +38,7 @@ namespace MovieProject.Controllers
             if(findUser == null)
             {
                 response.Data = null;
-                response.ErrorMessages = "Kullanıcı bulunamadı.";
+                response.ErrorMessages = ".";
                 return response;
             }
 
@@ -69,16 +66,13 @@ namespace MovieProject.Controllers
         /// <returns>BaseResponse</returns>
         [AllowAnonymous]
         [HttpGet("create-token")]
-        public async Task<BaseResponse<string>> CreateToken()
+        public async Task<string> CreateToken()
         {
             var logger = NLog.LogManager.GetCurrentClassLogger();
             //logger.Info("create token error");
 
-            BaseResponse<string> response = new BaseResponse<string>();
-            response.Data = await _authenticationService.CreateToken();
-            response.ErrorMessages = null;
-
-            return response;
+            //Base response error
+            return await _authenticationService.CreateToken();
         }
 
         /// <summary>
@@ -100,9 +94,13 @@ namespace MovieProject.Controllers
         /// <returns>Boolean</returns>
         [AllowAnonymous]
         [HttpPost("validation-email")]
-        public bool CheckEmail([FromBody] ValidationEmail validationEmail )
+        public BaseResponse<bool>  CheckEmail([FromBody] ValidationEmail validationEmail )
         {
-            return _authenticationService.ValidationEmail(validationEmail);
+            BaseResponse<bool> response = new BaseResponse<bool>();
+            response.Data = _authenticationService.ValidationEmail(validationEmail);
+            response.ErrorMessages = null;
+
+            return response;
         }
 
     }

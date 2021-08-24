@@ -9,6 +9,7 @@ using Newtonsoft.Json;
 using Business.Models;
 using Business.Responses;
 using Microsoft.Extensions.Options;
+using System.Text.Json;
 
 namespace Business.Concrete
 {
@@ -42,18 +43,22 @@ namespace Business.Concrete
             return movie;
         }
 
+        
         public async Task<string> GetRateMovie(int movieId, string sessionId, string guestId)
         {
             var url = $"{_appSettings.Url}movie/{movieId}/account_states?api_key={_appSettings.ApiKey}&session_id={sessionId}&guest_session_id={guestId}";
             var response = await httpClient.GetAsync(url);
+            
             return await response.Content.ReadAsStringAsync();
+
+
         }
 
         public async Task<string> RateMovie(RateMovie rateMovie)
         {
             if(rateMovie.value <= 0 || rateMovie.value > 10)
             {
-                return "Geçersiz Puan Değeri";
+                return "Invalid vote value";
             }
 
             var url = $"{_appSettings.Url}movie/{rateMovie.MovieId}/rating?api_key={_appSettings.ApiKey}&guest_session_id={rateMovie.GuestId}&session_id={rateMovie.SessionId}";
