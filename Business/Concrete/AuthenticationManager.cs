@@ -61,7 +61,8 @@ namespace Business.Concrete
             email.To.Add(MailboxAddress.Parse(validationEmail.Email));
             email.Subject = "Validation Email";
 
-            var url = "https://www.themoviedb.org/authenticate/"+validationEmail.Token;
+
+            var url = "https://www.themoviedb.org/authenticate/"+validationEmail.Token+"/allow";
 
             email.Body = new TextPart(TextFormat.Html) { Text = "Validation Email: "+url+" " };
 
@@ -86,23 +87,6 @@ namespace Business.Concrete
             return true;
         }
 
-        public User UserLogin(User user)
-        {
-            List<User> users = new List<User>();
-            users.Add(new User(1, "Şamil", "Akpınar", "samilakpinar7@gmail.com", "12345", "", "", 1));
-            users.Add(new User(2, "Ahmet", "Uluçay", "samilakpinar8@gmail.com", "12345", "", "", 2));
-            users.Add(new User(3, "Ali", "Tepe", "samilakpinar6@gmail.com", "12345", "", "", 3));
-
-            var findUser = users.FirstOrDefault(x => x.Email == user.Email && x.Password == user.Password);
-
-            if(findUser == null)
-            {
-                return null;
-            }
-
-            return findUser;
-        }
-
-        
+               
     }
 }

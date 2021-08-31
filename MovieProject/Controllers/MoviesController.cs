@@ -31,7 +31,23 @@ namespace MovieProject.Controllers
         public async Task<BaseResponse<List<Movie>>> GetPopulerMovie(int page)
         {
             BaseResponse<List<Movie>> movieList = new BaseResponse<List<Movie>>();
-            movieList.Data = await _movieService.GetAllPopulerMovies(page);
+
+            var logger = NLog.LogManager.GetCurrentClassLogger();
+
+            var movieLists = await _movieService.GetAllPopulerMovies(page);
+
+            if (movieLists == null)
+            {
+
+                logger.Info("Movie list didn't send");
+                movieList.Data = null ;
+                movieList.ErrorMessages = "Movie list didn't send";
+
+                return movieList;
+            }
+
+            logger.Info("Movie list  sent");
+            movieList.Data = movieLists;
             movieList.ErrorMessages = null;
 
             return  movieList;
@@ -47,7 +63,21 @@ namespace MovieProject.Controllers
         public async Task<BaseResponse<Movie>>  GetMovieById(string movie_id)
         {
             BaseResponse<Movie> response = new BaseResponse<Movie>();
-            response.Data = await _movieService.GetMovieById(movie_id);
+
+            var logger = NLog.LogManager.GetCurrentClassLogger();
+
+            var movie = await _movieService.GetMovieById(movie_id);
+
+            if (movie == null)
+            {
+                logger.Info("movie didn't send");
+                response.Data = null;
+                response.ErrorMessages = "movie didn't send";
+                return response;
+            }
+
+            logger.Info("movie sent");
+            response.Data = movie;
             response.ErrorMessages = null;
             return response;
         }
@@ -62,7 +92,18 @@ namespace MovieProject.Controllers
         [HttpGet("get-rate-movie")]
         public async Task<string> GetRateMovie(int movieId, string sessionId, string guestId)
         {
-            return await _movieService.GetRateMovie(movieId, sessionId, guestId);
+            var logger = NLog.LogManager.GetCurrentClassLogger();
+
+            var rate = await _movieService.GetRateMovie(movieId, sessionId, guestId);
+
+            if (rate == null)
+            {
+                logger.Info("Rate movie didn't send");
+                return null;
+            }
+
+            logger.Info("Rate movie sent");
+            return rate;
         }
 
         
@@ -74,14 +115,19 @@ namespace MovieProject.Controllers
         [HttpPost("rate-movie")]
         public Task<string> RateMovie([FromBody] RateMovie rateMovie)
         {
-            return _movieService.RateMovie(rateMovie);
+            var logger = NLog.LogManager.GetCurrentClassLogger();
+
+            var rateMovies = _movieService.RateMovie(rateMovie);
+            
+            if (rateMovies == null)
+            {
+                logger.Info("Rate movie didn't send");
+                return null;
+            }
+
+            logger.Info("Rate movie sent");
+            return rateMovies;
 
         }
-
-        
-        //film adına göre filtreleme eklenmesi NOT: Tüm filmleri getirilecek sistem arkada tüm filmleri dolaşığ aranan filmi bulup kullanıcıya dönecektir.
-
-
-
     }
 }

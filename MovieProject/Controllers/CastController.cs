@@ -26,18 +26,30 @@ namespace MovieProject.Controllers
         /// </summary>
         /// <param name="movieId"></param>
         /// <returns>List Cast</returns>
-        [AllowAnonymous]
         [HttpGet("get-populer-cast")]
         public async Task<BaseResponse<List<Cast>>> GetPopulerCast(int movieId)
         {
             
             BaseResponse<List<Cast>> response = new BaseResponse<List<Cast>>();
 
-            response.Data  = await _castService.GetPopulerCast(movieId);
+            var logger = NLog.LogManager.GetCurrentClassLogger();
+
+            var castList = await _castService.GetPopulerCast(movieId);
+
+            if(castList == null)
+            {
+                logger.Info("Cast list didn't send");
+                response.Data = null;
+                response.ErrorMessages = "Cast list didn't send";
+                return response;
+            }
+
+            logger.Info("Cast list sent");
+
+            response.Data = castList;
             response.ErrorMessages = null;
             return response;
         }
 
-        //oyuncu adı ile girilen oyuncuyu getirecek NOT: yukarıda tüm popüler oyuncularun listesi dönüyor. Buradan arama işlemi yapılacaktır.
     }
 }

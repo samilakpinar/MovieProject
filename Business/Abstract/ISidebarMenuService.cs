@@ -10,6 +10,6 @@ namespace Business.Abstract
 {
     public interface ISidebarMenuService
     {
-        List<SidebarMenu> GetMenu();
+        List<SidebarMenu> GetMenuList(string role);
     }
 }

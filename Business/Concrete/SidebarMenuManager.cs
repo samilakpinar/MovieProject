@@ -8,17 +8,34 @@ using System.Linq;
 
 namespace Business.Concrete
 {
-    public class SidebarMenuManager : ISidebarMenuService
+    public class SidebarMenuManager :ISidebarMenuService
     {
-        public List<SidebarMenu> GetMenu()
+        
+        public List<SidebarMenu> GetMenuList(string role)
         {
 
-            List<SidebarMenu> menu = new List<SidebarMenu>();
-            menu.Add(new SidebarMenu(1,"Populer Movies", "movies"));
-            menu.Add(new SidebarMenu(2,"Populer Cast", "cast"));
+            if (role == "1")
+            {
 
-            return menu;
-                               
+                return new List<SidebarMenu>() { new SidebarMenu(2, "Populer Cast", "cast") }; ;
+
+            }
+            else if (role == "2")
+            {
+
+                return new List<SidebarMenu>() { new SidebarMenu(1, "Populer Movies", "movies") };
+
+            }
+            else if (role == "3")
+            {
+                return new List<SidebarMenu>() { new SidebarMenu(1, "Populer Movies", "movies"), new SidebarMenu(2, "Populer Cast", "cast") };
+
+            }
+            else
+            {
+                return null;
+            }
+
         }
     }
 }

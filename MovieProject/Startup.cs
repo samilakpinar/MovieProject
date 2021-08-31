@@ -19,6 +19,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Reflection;
 using System.IO;
+using DataAccess.Abstract;
+using DataAccess.Concrete.EntityFramework;
 
 namespace MovieProject
 {
@@ -55,11 +57,16 @@ namespace MovieProject
             services.AddSingleton<AppSettings>(appSettings);
 
             //for dependency injection
-            services.AddSingleton<IJwtAuthenticationService, JwtAuthenticationManager>();
-            services.AddSingleton<IAuthenticationService, AuthenticationManager>();
-            services.AddSingleton<IMovieService, MovieManager>();
-            services.AddSingleton<ICastService, CastManager>();
-            services.AddSingleton<ISidebarMenuService, SidebarMenuManager>();
+            //Bu yapýyý auto fact gibi bir yapýya taþýyarak kullanmamýzda fayda vardýr. Bussiness katmaný içinde kullanýlabilir.
+            //Auto fact yapýsý aop'yi desteklediðinden dolayý bu yapýyý auto factte taþýnýr.
+            services.AddTransient<IJwtAuthenticationService, JwtAuthenticationManager>();
+            services.AddTransient<IAuthenticationService, AuthenticationManager>();
+            services.AddTransient<IMovieService, MovieManager>();
+            services.AddTransient<ICastService, CastManager>();
+            services.AddTransient<ISidebarMenuService, SidebarMenuManager>();
+            services.AddTransient<IUserService, UserManager>();
+            services.AddTransient<IUserDal, EfUserDal>();
+
 
             //JWT token settings
             var tokenSettingsSection = Configuration.GetSection("TokenSettings");

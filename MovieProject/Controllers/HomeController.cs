@@ -28,64 +28,45 @@ namespace MovieProject.Controllers
         /// </summary>
         /// <param name="token"></param>
         /// <returns>menu or menu list</returns>
+        [AllowAnonymous]
         [HttpGet("get-menu")]
         public BaseResponse<List<SidebarMenu>> GetMenu(string token)
         {
             BaseResponse<List<SidebarMenu>> response = new BaseResponse<List<SidebarMenu>>();
 
-            List<SidebarMenu> sidebarMenu = new List<SidebarMenu>();
+            var logger = NLog.LogManager.GetCurrentClassLogger();
+            
 
             try
             {
                 var tokenValue = new JwtSecurityToken(jwtEncodedString: token);
                 var role = tokenValue.Claims.FirstOrDefault(c => c.Type == "role").Value;
 
-                var menuList = _sidebarMenu.GetMenu();
+                var menuList = _sidebarMenu.GetMenuList(role);
 
-          
-                if (role == "1")
-                {
-                    sidebarMenu.Add(menuList.FirstOrDefault(x => x.Id == 1));
-
-                    response.Data = sidebarMenu;
-                    response.ErrorMessages = null;
-
-                    return response;
-                }
-                else if (role == "2")
-                {
-                    sidebarMenu.Clear();
-                    sidebarMenu.Add(menuList.FirstOrDefault(x => x.Id == 2));
-
-                    response.Data = sidebarMenu;
-                    response.ErrorMessages = null;
-
-                    return response;
-                }
-                else if (role == "3")
-                {
-                    response.Data = menuList;
-                    response.ErrorMessages = null;
-
-                    return response;
-                }
-                else
+                if(menuList == null)
                 {
                     response.Data = null;
                     response.ErrorMessages = "Access Denied";
-                    return response;
+                    logger.Info("Access Denied");
                 }
+
+                response.Data = menuList;
+                response.ErrorMessages = null;
+
 
             }
             catch
             {
                 response.Data = null;
                 response.ErrorMessages = "Invalid Token Value";
+                logger.Info("Invalid Token Value");
 
-                return response;
             }
 
-
+            logger.Info("Sidebar menu list sent");
+            return response;
         }
+
     }
 }

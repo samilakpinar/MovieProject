@@ -4,6 +4,13 @@
         <name>MovieProject</name>
     </assembly>
     <members>
+        <member name="M:MovieProject.Controllers.AuthenticationController.Register(Entities.Concrete.Users)">
+            <summary>
+            Sign up 
+            </summary>
+            <param name="user"></param>
+            <returns></returns>
+        </member>
         <member name="M:MovieProject.Controllers.AuthenticationController.Authenticate(Business.Models.User)">
             <summary>
             login with email and password

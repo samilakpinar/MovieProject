@@ -1,6 +1,8 @@
 ﻿using Business.Abstract;
+using Business.Concrete;
 using Business.Models;
 using Business.Responses;
+using Entities.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -14,13 +16,45 @@ namespace MovieProject.Controllers
     {
         private IAuthenticationService _authenticationService;
         private IJwtAuthenticationService _jwtAuthenticationService;
+        private IUserService _userService;
 
-        public AuthenticationController(IAuthenticationService authenticationService, IJwtAuthenticationService jwtAuthenticationService)
+        public AuthenticationController(IAuthenticationService authenticationService, IJwtAuthenticationService jwtAuthenticationService, IUserService userService)
         {
             _authenticationService = authenticationService;
             _jwtAuthenticationService = jwtAuthenticationService;
+            _userService = userService;
         }
 
+        //Reister aşamasında angularda faklı bir class daha üret
+        /// <summary>
+        /// Sign up 
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        [AllowAnonymous]
+        [HttpPost("register")]
+        public BaseResponse<string> Register([FromBody] Users user)
+        {
+            BaseResponse<string> response = new BaseResponse<string>();
+
+            try
+            {
+                _userService.Add(user);
+                response.Data = "";
+                response.ErrorMessages = null;
+                
+            }
+            catch
+            {
+                response.Data = null;
+                response.ErrorMessages = "User didn't add";
+            }
+
+            return response;
+             
+        }
+
+        
         /// <summary>
         /// login with email and password
         /// </summary>
@@ -30,33 +64,49 @@ namespace MovieProject.Controllers
         [HttpPost("authenticate")]
         public BaseResponse<User> Authenticate([FromBody] User user)
         {
-            
+            var logger = NLog.LogManager.GetCurrentClassLogger();
+
             BaseResponse<User> response = new BaseResponse<User>();
 
-            var findUser = _authenticationService.UserLogin(user);
+            
+            var findUser = _userService.GetByEmailAndPassword(user.Email, user.Password);
 
-            if(findUser == null)
+            if (findUser == null)
             {
                 response.Data = null;
-                response.ErrorMessages = ".";
+                response.ErrorMessages = "User not Found";
                 return response;
             }
 
-            var token = _jwtAuthenticationService.Authenticate(findUser);
+            User userModel = new User();
+            userModel.Name = findUser.Name;
+            userModel.Surname = findUser.Surname;
+            userModel.Email = findUser.Email;
+            userModel.Password = findUser.Password;
+            userModel.Permisson = findUser.Permisson;
+
+            
+
+            var token = _jwtAuthenticationService.Authenticate(userModel);
             if(token == null)
             {
+                
+                logger.Info("Access Denied, User info: "+findUser.Email);
+
                 //response.Data = Unauthorized();
                 response.Data = null;
-                response.ErrorMessages = "izin reddedildi";
+                response.ErrorMessages = "Access Denied";
                 return response;
             }
 
-            findUser.Token = token; //oluşturulan token değeri kullanıcıya eklendi
-            findUser.Password = null; //password null yapıldı.
+            logger.Info("User token added, User info: " + findUser.Email);
 
-            response.Data = findUser;
+            userModel.Token = token;
+            userModel.Password = null;
+
+            response.Data = userModel;
             response.ErrorMessages = null;
-            return response; //user değeri döndürülür.
+            return response; 
 
         }
 
@@ -69,9 +119,9 @@ namespace MovieProject.Controllers
         public async Task<string> CreateToken()
         {
             var logger = NLog.LogManager.GetCurrentClassLogger();
-            //logger.Info("create token error");
+            logger.Info("User create movie-token");
 
-            //Base response error
+            
             return await _authenticationService.CreateToken();
         }
 
@@ -97,7 +147,19 @@ namespace MovieProject.Controllers
         public BaseResponse<bool>  CheckEmail([FromBody] ValidationEmail validationEmail )
         {
             BaseResponse<bool> response = new BaseResponse<bool>();
-            response.Data = _authenticationService.ValidationEmail(validationEmail);
+
+            var logger = NLog.LogManager.GetCurrentClassLogger();
+
+            var isSuccess = _authenticationService.ValidationEmail(validationEmail);
+
+            if (!isSuccess)
+            {
+                logger.Info("Email didn't send to user");
+            }
+
+            logger.Info("Email sent to user");
+
+            response.Data = isSuccess;
             response.ErrorMessages = null;
 
             return response;

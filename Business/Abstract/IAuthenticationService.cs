@@ -10,7 +10,6 @@ namespace Business.Abstract
 {
     public interface IAuthenticationService
     {
-        User UserLogin(User user);
         Task<string> CreateToken();
         Task<string> CreateSession(CreateSession token);
         bool ValidationEmail(ValidationEmail validationEmail);

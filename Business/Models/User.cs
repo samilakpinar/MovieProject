@@ -17,17 +17,7 @@ namespace Business.Models
         public string SessionId { get; set; }
         public int Permisson { get; set; }
 
-        public User(int Id, string Name, string Surname, string Email, string Password, string Token, string SessionId, int Permisson)
-        {
-            this.Id = Id;
-            this.Name = Name;
-            this.Surname = Surname;
-            this.Email = Email;
-            this.Password = Password;
-            this.Token = Token;
-            this.SessionId = SessionId;
-            this.Permisson = Permisson;
-        }
+        
 
     }
 }

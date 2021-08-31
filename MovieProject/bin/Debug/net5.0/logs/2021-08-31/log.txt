@@ -1,0 +1,7 @@
+2021-08-31 00:22:58.0780   27  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-08-31 00:22:58.5393   32  INFO MovieProject.Controllers.MoviesController Movie list  sent 
+2021-08-31 00:24:52.4509   22  INFO MovieProject.Controllers.AuthenticationController User token added, User info: samilakpinar6@gmail.com 
+2021-08-31 01:25:26.3743   42  INFO MovieProject.Controllers.AuthenticationController User token added, User info:  
+2021-08-31 01:25:26.4117   42  INFO MovieProject.Controllers.AuthenticationController User create movie-token 
+2021-08-31 09:33:52.6920   15  INFO MovieProject.Controllers.AuthenticationController User token added, User info: samilakpinar6@gmail.com 
+2021-08-31 09:35:25.8701   16  INFO MovieProject.Controllers.AuthenticationController User token added, User info: samilakpinar6@gmail.com 
