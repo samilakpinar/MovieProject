@@ -15,7 +15,7 @@ namespace MovieProject.Controllers
     [ApiController]
     public class MoviesController : ControllerBase
     {
-        private IMovieService _movieService;
+        private readonly IMovieService _movieService;
 
         public MoviesController(IMovieService movieService)
         {

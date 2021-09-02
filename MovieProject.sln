@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "Entities\Entiti
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{304B8F9A-DD84-4B93-93F8-1B04E9AF10D0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieProjectXUnitTests", "MovieProjectXUnitTests\MovieProjectXUnitTests.csproj", "{CFB6514F-ED3C-4626-B2CA-4F1C6649A545}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{304B8F9A-DD84-4B93-93F8-1B04E9AF10D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{304B8F9A-DD84-4B93-93F8-1B04E9AF10D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{304B8F9A-DD84-4B93-93F8-1B04E9AF10D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFB6514F-ED3C-4626-B2CA-4F1C6649A545}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFB6514F-ED3C-4626-B2CA-4F1C6649A545}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFB6514F-ED3C-4626-B2CA-4F1C6649A545}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFB6514F-ED3C-4626-B2CA-4F1C6649A545}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

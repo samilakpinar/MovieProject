@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Business.Responses
 {
-    class PopulerCastResponse
+    public class PopulerCastResponse
     {
         public int Id { get; set; }
         public List<Cast> Cast { get; set; }

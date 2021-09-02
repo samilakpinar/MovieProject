@@ -15,7 +15,7 @@ namespace MovieProject.Controllers
     [ApiController]
     public class CastController : Controller
     {
-        private ICastService _castService;
+        private readonly ICastService _castService;
         public CastController(ICastService castService)
         {
             _castService = castService;

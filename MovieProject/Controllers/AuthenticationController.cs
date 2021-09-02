@@ -14,17 +14,18 @@ namespace MovieProject.Controllers
     [ApiController]
     public class AuthenticationController : Controller
     {
-        private IAuthenticationService _authenticationService;
-        private IJwtAuthenticationService _jwtAuthenticationService;
-        private IUserService _userService;
+        private readonly IAuthenticationService _authenticationService;
+        private readonly IJwtAuthenticationService _jwtAuthenticationService;
+        
 
-        public AuthenticationController(IAuthenticationService authenticationService, IJwtAuthenticationService jwtAuthenticationService, IUserService userService)
+        public AuthenticationController(IAuthenticationService authenticationService, IJwtAuthenticationService jwtAuthenticationService)
         {
             _authenticationService = authenticationService;
             _jwtAuthenticationService = jwtAuthenticationService;
-            _userService = userService;
+            
         }
 
+      
         //Reister aşamasında angularda faklı bir class daha üret
         /// <summary>
         /// Sign up 
@@ -37,15 +38,17 @@ namespace MovieProject.Controllers
         {
             BaseResponse<string> response = new BaseResponse<string>();
 
-            try
+            var data = _authenticationService.Register(user);
+
+            if (data)
             {
-                _userService.Add(user);
+                //true
                 response.Data = "";
                 response.ErrorMessages = null;
-                
             }
-            catch
+            else
             {
+                //false
                 response.Data = null;
                 response.ErrorMessages = "User didn't add";
             }
@@ -69,7 +72,7 @@ namespace MovieProject.Controllers
             BaseResponse<User> response = new BaseResponse<User>();
 
             
-            var findUser = _userService.GetByEmailAndPassword(user.Email, user.Password);
+            var findUser = _authenticationService.Authenticate(user);
 
             if (findUser == null)
             {
@@ -78,16 +81,7 @@ namespace MovieProject.Controllers
                 return response;
             }
 
-            User userModel = new User();
-            userModel.Name = findUser.Name;
-            userModel.Surname = findUser.Surname;
-            userModel.Email = findUser.Email;
-            userModel.Password = findUser.Password;
-            userModel.Permisson = findUser.Permisson;
-
-            
-
-            var token = _jwtAuthenticationService.Authenticate(userModel);
+            var token = _jwtAuthenticationService.Authenticate(findUser);
             if(token == null)
             {
                 
@@ -101,10 +95,9 @@ namespace MovieProject.Controllers
 
             logger.Info("User token added, User info: " + findUser.Email);
 
-            userModel.Token = token;
-            userModel.Password = null;
+            findUser.Token = token;
 
-            response.Data = userModel;
+            response.Data = findUser;
             response.ErrorMessages = null;
             return response; 
 

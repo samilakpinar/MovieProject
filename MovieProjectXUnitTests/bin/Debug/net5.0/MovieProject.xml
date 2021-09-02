@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MovieProject</name>
+    </assembly>
+    <members>
+        <member name="M:MovieProject.Controllers.AuthenticationController.Register(Entities.Concrete.Users)">
+            <summary>
+            Sign up 
+            </summary>
+            <param name="user"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MovieProject.Controllers.AuthenticationController.Authenticate(Business.Models.User)">
+            <summary>
+            login with email and password
+            </summary>
+            <param name="user"></param>
+            <returns>BaseResponse</returns>
+        </member>
+        <member name="M:MovieProject.Controllers.AuthenticationController.CreateToken">
+            <summary>
+            Create film token
+            </summary>
+            <returns>BaseResponse</returns>
+        </member>
+        <member name="M:MovieProject.Controllers.AuthenticationController.CreateSession(Business.Models.CreateSession)">
+            <summary>
+            User create session after film token
+            </summary>
+            <param name="token"></param>
+            <returns>String session value</returns>
+        </member>
+        <member name="M:MovieProject.Controllers.AuthenticationController.CheckEmail(Business.Models.ValidationEmail)">
+            <summary>
+            User validation email for create session
+            </summary>
+            <param name="validationEmail"></param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:MovieProject.Controllers.CastController.GetPopulerCast(System.Int32)">
+            <summary>
+            Get populer cast
+            </summary>
+            <param name="movieId"></param>
+            <returns>List Cast</returns>
+        </member>
+        <member name="M:MovieProject.Controllers.HomeController.GetMenu(System.String)">
+            <summary>
+            Get menu list
+            </summary>
+            <param name="token"></param>
+            <returns>menu or menu list</returns>
+        </member>
+        <member name="M:MovieProject.Controllers.MoviesController.GetPopulerMovie(System.Int32)">
+            <summary>
+            Get populer movie
+            </summary>
+            <param name="page"></param>
+            <returns>List Movie</returns>
+        </member>
+        <member name="M:MovieProject.Controllers.MoviesController.GetMovieById(System.String)">
+            <summary>
+            Get Movie By Id
+            </summary>
+            <param name="movie_id"></param>
+            <returns>BaseResponse Movie</returns>
+        </member>
+        <member name="M:MovieProject.Controllers.MoviesController.GetRateMovie(System.Int32,System.String,System.String)">
+            <summary>
+            Get rate movie
+            </summary>
+            <param name="movieId"></param>
+            <param name="sessionId"></param>
+            <param name="guestId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MovieProject.Controllers.MoviesController.RateMovie(Business.Models.RateMovie)">
+            <summary>
+            User vote for the movie 
+            </summary>
+            <param name="rateMovie"></param>
+            <returns>string rate movie</returns>
+        </member>
+    </members>
+</doc>
