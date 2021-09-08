@@ -1,0 +1,1 @@
+2021-09-02 11:50:52.3570   25  INFO MovieProject.Controllers.AuthenticationController User token added, User info: cenk2@gmail.com 

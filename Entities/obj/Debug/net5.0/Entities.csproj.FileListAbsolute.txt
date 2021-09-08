@@ -13,3 +13,6 @@ C:\Users\samil.akpinar\source\repos\MovieProject\Entities\obj\Debug\net5.0\Entit
 C:\Users\samil.akpinar\source\repos\MovieProject\Entities\bin\Debug\net5.0\Core.dll
 C:\Users\samil.akpinar\source\repos\MovieProject\Entities\bin\Debug\net5.0\Core.pdb
 C:\Users\samil.akpinar\source\repos\MovieProject\Entities\obj\Debug\net5.0\Entities.csproj.CopyComplete
+C:\Users\samil.akpinar\source\repos\MovieProject\Entities\bin\Debug\net5.0\Entities.runtimeconfig.json
+C:\Users\samil.akpinar\source\repos\MovieProject\Entities\bin\Debug\net5.0\Entities.runtimeconfig.dev.json
+C:\Users\samil.akpinar\source\repos\MovieProject\Entities\obj\Debug\net5.0\Entities.genruntimeconfig.cache

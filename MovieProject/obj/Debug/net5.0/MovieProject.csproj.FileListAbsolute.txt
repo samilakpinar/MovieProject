@@ -76,3 +76,5 @@ C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\bin\Debug\net5.0\D
 C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
 C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\bin\Debug\net5.0\Microsoft.AspNetCore.DataProtection.dll
 C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\bin\Debug\net5.0\Microsoft.AspNetCore.DataProtection.Abstractions.dll
+C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\bin\Debug\net5.0\Humanizer.dll
+C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll

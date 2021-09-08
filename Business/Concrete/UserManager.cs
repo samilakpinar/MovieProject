@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.Responses;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,8 +19,10 @@ namespace Business.Concrete
         }
 
 
-        public void Add(Users user)
+        public ResultResponse Add(Users user)
         {
+            ResultResponse response = new ResultResponse();
+
             //User password encryp and decryp
             var SCollection = new ServiceCollection();
 
@@ -41,24 +44,32 @@ namespace Business.Concrete
             if (_userDal.Get(u => u.Email == user.Email) == null )
             {
                 _userDal.Add(user);
+                response.ErrorMessage = null;
             }
             else
             {
-                throw new Exception("Bu email adı zaten mevcut");
+                response.ErrorMessage = "Bu email adı zaten mevcut";
             }
-                
+
+            return response;
+
         }
 
-        public void Delete(Users user)
+        public ResultResponse Delete(Users user)
         {
+            ResultResponse response = new ResultResponse();
+
             if (_userDal.Get(u => u.Email == user.Email) == null)
             {
-                throw new Exception("Bu email adında bir kullanıcı yok");
+                response.ErrorMessage = "Bu email adında bir kullanıcı yok";
             }
             else
             {
                 _userDal.Delete(user);
+                response.ErrorMessage = null;
             }
+
+            return response;
 
         }
 
@@ -67,7 +78,16 @@ namespace Business.Concrete
             return _userDal.GetList().ToList();
         }
 
-        
+        public Users GetByEmail(string email)
+        {
+            var user = _userDal.Get(user => user.Email == email);
+            if (user == null)
+            {
+                return null;
+            }
+            return user;
+        }
+
         public Users GetByEmailAndPassword(string email, string password)
         {
 
@@ -96,18 +116,22 @@ namespace Business.Concrete
 
         }
 
-        
-        public void Update(Users user)
+
+        public ResultResponse Update(Users user)
         {
+            ResultResponse response = new ResultResponse();
 
             if (_userDal.Get(u => u.Email == user.Email) == null)
             {
-                throw new Exception("Bu email adında bir kullanıcı yok");
+                response.ErrorMessage = "Bu email adında bir kullanıcı yok";
             }
             else
             {
                 _userDal.Update(user);
+                response.ErrorMessage = null;
             }
+
+            return response;
 
         }
     }

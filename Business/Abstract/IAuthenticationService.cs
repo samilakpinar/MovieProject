@@ -16,5 +16,7 @@ namespace Business.Abstract
         Task<string> CreateToken();
         Task<string> CreateSession(CreateSession token);
         bool ValidationEmail(ValidationEmail validationEmail);
+        bool ResetPassword(string email);
+        bool UpdatePassword(ResetPassword reset);
     }
 }

@@ -1,4 +1,5 @@
-﻿using Entities.Concrete;
+﻿using Business.Responses;
+using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 
@@ -10,8 +11,9 @@ namespace Business.Abstract
     {
         List<Users> GetAll();
         Users GetByEmailAndPassword(string email, string password);
-        void Add(Users user);
-        void Delete(Users user);
-        void Update(Users user);
+        Users GetByEmail(string email);
+        ResultResponse Add(Users user);
+        ResultResponse Delete(Users user);
+        ResultResponse Update(Users user);
     }
 }

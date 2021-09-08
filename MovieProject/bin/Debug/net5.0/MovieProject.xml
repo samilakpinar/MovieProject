@@ -38,6 +38,13 @@
             <param name="validationEmail"></param>
             <returns>Boolean</returns>
         </member>
+        <member name="M:MovieProject.Controllers.AuthenticationController.ResetPassword(System.String)">
+            <summary>
+            reset password
+            </summary>
+            <param name="email"></param>
+            <returns>boolean</returns>
+        </member>
         <member name="M:MovieProject.Controllers.CastController.GetPopulerCast(System.Int32)">
             <summary>
             Get populer cast

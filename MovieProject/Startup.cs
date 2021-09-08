@@ -3,24 +3,20 @@ using Business.Concrete;
 using Business.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Reflection;
 using System.IO;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
+using Microsoft.EntityFrameworkCore;
 
 namespace MovieProject
 {
@@ -29,6 +25,7 @@ namespace MovieProject
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+
         }
 
         public IConfiguration Configuration { get; }
@@ -36,9 +33,16 @@ namespace MovieProject
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            
             services.AddCors();
 
+            //Database perform database migration
+            //var de =  services.AddDbContext<MovieStoreContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SqlConnection")));
+            //services.BuildServiceProvider().GetService<MovieStoreContext>().Database.Migrate();
+
             
+
+            services.AddDbContext<MovieStoreContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ConnectionString")));
 
             //appsettings tanýmlama 1.yöntem.
             var appSettingsSection = Configuration.GetSection("AppSettings");
@@ -63,9 +67,10 @@ namespace MovieProject
             services.AddTransient<IAuthenticationService, AuthenticationManager>();
             services.AddTransient<IMovieService, MovieManager>();
             services.AddTransient<ICastService, CastManager>();
-            services.AddTransient<ISidebarMenuService, SidebarMenuManager>();
             services.AddTransient<IUserService, UserManager>();
+            services.AddTransient<IMenuService, MenuManager>();
             services.AddTransient<IUserDal, EfUserDal>();
+            services.AddTransient<IMenuDal, EfMenuDal>();
 
 
             //JWT token settings
@@ -123,6 +128,26 @@ namespace MovieProject
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
+
+
+
+            //Package managerda update-database gerek kalmaz.
+            using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            {
+                try
+                {
+                    serviceScope.ServiceProvider.GetService<MovieStoreContext>().Database.Migrate();
+                }
+                catch (Exception ex)
+                {
+                    throw;
+                }
+            }
+
+
+
+
+
             if (env.IsDevelopment())
             {
 

@@ -24,9 +24,11 @@ namespace Core.DataAccess.EntityFramework
         {
             using (var context = new TContext())
             {
+                
                 var addedEntity = context.Entry(entity);
                 addedEntity.State = EntityState.Added;
                 context.SaveChanges(); //Unit of Work işlemi burada kullanıyor.
+
             }
         }
 
@@ -34,6 +36,7 @@ namespace Core.DataAccess.EntityFramework
         {
             using (var context = new TContext())
             {
+                
                 var deletedEntity = context.Entry(entity);
                 deletedEntity.State = EntityState.Deleted;
                 context.SaveChanges();

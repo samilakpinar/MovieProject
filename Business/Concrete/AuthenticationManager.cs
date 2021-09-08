@@ -8,9 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using MailKit.Net.Smtp;
 using Microsoft.Extensions.Configuration;
-using System.Collections.Generic;
-using System.Linq;
 using Entities.Concrete;
+using Microsoft.Extensions.DependencyInjection;
+using System.Security.Cryptography;
 
 namespace Business.Concrete
 {
@@ -33,17 +33,11 @@ namespace Business.Concrete
             {
                 return false;
             }
-            try
-            {
-                
-                _userService.Add(user);
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-            
+
+            var result = _userService.Add(user);
+
+            return result.Status;
+                     
 
         }
 
@@ -76,6 +70,9 @@ namespace Business.Concrete
 
         public async Task<string> CreateToken()
         {
+
+            string _settings = config.GetConnectionString("ConnectionString");
+
             string httpUrl = config.GetSection("AppSettings").GetSection("Url").Value;
             string apiKey = config.GetSection("AppSettings").GetSection("ApiKey").Value;
 
@@ -155,6 +152,119 @@ namespace Business.Concrete
             return true;
         }
 
-       
+        public bool ResetPassword(string email)
+        {
+            //checkEmail
+            if (email == null)
+            {
+                return false;
+            }
+
+            var findUser = _userService.GetByEmail(email);
+
+            if (findUser == null)
+            {
+                return false;
+            }
+
+
+            //create email message
+            var emailSend = new MimeMessage();
+            emailSend.From.Add(MailboxAddress.Parse("samilakpinar8@gmail.com"));
+            emailSend.To.Add(MailboxAddress.Parse(email));
+            emailSend.Subject = "Reset Password";
+
+            //email md5 hash function
+            var verify = MD5Hash(email);
+
+            var url = "http://localhost:4200/reset/"+email+"/"+verify ;
+
+            emailSend.Body = new TextPart(TextFormat.Html) { Text = "Reset Password: " + url};
+
+            //send email
+            using var smtp = new SmtpClient();
+            smtp.Connect("smtp.gmail.com", 587, false);
+
+
+            try
+            {
+                smtp.Authenticate("samilakpinar8@gmail.com", "Youtube1");
+                smtp.Send(emailSend);
+                smtp.Disconnect(true);
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine("message gitmedi " + ex.Message);
+                return false;
+            }
+
+
+            return true;
+
+
+        }
+
+        //md5 for reset password
+        public static string MD5Hash(string text)
+        {
+            MD5 md5 = new MD5CryptoServiceProvider();
+
+            //metnin boyutundan hash hesaplar
+            md5.ComputeHash(ASCIIEncoding.ASCII.GetBytes(text));
+
+            //hesapladıktan sonra hashi alır
+            byte[] result = md5.Hash;
+
+            StringBuilder strBuilder = new StringBuilder();
+            for (int i = 0; i < result.Length; i++)
+            {
+                //her baytı 2 hexadecimal hane olarak değiştirir
+                strBuilder.Append(result[i].ToString("x2"));
+            }
+
+            return strBuilder.ToString();
+        }
+
+        public bool UpdatePassword(ResetPassword reset)
+        {
+
+            if (reset.Password == null || reset.Email == null)
+            {
+                return false;
+            }
+
+            var findUser = _userService.GetByEmail(reset.Email);
+
+            if (findUser == null)
+            {
+                return false;
+            }
+
+            //User password encryp and decryp
+            var SCollection = new ServiceCollection();
+
+            //add protection services
+            SCollection.AddDataProtection();
+            var LockerKey = SCollection.BuildServiceProvider();
+
+            var locker = ActivatorUtilities.CreateInstance<SecurityManager>(LockerKey);
+            string encryptKey = locker.Encrypt(reset.Password);
+
+
+            findUser.Password = encryptKey;
+
+            var updatePassword = _userService.Update(findUser);
+
+            if (updatePassword.Status)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
     }
 }

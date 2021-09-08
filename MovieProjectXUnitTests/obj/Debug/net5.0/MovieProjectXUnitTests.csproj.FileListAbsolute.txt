@@ -161,3 +161,5 @@ C:\Users\samil.akpinar\source\repos\MovieProject\MovieProjectXUnitTests\obj\Debu
 C:\Users\samil.akpinar\source\repos\MovieProject\MovieProjectXUnitTests\obj\Debug\net5.0\MovieProjectXUnitTests.genruntimeconfig.cache
 C:\Users\samil.akpinar\source\repos\MovieProject\MovieProjectXUnitTests\bin\Debug\net5.0\Castle.Core.dll
 C:\Users\samil.akpinar\source\repos\MovieProject\MovieProjectXUnitTests\bin\Debug\net5.0\Moq.dll
+C:\Users\samil.akpinar\source\repos\MovieProject\MovieProjectXUnitTests\bin\Debug\net5.0\Humanizer.dll
+C:\Users\samil.akpinar\source\repos\MovieProject\MovieProjectXUnitTests\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll

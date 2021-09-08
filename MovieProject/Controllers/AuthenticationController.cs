@@ -26,7 +26,6 @@ namespace MovieProject.Controllers
         }
 
       
-        //Reister aşamasında angularda faklı bir class daha üret
         /// <summary>
         /// Sign up 
         /// </summary>
@@ -42,13 +41,11 @@ namespace MovieProject.Controllers
 
             if (data)
             {
-                //true
-                response.Data = "";
+                response.Data = data.ToString();
                 response.ErrorMessages = null;
             }
             else
             {
-                //false
                 response.Data = null;
                 response.ErrorMessages = "User didn't add";
             }
@@ -154,6 +151,58 @@ namespace MovieProject.Controllers
 
             response.Data = isSuccess;
             response.ErrorMessages = null;
+
+            return response;
+        }
+
+
+        /// <summary>
+        /// reset password
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns>boolean</returns>
+        [AllowAnonymous]
+        [HttpGet("reset-password")]
+        public BaseResponse<bool> ResetPassword(string email)
+        {
+            BaseResponse<bool> response = new BaseResponse<bool>();
+
+            var isSuccess = _authenticationService.ResetPassword(email);
+            
+            response.Data = isSuccess;
+
+            if (isSuccess)
+            {
+                response.ErrorMessages = null;
+            }
+            else
+            {
+                response.ErrorMessages = "Reset Password faild";
+            }
+
+            return response;
+        }
+
+
+        [AllowAnonymous]
+        [HttpPost("update-password")]
+        public BaseResponse<bool> AddNewPassword(ResetPassword reset)
+        {
+            BaseResponse<bool> response = new BaseResponse<bool>();
+            
+            var isSuccess = _authenticationService.UpdatePassword(reset);
+            response.Data = isSuccess;
+
+            if (isSuccess)
+            {
+                
+                response.ErrorMessages = null;
+
+            }
+            else
+            {
+                response.ErrorMessages = "Update failed";
+            }
 
             return response;
         }

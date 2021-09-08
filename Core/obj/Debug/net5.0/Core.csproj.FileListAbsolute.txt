@@ -10,3 +10,6 @@ C:\Users\samil.akpinar\source\repos\MovieProject\Core\obj\Debug\net5.0\Core.cspr
 C:\Users\samil.akpinar\source\repos\MovieProject\Core\obj\Debug\net5.0\Core.dll
 C:\Users\samil.akpinar\source\repos\MovieProject\Core\obj\Debug\net5.0\ref\Core.dll
 C:\Users\samil.akpinar\source\repos\MovieProject\Core\obj\Debug\net5.0\Core.pdb
+C:\Users\samil.akpinar\source\repos\MovieProject\Core\bin\Debug\net5.0\Core.runtimeconfig.json
+C:\Users\samil.akpinar\source\repos\MovieProject\Core\bin\Debug\net5.0\Core.runtimeconfig.dev.json
+C:\Users\samil.akpinar\source\repos\MovieProject\Core\obj\Debug\net5.0\Core.genruntimeconfig.cache

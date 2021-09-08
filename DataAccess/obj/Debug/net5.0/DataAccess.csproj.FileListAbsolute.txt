@@ -15,3 +15,6 @@ C:\Users\samil.akpinar\source\repos\MovieProject\DataAccess\obj\Debug\net5.0\Dat
 C:\Users\samil.akpinar\source\repos\MovieProject\DataAccess\obj\Debug\net5.0\DataAccess.dll
 C:\Users\samil.akpinar\source\repos\MovieProject\DataAccess\obj\Debug\net5.0\ref\DataAccess.dll
 C:\Users\samil.akpinar\source\repos\MovieProject\DataAccess\obj\Debug\net5.0\DataAccess.pdb
+C:\Users\samil.akpinar\source\repos\MovieProject\DataAccess\bin\Debug\net5.0\DataAccess.runtimeconfig.json
+C:\Users\samil.akpinar\source\repos\MovieProject\DataAccess\bin\Debug\net5.0\DataAccess.runtimeconfig.dev.json
+C:\Users\samil.akpinar\source\repos\MovieProject\DataAccess\obj\Debug\net5.0\DataAccess.genruntimeconfig.cache

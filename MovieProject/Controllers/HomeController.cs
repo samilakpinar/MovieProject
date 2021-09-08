@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Models;
 using Business.Responses;
+using Entities.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -17,10 +18,10 @@ namespace MovieProject.Controllers
     [ApiController]
     public class HomeController : Controller
     {
-        private ISidebarMenuService _sidebarMenu;
-        public HomeController(ISidebarMenuService sidebarMenu)
+        private IMenuService _menuService;
+        public HomeController( IMenuService menuService)
         {
-            _sidebarMenu = sidebarMenu;
+            _menuService = menuService;
         }
 
         /// <summary>
@@ -30,20 +31,20 @@ namespace MovieProject.Controllers
         /// <returns>menu or menu list</returns>
         [AllowAnonymous]
         [HttpGet("get-menu")]
-        public BaseResponse<List<SidebarMenu>> GetMenu(string token)
+        public BaseResponse<List<Menu>> GetMenu(string token)
         {
-            BaseResponse<List<SidebarMenu>> response = new BaseResponse<List<SidebarMenu>>();
+            BaseResponse<List<Menu>> response = new BaseResponse<List<Menu>>();
 
             var logger = NLog.LogManager.GetCurrentClassLogger();
-            
 
             try
             {
                 var tokenValue = new JwtSecurityToken(jwtEncodedString: token);
                 var role = tokenValue.Claims.FirstOrDefault(c => c.Type == "role").Value;
 
-                var menuList = _sidebarMenu.GetMenuList(role);
 
+               var menuList = _menuService.GetMenuByPermissonId(Convert.ToInt32(role));
+                
                 if(menuList == null)
                 {
                     response.Data = null;
