@@ -67,5 +67,39 @@ namespace Business.Concrete
             var response = await httpClient.PostAsync(url, content);
             return await response.Content.ReadAsStringAsync();
         }
+
+        public async Task<List<Movie>> GetUpcomingMovie(int page)
+        {
+            var url = $"{_appSettings.Url}movie/upcoming?api_key={_appSettings.ApiKey}&language=en-US&page={page}";
+            var response = await httpClient.GetAsync(url);
+            var jsonAsString = await response.Content.ReadAsStringAsync();
+            var movies = JsonConvert.DeserializeObject<UpcomingMovieResponse>(jsonAsString);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                return null;
+            }
+
+            return movies.Results;
+        }
+
+        public async Task<List<MovieVideo>> GetMovieVideoById(int movieId)
+        {
+
+            var url = $"{_appSettings.Url}movie/{movieId}/videos?api_key={_appSettings.ApiKey}";
+            var response = await httpClient.GetAsync(url);
+            var jsonAsString = await response.Content.ReadAsStringAsync();
+            var movies = JsonConvert.DeserializeObject<MovieVideoResponse>(jsonAsString);
+
+            if (!response.IsSuccessStatusCode || movies.Results.Count == 0 )
+            {
+                return null;
+            }
+
+            return movies.Results;
+            
+          
+            
+        }
     }
 }

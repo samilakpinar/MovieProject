@@ -31,6 +31,13 @@
             <param name="token"></param>
             <returns>String session value</returns>
         </member>
+        <member name="M:MovieProject.Controllers.AuthenticationController.CreateSessionWithLogin(Business.Models.SessionWithLogin)">
+            <summary>
+            Create session with login
+            </summary>
+            <param name="sessionWithLogin"></param>
+            <returns></returns>
+        </member>
         <member name="M:MovieProject.Controllers.AuthenticationController.CheckEmail(Business.Models.ValidationEmail)">
             <summary>
             User validation email for create session
@@ -45,12 +52,27 @@
             <param name="email"></param>
             <returns>boolean</returns>
         </member>
+        <member name="M:MovieProject.Controllers.AuthenticationController.AddNewPassword(Business.Models.ResetPassword)">
+            <summary>
+            update password
+            </summary>
+            <param name="reset"></param>
+            <returns>boolean</returns>
+        </member>
         <member name="M:MovieProject.Controllers.CastController.GetPopulerCast(System.Int32)">
             <summary>
             Get populer cast
             </summary>
             <param name="movieId"></param>
             <returns>List Cast</returns>
+        </member>
+        <member name="M:MovieProject.Controllers.CastController.GetCastById(System.Int32,System.Int32)">
+            <summary>
+            Get cast by id
+            </summary>
+            <param name="movieId"></param>
+            <param name="castId"></param>
+            <returns>Cast</returns>
         </member>
         <member name="M:MovieProject.Controllers.HomeController.GetMenu(System.String)">
             <summary>
@@ -89,5 +111,6 @@
             <param name="rateMovie"></param>
             <returns>string rate movie</returns>
         </member>
+        <!-- Badly formed XML comment ignored for member "M:MovieProject.Controllers.MoviesController.GetUpcomingMovie(System.Int32)" -->
     </members>
 </doc>

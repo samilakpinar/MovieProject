@@ -14,5 +14,7 @@ namespace Business.Abstract
         Task<Movie> GetMovieById(string movie_id);
         Task<string> GetRateMovie(int movieId, string sessionId, string guestId);
         Task<string> RateMovie(RateMovie rateMovie);
+        Task<List<Movie>> GetUpcomingMovie(int page);
+        Task<List<MovieVideo>> GetMovieVideoById(int movieId);
     }
 }

@@ -11,6 +11,8 @@ using Microsoft.Extensions.Configuration;
 using Entities.Concrete;
 using Microsoft.Extensions.DependencyInjection;
 using System.Security.Cryptography;
+using Newtonsoft.Json;
+using Business.Responses;
 
 namespace Business.Concrete
 {
@@ -81,12 +83,14 @@ namespace Business.Concrete
 
             var result = await response.Content.ReadAsStringAsync();
 
-            if (result == null)
+            if (!response.IsSuccessStatusCode)
             {
                 return null;
             }
 
             return result;
+
+              
 
         }
                
@@ -111,7 +115,31 @@ namespace Business.Concrete
 
         }
 
-        
+        public async Task<SessionWithLoginResponse> CreateSessionWithLogin(SessionWithLogin sessionLogin)
+        {
+            //session için url linkleri için geliştirme yapılamsı sağlanacak.
+            
+            string httpUrl = config.GetSection("AppSettings").GetSection("Url").Value;
+            string apiKey = config.GetSection("AppSettings").GetSection("ApiKey").Value;
+
+            var url = $"{httpUrl}authentication/token/validate_with_login?api_key={apiKey}";
+            var json = System.Text.Json.JsonSerializer.Serialize(sessionLogin);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await httpClient.PostAsync(url, content);
+
+            var jsonAsString = await response.Content.ReadAsStringAsync();
+            var result = JsonConvert.DeserializeObject<SessionWithLoginResponse>(jsonAsString);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                return null;
+            }
+           
+           return result;
+                        
+        }
+
+
         public bool ValidationEmail(ValidationEmail validationEmail)
         {
 
@@ -266,5 +294,7 @@ namespace Business.Concrete
             }
 
         }
+
+        
     }
 }

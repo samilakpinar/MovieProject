@@ -17,7 +17,6 @@ namespace MovieProject.Controllers
         private readonly IAuthenticationService _authenticationService;
         private readonly IJwtAuthenticationService _jwtAuthenticationService;
         
-
         public AuthenticationController(IAuthenticationService authenticationService, IJwtAuthenticationService jwtAuthenticationService)
         {
             _authenticationService = authenticationService;
@@ -128,6 +127,34 @@ namespace MovieProject.Controllers
         }
 
         /// <summary>
+        /// Create session with login
+        /// </summary>
+        /// <param name="sessionWithLogin"></param>
+        /// <returns></returns>
+        [AllowAnonymous]
+        [HttpPost("create-session-with-login")]
+        public BaseResponse<SessionWithLoginResponse> CreateSessionWithLogin([FromBody] SessionWithLogin sessionWithLogin)
+        {
+            BaseResponse<SessionWithLoginResponse> response = new BaseResponse<SessionWithLoginResponse>();
+
+            var result = _authenticationService.CreateSessionWithLogin(sessionWithLogin);
+
+            response.Data = result.Result;
+            if (result.Result == null)
+            {
+                response.ErrorMessages = "invalid session value";
+                
+            }
+            else
+            {
+                response.ErrorMessages = null;
+            }
+
+
+            return response;
+        }
+
+        /// <summary>
         /// User validation email for create session
         /// </summary>
         /// <param name="validationEmail"></param>
@@ -183,7 +210,11 @@ namespace MovieProject.Controllers
             return response;
         }
 
-
+        /// <summary>
+        /// update password
+        /// </summary>
+        /// <param name="reset"></param>
+        /// <returns>boolean</returns>
         [AllowAnonymous]
         [HttpPost("update-password")]
         public BaseResponse<bool> AddNewPassword(ResetPassword reset)
@@ -195,9 +226,7 @@ namespace MovieProject.Controllers
 
             if (isSuccess)
             {
-                
                 response.ErrorMessages = null;
-
             }
             else
             {
@@ -206,6 +235,8 @@ namespace MovieProject.Controllers
 
             return response;
         }
+
+        
 
     }
 }

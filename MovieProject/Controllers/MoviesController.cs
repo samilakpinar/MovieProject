@@ -129,5 +129,56 @@ namespace MovieProject.Controllers
             return rateMovies;
 
         }
+
+
+        /// <summary>
+        /// upcoming movie 
+        /// </summary>
+        /// <param name="page"></param>
+        /// <returns>List<Movie></returns>
+        [HttpGet("upcoming-movies")]
+        public BaseResponse<List<Movie>> GetUpcomingMovie(int page)
+        {
+            BaseResponse<List<Movie>> response = new BaseResponse<List<Movie>>();
+            var logger = NLog.LogManager.GetCurrentClassLogger();
+
+            response.Data = _movieService.GetUpcomingMovie(page).Result;
+
+            if (response.Data == null)
+            {
+                response.ErrorMessages = "Upcoming movie list didn't send";
+                logger.Info("Upcoming movie list didn't send");
+                return response;
+            }
+
+            response.ErrorMessages = null;
+            logger.Info("Rate movie sent ",response.IsSuccess);
+
+            return response;
+
+        }
+
+        [AllowAnonymous]
+        [HttpGet("get-movie-video-by-id")]
+        public BaseResponse<List<MovieVideo>> GetMovieVideoById(int movieId)
+        {
+            BaseResponse<List<MovieVideo>> response = new BaseResponse<List<MovieVideo>>();
+            var logger = NLog.LogManager.GetCurrentClassLogger();
+
+            response.Data = _movieService.GetMovieVideoById(movieId).Result;
+
+            if (response.Data == null)
+            {
+                response.ErrorMessages = "Movie video list didn't send";
+                return response;
+            }
+
+            response.ErrorMessages = null;
+            return response;
+
+
+
+        }
+
     }
 }

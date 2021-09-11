@@ -22,7 +22,6 @@ namespace Business.Concrete
             _appSettings = appSettings.Value;
         }
 
-
         public async Task<List<Cast>> GetPopulerCast(int movieId)
         {
             var url = $"{_appSettings.Url}movie/{movieId}/credits?api_key={_appSettings.ApiKey}";
@@ -32,7 +31,8 @@ namespace Business.Concrete
             var castModel = JsonConvert.DeserializeObject<PopulerCastResponse>(jsonAsString);
             return castModel.Cast;
 
-
         }
+
+
     }
 }

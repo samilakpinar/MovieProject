@@ -17,6 +17,7 @@ using System.IO;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using Microsoft.EntityFrameworkCore;
+using NLog;
 
 namespace MovieProject
 {
@@ -99,8 +100,6 @@ namespace MovieProject
                 });
 
 
-            
-
 
             services.AddControllers();
             services.AddCors(options =>
@@ -120,9 +119,6 @@ namespace MovieProject
 
             });
 
-            
-
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -130,7 +126,7 @@ namespace MovieProject
         {
 
 
-
+            //update database ile zaten deðiþiklik olduðunda kendisi deðiþikliði algýlýyor ve her defasýnda update database yapmýyor.
             //Package managerda update-database gerek kalmaz.
             using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
@@ -140,11 +136,12 @@ namespace MovieProject
                 }
                 catch (Exception ex)
                 {
+                    
+                    var logger = LogManager.GetCurrentClassLogger();
+                    logger.Error("Veritabaný güncellenirken hata oluþtu.Detay:" + ex);
                     throw;
                 }
             }
-
-
 
 
 
