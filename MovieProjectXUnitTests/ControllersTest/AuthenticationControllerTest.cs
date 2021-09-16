@@ -1,9 +1,5 @@
-﻿using Business.Abstract;
-using Business.Models;
-using Business.Responses;
+﻿using Business.Models;
 using Entities.Concrete;
-using Moq;
-using MovieProject.Controllers;
 using MovieProjectXUnitTests.ServicesTest;
 using System.Diagnostics.CodeAnalysis;
 using Xunit;
@@ -58,7 +54,7 @@ namespace MovieProjectXUnitTests.ControllersTest
         [Fact]
         public void CreateToken_Test()
         {
-            
+
             var authManager = new AuthenticationManagerTest();
 
             var result = authManager.CreateToken();
@@ -90,7 +86,7 @@ namespace MovieProjectXUnitTests.ControllersTest
 
             var result = new AuthenticationManagerTest();
 
-            Assert.Equal(false ,result.ValidationEmail(validate));
+            Assert.Equal(false, result.ValidationEmail(validate));
 
         }
 

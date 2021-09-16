@@ -1,22 +1,22 @@
 ﻿using Business.Abstract;
 using Business.Models;
-using MimeKit;
-using MimeKit.Text;
-using System;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
+using Business.Responses;
+using Entities.Concrete;
 using MailKit.Net.Smtp;
 using Microsoft.Extensions.Configuration;
-using Entities.Concrete;
 using Microsoft.Extensions.DependencyInjection;
-using System.Security.Cryptography;
+using MimeKit;
+using MimeKit.Text;
 using Newtonsoft.Json;
-using Business.Responses;
+using System;
+using System.Net.Http;
+using System.Security.Cryptography;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Business.Concrete
 {
-    public class AuthenticationManager: IAuthenticationService
+    public class AuthenticationManager : IAuthenticationService
     {
         //Not Appsettings olayının IConfiguration ile çözümüdür
         HttpClient httpClient = new HttpClient();
@@ -39,7 +39,7 @@ namespace Business.Concrete
             var result = _userService.Add(user);
 
             return result.Status;
-                     
+
 
         }
 
@@ -90,10 +90,10 @@ namespace Business.Concrete
 
             return result;
 
-              
+
 
         }
-               
+
         public async Task<string> CreateSession(CreateSession token)
         {
 
@@ -110,7 +110,7 @@ namespace Business.Concrete
             var content = new StringContent(json, Encoding.UTF8, "application/json");
             var response = await httpClient.PostAsync(url, content);
 
-            
+
             return await response.Content.ReadAsStringAsync();
 
         }
@@ -118,7 +118,7 @@ namespace Business.Concrete
         public async Task<SessionWithLoginResponse> CreateSessionWithLogin(SessionWithLogin sessionLogin)
         {
             //session için url linkleri için geliştirme yapılamsı sağlanacak.
-            
+
             string httpUrl = config.GetSection("AppSettings").GetSection("Url").Value;
             string apiKey = config.GetSection("AppSettings").GetSection("ApiKey").Value;
 
@@ -134,9 +134,9 @@ namespace Business.Concrete
             {
                 return null;
             }
-           
-           return result;
-                        
+
+            return result;
+
         }
 
 
@@ -155,9 +155,9 @@ namespace Business.Concrete
             email.Subject = "Validation Email";
 
 
-            var url = "https://www.themoviedb.org/authenticate/"+validationEmail.Token+"/allow";
+            var url = "https://www.themoviedb.org/authenticate/" + validationEmail.Token + "/allow";
 
-            email.Body = new TextPart(TextFormat.Html) { Text = "Validation Email: "+url+" " };
+            email.Body = new TextPart(TextFormat.Html) { Text = "Validation Email: " + url + " " };
 
             //send email
             using var smtp = new SmtpClient();
@@ -205,9 +205,9 @@ namespace Business.Concrete
             //email md5 hash function
             var verify = MD5Hash(email);
 
-            var url = "http://localhost:4200/reset/"+email+"/"+verify ;
+            var url = "http://localhost:4200/reset/" + email + "/" + verify;
 
-            emailSend.Body = new TextPart(TextFormat.Html) { Text = "Reset Password: " + url};
+            emailSend.Body = new TextPart(TextFormat.Html) { Text = "Reset Password: " + url };
 
             //send email
             using var smtp = new SmtpClient();
@@ -295,6 +295,6 @@ namespace Business.Concrete
 
         }
 
-        
+
     }
 }

@@ -4,9 +4,7 @@ using Business.Responses;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 
 
@@ -24,7 +22,7 @@ namespace MovieProjectXUnitTests.ServicesTest
 
         public CastManagerTest()
         {
-                
+
         }
 
         public async Task<List<Cast>> GetPopulerCast(int movieId)
@@ -33,7 +31,7 @@ namespace MovieProjectXUnitTests.ServicesTest
             {
                 return null;
             }
-           
+
             var url = $"{_appSettings.Url}movie/{movieId}/credits?api_key={_appSettings.ApiKey}";
             var httpClient = new HttpClient();
             var response = await httpClient.GetAsync(url);

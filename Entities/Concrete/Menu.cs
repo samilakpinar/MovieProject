@@ -1,9 +1,9 @@
-﻿using Core.Entities;
+﻿using Entities.Base;
 using System.ComponentModel.DataAnnotations;
 
 namespace Entities.Concrete
 {
-    public class Menu:IEntity
+    public class Menu : IEntity
     {
         [Key]
         public int Id { get; set; }

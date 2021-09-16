@@ -1,10 +1,5 @@
 ﻿using Business.Models;
 using MovieProjectXUnitTests.ServicesTest;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace MovieProjectXUnitTests.ControllersTest
@@ -23,7 +18,7 @@ namespace MovieProjectXUnitTests.ControllersTest
 
             //Assert
             Assert.Null(result.Result);
-            
+
         }
 
         [Fact]
@@ -62,7 +57,7 @@ namespace MovieProjectXUnitTests.ControllersTest
         [Fact]
         public void Rate_Movie_Test()
         {
-            
+
             //Arrange
             RateMovie movie = new RateMovie();
             movie.MovieId = 550;

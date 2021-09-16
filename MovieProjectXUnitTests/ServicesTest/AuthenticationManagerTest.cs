@@ -1,17 +1,15 @@
 ﻿using Business.Abstract;
 using Business.Models;
+using Business.Responses;
 using Entities.Concrete;
 using MailKit.Net.Smtp;
+using Microsoft.Extensions.Configuration;
 using MimeKit;
 using MimeKit.Text;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-
-using Microsoft.Extensions.Configuration;
 
 
 namespace MovieProjectXUnitTests.ServicesTest
@@ -38,11 +36,11 @@ namespace MovieProjectXUnitTests.ServicesTest
 
         public User Authenticate(User user)
         {
-            if(user.Email.Length == 0 || user.Password.Length < 8)
+            if (user.Email.Length == 0 || user.Password.Length < 8)
             {
                 return null;
             }
-            
+
             var findUser = _userService.GetByEmailAndPassword(user.Email, user.Password);
 
             if (findUser == null)
@@ -65,11 +63,11 @@ namespace MovieProjectXUnitTests.ServicesTest
         public async Task<string> CreateSession(CreateSession token)
         {
 
-            if(token.request_token == "")
+            if (token.request_token == "")
             {
                 return null;
             }
-            
+
             string httpUrl = config.GetSection("AppSettings").GetSection("Url").Value;
             string apiKey = config.GetSection("AppSettings").GetSection("ApiKey").Value;
 
@@ -78,7 +76,7 @@ namespace MovieProjectXUnitTests.ServicesTest
             var content = new StringContent(json, Encoding.UTF8, "application/json");
             var response = await httpClient.PostAsync(url, content);
 
-            
+
             return await response.Content.ReadAsStringAsync(); ;
         }
 
@@ -91,7 +89,7 @@ namespace MovieProjectXUnitTests.ServicesTest
             var response = await httpClient.GetAsync(url);
 
             var result = await response.Content.ReadAsStringAsync();
-            
+
             if (result == null)
             {
                 return null;
@@ -120,7 +118,7 @@ namespace MovieProjectXUnitTests.ServicesTest
 
         public bool ValidationEmail(ValidationEmail validationEmail)
         {
-            if(validationEmail.Email.Length == 0 || validationEmail.Token.Length == 0)
+            if (validationEmail.Email.Length == 0 || validationEmail.Token.Length == 0)
             {
                 return false;
             }
@@ -155,6 +153,21 @@ namespace MovieProjectXUnitTests.ServicesTest
             }
 
             return true;
+        }
+
+        public Task<SessionWithLoginResponse> CreateSessionWithLogin(SessionWithLogin sessionLogin)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool ResetPassword(string email)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool UpdatePassword(ResetPassword reset)
+        {
+            throw new NotImplementedException();
         }
     }
 }

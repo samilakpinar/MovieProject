@@ -3,7 +3,6 @@ using Business.Responses;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -11,13 +10,12 @@ namespace Business.Concrete
 {
     public class UserManager : IUserService
     {
-        private readonly IUserDal _userDal; //Veri erişim katmanını kullanırız. Özellik ile userDalı kullanıyoruz.
+        private readonly IUserRepository _userRepository; //Veri erişim katmanını kullanırız. Özellik ile userDalı kullanıyoruz.
 
-        public UserManager(IUserDal userDal)
+        public UserManager(IUserRepository userRepository)
         {
-            _userDal = userDal;
+            _userRepository = userRepository;
         }
-
 
         public ResultResponse Add(Users user)
         {
@@ -35,15 +33,15 @@ namespace Business.Concrete
             //string deencryptKey = locker.Decrypt(encryptKey);
 
             user.Password = encryptKey;
-            
-            if(user.Permisson <= 0 || user.Permisson > 3)
+
+            if (user.Permisson <= 0 || user.Permisson > 3)
             {
                 user.Permisson = 3;
             }
 
-            if (_userDal.Get(u => u.Email == user.Email) == null )
+            if (_userRepository.Get(u => u.Email == user.Email) == null)
             {
-                _userDal.Add(user);
+                _userRepository.Add(user);
                 response.ErrorMessage = null;
             }
             else
@@ -59,13 +57,13 @@ namespace Business.Concrete
         {
             ResultResponse response = new ResultResponse();
 
-            if (_userDal.Get(u => u.Email == user.Email) == null)
+            if (_userRepository.Get(u => u.Email == user.Email) == null)
             {
                 response.ErrorMessage = "Bu email adında bir kullanıcı yok";
             }
             else
             {
-                _userDal.Delete(user);
+                _userRepository.Delete(user);
                 response.ErrorMessage = null;
             }
 
@@ -75,12 +73,12 @@ namespace Business.Concrete
 
         public List<Users> GetAll()
         {
-            return _userDal.GetList().ToList();
+            return _userRepository.GetList().ToList();
         }
 
         public Users GetByEmail(string email)
         {
-            var user = _userDal.Get(user => user.Email == email);
+            var user = _userRepository.Get(user => user.Email == email);
             if (user == null)
             {
                 return null;
@@ -96,9 +94,9 @@ namespace Business.Concrete
             SCollection.AddDataProtection();
             var LockerKey = SCollection.BuildServiceProvider();
 
-            var locker = ActivatorUtilities.CreateInstance<SecurityManager>(LockerKey);          
+            var locker = ActivatorUtilities.CreateInstance<SecurityManager>(LockerKey);
 
-            var user = _userDal.Get(u => u.Email == email);
+            var user = _userRepository.Get(u => u.Email == email);
 
             if (user == null)
                 return null;
@@ -116,18 +114,17 @@ namespace Business.Concrete
 
         }
 
-
         public ResultResponse Update(Users user)
         {
             ResultResponse response = new ResultResponse();
 
-            if (_userDal.Get(u => u.Email == user.Email) == null)
+            if (_userRepository.Get(u => u.Email == user.Email) == null)
             {
                 response.ErrorMessage = "Bu email adında bir kullanıcı yok";
             }
             else
             {
-                _userDal.Update(user);
+                _userRepository.Update(user);
                 response.ErrorMessage = null;
             }
 

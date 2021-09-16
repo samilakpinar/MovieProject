@@ -1,10 +1,5 @@
 ﻿using Business.Abstract;
 using Microsoft.AspNetCore.DataProtection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Business.Concrete
 {
@@ -31,6 +26,6 @@ namespace Business.Concrete
             return protector.Unprotect(cipherText);
         }
 
-        
+
     }
 }

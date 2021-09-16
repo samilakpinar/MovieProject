@@ -34,7 +34,6 @@
       "MovieProject/1.0.0": {
         "dependencies": {
           "Business": "1.0.0",
-          "Core": "1.0.0",
           "Entities": "1.0.0",
           "Microsoft.AspNetCore.Authentication": "2.2.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "5.0.9",
@@ -1893,6 +1892,8 @@
           "MailKit": "2.14.0",
           "Microsoft.AspNetCore.Authentication": "2.2.0",
           "Microsoft.AspNetCore.DataProtection": "5.0.9",
+          "Microsoft.EntityFrameworkCore": "5.0.9",
+          "Microsoft.EntityFrameworkCore.SqlServer": "5.0.9",
           "Microsoft.Extensions.Configuration.Abstractions": "5.0.0",
           "Microsoft.Extensions.Options": "5.0.0",
           "MimeKit": "2.14.0",
@@ -1907,22 +1908,10 @@
           "Business.dll": {}
         }
       },
-      "Core/1.0.0": {
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore.SqlServer": "5.0.9",
-          "NLog": "4.7.10"
-        },
-        "runtime": {
-          "Core.dll": {}
-        },
-        "compile": {
-          "Core.dll": {}
-        }
-      },
       "DataAccess/1.0.0": {
         "dependencies": {
-          "Core": "1.0.0",
           "Entities": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "5.0.9",
           "NLog": "4.7.10"
         },
         "runtime": {
@@ -1934,7 +1923,6 @@
       },
       "Entities/1.0.0": {
         "dependencies": {
-          "Core": "1.0.0",
           "NLog": "4.7.10"
         },
         "runtime": {
@@ -4685,11 +4673,6 @@
       "hashPath": "system.xml.xmlserializer.4.3.0.nupkg.sha512"
     },
     "Business/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Core/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

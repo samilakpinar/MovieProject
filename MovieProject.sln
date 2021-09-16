@@ -11,9 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\Da
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "Entities\Entities.csproj", "{08E53F16-1700-4158-8107-3914D641F15D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{304B8F9A-DD84-4B93-93F8-1B04E9AF10D0}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieProjectXUnitTests", "MovieProjectXUnitTests\MovieProjectXUnitTests.csproj", "{CFB6514F-ED3C-4626-B2CA-4F1C6649A545}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieProjectXUnitTests", "MovieProjectXUnitTests\MovieProjectXUnitTests.csproj", "{CFB6514F-ED3C-4626-B2CA-4F1C6649A545}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,10 +35,6 @@ Global
 		{08E53F16-1700-4158-8107-3914D641F15D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08E53F16-1700-4158-8107-3914D641F15D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08E53F16-1700-4158-8107-3914D641F15D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{304B8F9A-DD84-4B93-93F8-1B04E9AF10D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{304B8F9A-DD84-4B93-93F8-1B04E9AF10D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{304B8F9A-DD84-4B93-93F8-1B04E9AF10D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{304B8F9A-DD84-4B93-93F8-1B04E9AF10D0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CFB6514F-ED3C-4626-B2CA-4F1C6649A545}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CFB6514F-ED3C-4626-B2CA-4F1C6649A545}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CFB6514F-ED3C-4626-B2CA-4F1C6649A545}.Release|Any CPU.ActiveCfg = Release|Any CPU

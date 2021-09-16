@@ -1,16 +1,12 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Business.Models
 {
-    
-    public class Movie 
-    {
 
+    public class Movie
+    {
         public bool Adult { get; set; }
 
         [JsonProperty("backdrop_path")]
@@ -27,11 +23,11 @@ namespace Business.Models
 
         [JsonProperty("original_language")]
         public string OriginalLanguage { get; set; }
-        
+
         public string Title { get; set; }
-        
+
         public string Overview { get; set; }
-        
+
         public float Popularity { get; set; }
 
         [JsonProperty("release_date")]
@@ -40,7 +36,7 @@ namespace Business.Models
         [JsonProperty("revenue")]
         public int Revenue { get; set; }
 
-        [JsonProperty("runtime")] 
+        [JsonProperty("runtime")]
         public int Runtime { get; set; }
 
         [JsonProperty("status")]

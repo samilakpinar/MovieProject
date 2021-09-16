@@ -28,8 +28,8 @@ namespace MovieProjectXUnitTests.ServicesTest
 
         public async Task<List<Movie>> GetAllPopulerMovies(int page)
         {
-           
-            if (0 >= page || page >= 90 )
+
+            if (0 >= page || page >= 90)
             {
                 return null;
             }
@@ -57,7 +57,7 @@ namespace MovieProjectXUnitTests.ServicesTest
 
         public async Task<string> GetRateMovie(int movieId, string sessionId, string guestId)
         {
-            if(movieId.ToString().Length < 3 )
+            if (movieId.ToString().Length < 3)
             {
                 return null;
             }
@@ -80,6 +80,16 @@ namespace MovieProjectXUnitTests.ServicesTest
             var content = new StringContent(json, Encoding.UTF8, "application/json");
             var response = await httpClient.PostAsync(url, content);
             return await response.Content.ReadAsStringAsync();
+        }
+
+        public Task<List<Movie>> GetUpcomingMovie(int page)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<List<MovieVideo>> GetMovieVideoById(int movieId)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

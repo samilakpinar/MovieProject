@@ -1,19 +1,11 @@
-﻿using Business.Models;
-using Business.Responses;
-using MovieProject.Controllers;
-using MovieProjectXUnitTests.ServicesTest;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MovieProjectXUnitTests.ServicesTest;
 using Xunit;
 
 namespace MovieProjectXUnitTests.ControllersTest
 {
     public class CastControllerTest
     {
-        
+
         [Fact]
         public void Get_Populer_Cast_Test()
         {

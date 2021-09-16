@@ -40,7 +40,7 @@ namespace MovieProject.Controllers
             {
 
                 logger.Info("Movie list didn't send");
-                movieList.Data = null ;
+                movieList.Data = null;
                 movieList.ErrorMessages = "Movie list didn't send";
 
                 return movieList;
@@ -50,7 +50,7 @@ namespace MovieProject.Controllers
             movieList.Data = movieLists;
             movieList.ErrorMessages = null;
 
-            return  movieList;
+            return movieList;
         }
 
 
@@ -60,7 +60,7 @@ namespace MovieProject.Controllers
         /// <param name="movie_id"></param>
         /// <returns>BaseResponse Movie</returns>
         [HttpGet("get-movie-by-id")]
-        public async Task<BaseResponse<Movie>>  GetMovieById(string movie_id)
+        public async Task<BaseResponse<Movie>> GetMovieById(string movie_id)
         {
             BaseResponse<Movie> response = new BaseResponse<Movie>();
 
@@ -106,7 +106,7 @@ namespace MovieProject.Controllers
             return rate;
         }
 
-        
+
         /// <summary>
         /// User vote for the movie 
         /// </summary>
@@ -118,7 +118,7 @@ namespace MovieProject.Controllers
             var logger = NLog.LogManager.GetCurrentClassLogger();
 
             var rateMovies = _movieService.RateMovie(rateMovie);
-            
+
             if (rateMovies == null)
             {
                 logger.Info("Rate movie didn't send");
@@ -152,7 +152,7 @@ namespace MovieProject.Controllers
             }
 
             response.ErrorMessages = null;
-            logger.Info("Rate movie sent ",response.IsSuccess);
+            logger.Info("Rate movie sent ", response.IsSuccess);
 
             return response;
 

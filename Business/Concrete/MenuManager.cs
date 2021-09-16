@@ -2,42 +2,39 @@
 using Business.Responses;
 using DataAccess.Abstract;
 using Entities.Concrete;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Business.Concrete
 {
     public class MenuManager : IMenuService
     {
-        private IMenuDal _menuDal;
+        private IMenuRepository _menuRepository;
 
-        public MenuManager(IMenuDal menuDal)
+        public MenuManager(IMenuRepository menuRepository)
         {
-            _menuDal = menuDal;
+            _menuRepository = menuRepository;
         }
 
         public List<Menu> GetAllMenu()
         {
-            return _menuDal.GetList().ToList();
+            return _menuRepository.GetList().ToList();
         }
 
         public List<Menu> GetMenuByPermissonId(int permissonId)
         {
             if (permissonId == 1)
             {
-                return _menuDal.GetList(m => m.Id == permissonId).ToList();
-            
+                return _menuRepository.GetList(m => m.Id == permissonId).ToList();
+
             }
             else if (permissonId == 2)
             {
-                return _menuDal.GetList(m => m.Id == permissonId).ToList();
+                return _menuRepository.GetList(m => m.Id == permissonId).ToList();
             }
             else if (permissonId == 3)
             {
-                return _menuDal.GetList().ToList();
+                return _menuRepository.GetList().ToList();
             }
             else
             {
@@ -49,9 +46,9 @@ namespace Business.Concrete
         {
             ResultResponse response = new ResultResponse();
 
-            if(_menuDal.Get(m => m.Title == menu.Title) == null)
+            if (_menuRepository.Get(m => m.Title == menu.Title) == null)
             {
-                _menuDal.Add(menu);
+                _menuRepository.Add(menu);
                 response.ErrorMessage = null;
             }
             else
@@ -61,20 +58,20 @@ namespace Business.Concrete
 
             return response;
 
-            
+
         }
 
         public ResultResponse Delete(Menu menu)
         {
             ResultResponse response = new ResultResponse();
 
-            if(_menuDal.Get(m => m.Title == menu.Title) == null)
+            if (_menuRepository.Get(m => m.Title == menu.Title) == null)
             {
                 response.ErrorMessage = "Silinecek menu bulunamadı.";
             }
             else
             {
-                _menuDal.Delete(menu);
+                _menuRepository.Delete(menu);
                 response.ErrorMessage = null;
             }
 
@@ -86,19 +83,20 @@ namespace Business.Concrete
         {
             ResultResponse response = new ResultResponse();
 
-            if(_menuDal.Get(m => m.Title == menu.Title) == null)
+            if (_menuRepository.Get(m => m.Title == menu.Title) == null)
             {
                 response.ErrorMessage = "Güncellenecek menu bulunamadı.";
 
-            }else
+            }
+            else
             {
-                _menuDal.Update(menu);
+                _menuRepository.Update(menu);
                 response.ErrorMessage = null;
             }
 
             return response;
         }
 
-        
+
     }
 }

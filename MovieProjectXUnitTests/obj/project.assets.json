@@ -3139,6 +3139,8 @@
           "MailKit": "2.14.0",
           "Microsoft.AspNetCore.Authentication": "2.2.0",
           "Microsoft.AspNetCore.DataProtection": "5.0.9",
+          "Microsoft.EntityFrameworkCore": "5.0.9",
+          "Microsoft.EntityFrameworkCore.SqlServer": "5.0.9",
           "Microsoft.Extensions.Configuration.Abstractions": "5.0.0",
           "Microsoft.Extensions.Options": "5.0.0",
           "MimeKit": "2.14.0",
@@ -3153,26 +3155,12 @@
           "bin/placeholder/Business.dll": {}
         }
       },
-      "Core/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v5.0",
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore.SqlServer": "5.0.9",
-          "NLog": "4.7.10"
-        },
-        "compile": {
-          "bin/placeholder/Core.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Core.dll": {}
-        }
-      },
       "DataAccess/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
-          "Core": "1.0.0",
           "Entities": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "5.0.9",
           "NLog": "4.7.10"
         },
         "compile": {
@@ -3186,7 +3174,6 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
-          "Core": "1.0.0",
           "NLog": "4.7.10"
         },
         "compile": {
@@ -3201,7 +3188,6 @@
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
           "Business": "1.0.0",
-          "Core": "1.0.0",
           "Entities": "1.0.0",
           "Microsoft.AspNetCore.Authentication": "2.2.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "5.0.9",
@@ -10268,11 +10254,6 @@
       "path": "../Business/Business.csproj",
       "msbuildProject": "../Business/Business.csproj"
     },
-    "Core/1.0.0": {
-      "type": "project",
-      "path": "../Core/Core.csproj",
-      "msbuildProject": "../Core/Core.csproj"
-    },
     "DataAccess/1.0.0": {
       "type": "project",
       "path": "../DataAccess/DataAccess.csproj",
@@ -10292,7 +10273,6 @@
   "projectFileDependencyGroups": {
     "net5.0": [
       "Business >= 1.0.0",
-      "Core >= 1.0.0",
       "DataAccess >= 1.0.0",
       "Entities >= 1.0.0",
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.9",
@@ -10333,9 +10313,6 @@
           "projectReferences": {
             "C:\\Users\\samil.akpinar\\source\\repos\\MovieProject\\Business\\Business.csproj": {
               "projectPath": "C:\\Users\\samil.akpinar\\source\\repos\\MovieProject\\Business\\Business.csproj"
-            },
-            "C:\\Users\\samil.akpinar\\source\\repos\\MovieProject\\Core\\Core.csproj": {
-              "projectPath": "C:\\Users\\samil.akpinar\\source\\repos\\MovieProject\\Core\\Core.csproj"
             },
             "C:\\Users\\samil.akpinar\\source\\repos\\MovieProject\\DataAccess\\DataAccess.csproj": {
               "projectPath": "C:\\Users\\samil.akpinar\\source\\repos\\MovieProject\\DataAccess\\DataAccess.csproj"

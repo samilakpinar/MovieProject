@@ -13,10 +13,8 @@ C:\Users\samil.akpinar\source\repos\MovieProject\Business\obj\Debug\net5.0\Busin
 C:\Users\samil.akpinar\source\repos\MovieProject\Business\bin\Debug\net5.0\Entities.dll
 C:\Users\samil.akpinar\source\repos\MovieProject\Business\bin\Debug\net5.0\Entities.pdb
 C:\Users\samil.akpinar\source\repos\MovieProject\Business\obj\Debug\net5.0\Business.csproj.CopyComplete
-C:\Users\samil.akpinar\source\repos\MovieProject\Business\bin\Debug\net5.0\Core.dll
 C:\Users\samil.akpinar\source\repos\MovieProject\Business\bin\Debug\net5.0\DataAccess.dll
 C:\Users\samil.akpinar\source\repos\MovieProject\Business\bin\Debug\net5.0\DataAccess.pdb
-C:\Users\samil.akpinar\source\repos\MovieProject\Business\bin\Debug\net5.0\Core.pdb
 C:\Users\samil.akpinar\source\repos\MovieProject\Business\bin\Debug\net5.0\Business.runtimeconfig.json
 C:\Users\samil.akpinar\source\repos\MovieProject\Business\bin\Debug\net5.0\Business.runtimeconfig.dev.json
 C:\Users\samil.akpinar\source\repos\MovieProject\Business\obj\Debug\net5.0\Business.genruntimeconfig.cache

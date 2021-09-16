@@ -1,6 +1,5 @@
 ﻿using Business.Responses;
 using Entities.Concrete;
-using System;
 using System.Collections.Generic;
 
 //Repository tasarım deseni sadece veri erişimde kullanılıyor.

@@ -1,14 +1,9 @@
-﻿using Business.Abstract;
-using Business.Models;
-using System;
+﻿using Business.Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MovieProjectXUnitTests.ServicesTest
 {
-    class HomeManagerTest : ISidebarMenuService
+    class HomeManagerTest
     {
         public List<SidebarMenu> GetMenuList(string role)
         {

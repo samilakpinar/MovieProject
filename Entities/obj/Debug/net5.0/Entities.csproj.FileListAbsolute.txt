@@ -2,7 +2,6 @@ C:\Users\samil.akpinar\source\repos\MovieProject\Entities\bin\Debug\net5.0\Entit
 C:\Users\samil.akpinar\source\repos\MovieProject\Entities\bin\Debug\net5.0\Entities.dll
 C:\Users\samil.akpinar\source\repos\MovieProject\Entities\bin\Debug\net5.0\ref\Entities.dll
 C:\Users\samil.akpinar\source\repos\MovieProject\Entities\bin\Debug\net5.0\Entities.pdb
-C:\Users\samil.akpinar\source\repos\MovieProject\Entities\obj\Debug\net5.0\Entities.csproj.AssemblyReference.cache
 C:\Users\samil.akpinar\source\repos\MovieProject\Entities\obj\Debug\net5.0\Entities.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\samil.akpinar\source\repos\MovieProject\Entities\obj\Debug\net5.0\Entities.AssemblyInfoInputs.cache
 C:\Users\samil.akpinar\source\repos\MovieProject\Entities\obj\Debug\net5.0\Entities.AssemblyInfo.cs
@@ -10,9 +9,6 @@ C:\Users\samil.akpinar\source\repos\MovieProject\Entities\obj\Debug\net5.0\Entit
 C:\Users\samil.akpinar\source\repos\MovieProject\Entities\obj\Debug\net5.0\Entities.dll
 C:\Users\samil.akpinar\source\repos\MovieProject\Entities\obj\Debug\net5.0\ref\Entities.dll
 C:\Users\samil.akpinar\source\repos\MovieProject\Entities\obj\Debug\net5.0\Entities.pdb
-C:\Users\samil.akpinar\source\repos\MovieProject\Entities\bin\Debug\net5.0\Core.dll
-C:\Users\samil.akpinar\source\repos\MovieProject\Entities\bin\Debug\net5.0\Core.pdb
-C:\Users\samil.akpinar\source\repos\MovieProject\Entities\obj\Debug\net5.0\Entities.csproj.CopyComplete
 C:\Users\samil.akpinar\source\repos\MovieProject\Entities\bin\Debug\net5.0\Entities.runtimeconfig.json
 C:\Users\samil.akpinar\source\repos\MovieProject\Entities\bin\Debug\net5.0\Entities.runtimeconfig.dev.json
 C:\Users\samil.akpinar\source\repos\MovieProject\Entities\obj\Debug\net5.0\Entities.genruntimeconfig.cache

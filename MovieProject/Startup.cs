@@ -1,23 +1,24 @@
 using Business.Abstract;
 using Business.Concrete;
 using Business.Models;
+using DataAccess.Concrete.Context;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Microsoft.OpenApi.Models;
-using System;
-using System.Text;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
-using System.Reflection;
-using System.IO;
-using DataAccess.Abstract;
-using DataAccess.Concrete.EntityFramework;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 using NLog;
+using System;
+using System.IO;
+using System.Reflection;
+using System.Text;
+using Microsoft.EntityFrameworkCore;
+using DataAccess.Concrete;
+using DataAccess.Abstract;
 
 namespace MovieProject
 {
@@ -34,16 +35,15 @@ namespace MovieProject
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            
             services.AddCors();
+
+            services.AddDbContext<MovieStoreContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
 
             //Database perform database migration
             //var de =  services.AddDbContext<MovieStoreContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SqlConnection")));
             //services.BuildServiceProvider().GetService<MovieStoreContext>().Database.Migrate();
 
-            
 
-            services.AddDbContext<MovieStoreContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ConnectionString")));
 
             //appsettings tanýmlama 1.yöntem.
             var appSettingsSection = Configuration.GetSection("AppSettings");
@@ -70,8 +70,10 @@ namespace MovieProject
             services.AddTransient<ICastService, CastManager>();
             services.AddTransient<IUserService, UserManager>();
             services.AddTransient<IMenuService, MenuManager>();
-            services.AddTransient<IUserDal, EfUserDal>();
-            services.AddTransient<IMenuDal, EfMenuDal>();
+            services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IMenuRepository, MenuRepository>();
+
+
 
 
             //JWT token settings
@@ -111,7 +113,7 @@ namespace MovieProject
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "MovieProject", Version = "v1" });
 
-                
+
                 // Set the comments path for the Swagger JSON and UI.
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
@@ -136,7 +138,7 @@ namespace MovieProject
                 }
                 catch (Exception ex)
                 {
-                    
+
                     var logger = LogManager.GetCurrentClassLogger();
                     logger.Error("Veritabaný güncellenirken hata oluþtu.Detay:" + ex);
                     throw;

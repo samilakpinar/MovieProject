@@ -1,15 +1,12 @@
 ﻿using Business.Abstract;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
 using Business.Models;
 using Business.Responses;
 using Microsoft.Extensions.Options;
-using System.Text.Json;
+using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Business.Concrete
 {
@@ -23,10 +20,10 @@ namespace Business.Concrete
         {
             _appSettings = appSettings.Value;
         }
-                
+
         public async Task<List<Movie>> GetAllPopulerMovies(int page)
         {
-            
+
             var url = $"{_appSettings.Url}movie/popular?api_key={_appSettings.ApiKey}&language=en-US&page={page}";
             var response = await httpClient.GetAsync(url);
             var jsonAsString = await response.Content.ReadAsStringAsync();
@@ -43,12 +40,12 @@ namespace Business.Concrete
             return movie;
         }
 
-        
+
         public async Task<string> GetRateMovie(int movieId, string sessionId, string guestId)
         {
             var url = $"{_appSettings.Url}movie/{movieId}/account_states?api_key={_appSettings.ApiKey}&session_id={sessionId}&guest_session_id={guestId}";
             var response = await httpClient.GetAsync(url);
-            
+
             return await response.Content.ReadAsStringAsync();
 
 
@@ -56,7 +53,7 @@ namespace Business.Concrete
 
         public async Task<string> RateMovie(RateMovie rateMovie)
         {
-            if(rateMovie.value <= 0 || rateMovie.value > 10)
+            if (rateMovie.value <= 0 || rateMovie.value > 10)
             {
                 return "Invalid vote value";
             }
@@ -91,15 +88,15 @@ namespace Business.Concrete
             var jsonAsString = await response.Content.ReadAsStringAsync();
             var movies = JsonConvert.DeserializeObject<MovieVideoResponse>(jsonAsString);
 
-            if (!response.IsSuccessStatusCode || movies.Results.Count == 0 )
+            if (!response.IsSuccessStatusCode || movies.Results.Count == 0)
             {
                 return null;
             }
 
             return movies.Results;
-            
-          
-            
+
+
+
         }
     }
 }

@@ -19,7 +19,7 @@ namespace MovieProject.Controllers
     public class HomeController : Controller
     {
         private IMenuService _menuService;
-        public HomeController( IMenuService menuService)
+        public HomeController(IMenuService menuService)
         {
             _menuService = menuService;
         }
@@ -43,9 +43,9 @@ namespace MovieProject.Controllers
                 var role = tokenValue.Claims.FirstOrDefault(c => c.Type == "role").Value;
 
 
-               var menuList = _menuService.GetMenuByPermissonId(Convert.ToInt32(role));
-                
-                if(menuList == null)
+                var menuList = _menuService.GetMenuByPermissonId(Convert.ToInt32(role));
+
+                if (menuList == null)
                 {
                     response.Data = null;
                     response.ErrorMessages = "Access Denied";

@@ -16,15 +16,15 @@ namespace MovieProject.Controllers
     {
         private readonly IAuthenticationService _authenticationService;
         private readonly IJwtAuthenticationService _jwtAuthenticationService;
-        
+
         public AuthenticationController(IAuthenticationService authenticationService, IJwtAuthenticationService jwtAuthenticationService)
         {
             _authenticationService = authenticationService;
             _jwtAuthenticationService = jwtAuthenticationService;
-            
+
         }
 
-      
+
         /// <summary>
         /// Sign up 
         /// </summary>
@@ -50,10 +50,10 @@ namespace MovieProject.Controllers
             }
 
             return response;
-             
+
         }
 
-        
+
         /// <summary>
         /// login with email and password
         /// </summary>
@@ -67,7 +67,7 @@ namespace MovieProject.Controllers
 
             BaseResponse<User> response = new BaseResponse<User>();
 
-            
+
             var findUser = _authenticationService.Authenticate(user);
 
             if (findUser == null)
@@ -78,10 +78,10 @@ namespace MovieProject.Controllers
             }
 
             var token = _jwtAuthenticationService.Authenticate(findUser);
-            if(token == null)
+            if (token == null)
             {
-                
-                logger.Info("Access Denied, User info: "+findUser.Email);
+
+                logger.Info("Access Denied, User info: " + findUser.Email);
 
                 //response.Data = Unauthorized();
                 response.Data = null;
@@ -95,7 +95,7 @@ namespace MovieProject.Controllers
 
             response.Data = findUser;
             response.ErrorMessages = null;
-            return response; 
+            return response;
 
         }
 
@@ -110,7 +110,7 @@ namespace MovieProject.Controllers
             var logger = NLog.LogManager.GetCurrentClassLogger();
             logger.Info("User create movie-token");
 
-            
+
             return await _authenticationService.CreateToken();
         }
 
@@ -143,7 +143,7 @@ namespace MovieProject.Controllers
             if (result.Result == null)
             {
                 response.ErrorMessages = "invalid session value";
-                
+
             }
             else
             {
@@ -161,7 +161,7 @@ namespace MovieProject.Controllers
         /// <returns>Boolean</returns>
         [AllowAnonymous]
         [HttpPost("validation-email")]
-        public BaseResponse<bool>  CheckEmail([FromBody] ValidationEmail validationEmail )
+        public BaseResponse<bool> CheckEmail([FromBody] ValidationEmail validationEmail)
         {
             BaseResponse<bool> response = new BaseResponse<bool>();
 
@@ -195,7 +195,7 @@ namespace MovieProject.Controllers
             BaseResponse<bool> response = new BaseResponse<bool>();
 
             var isSuccess = _authenticationService.ResetPassword(email);
-            
+
             response.Data = isSuccess;
 
             if (isSuccess)
@@ -220,7 +220,7 @@ namespace MovieProject.Controllers
         public BaseResponse<bool> AddNewPassword(ResetPassword reset)
         {
             BaseResponse<bool> response = new BaseResponse<bool>();
-            
+
             var isSuccess = _authenticationService.UpdatePassword(reset);
             response.Data = isSuccess;
 
@@ -236,7 +236,7 @@ namespace MovieProject.Controllers
             return response;
         }
 
-        
+
 
     }
 }

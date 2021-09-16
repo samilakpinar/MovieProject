@@ -28,14 +28,14 @@ namespace MovieProject.Controllers
         [HttpGet("get-populer-cast")]
         public async Task<BaseResponse<List<Cast>>> GetPopulerCast(int movieId)
         {
-            
+
             BaseResponse<List<Cast>> response = new BaseResponse<List<Cast>>();
 
             var logger = NLog.LogManager.GetCurrentClassLogger();
 
             var castList = await _castService.GetPopulerCast(movieId);
 
-            if(castList == null)
+            if (castList == null)
             {
                 logger.Info("Cast list didn't send");
                 response.Data = null;
@@ -66,7 +66,7 @@ namespace MovieProject.Controllers
 
             var castList = await _castService.GetPopulerCast(movieId);
 
-            if(castList == null)
+            if (castList == null)
             {
                 logger.Info("Cast didn't send");
 

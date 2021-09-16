@@ -12,9 +12,7 @@ C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\bin\Debug\net5.0\S
 C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\bin\Debug\net5.0\Business.dll
-C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\bin\Debug\net5.0\Core.dll
 C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\bin\Debug\net5.0\Business.pdb
-C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\bin\Debug\net5.0\Core.pdb
 C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\obj\Debug\net5.0\MovieProject.csproj.AssemblyReference.cache
 C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\obj\Debug\net5.0\MovieProject.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\obj\Debug\net5.0\MovieProject.AssemblyInfoInputs.cache
