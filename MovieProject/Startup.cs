@@ -19,6 +19,7 @@ using System.Text;
 using Microsoft.EntityFrameworkCore;
 using DataAccess.Concrete;
 using DataAccess.Abstract;
+using FluentValidation.AspNetCore;
 
 namespace MovieProject
 {
@@ -36,6 +37,10 @@ namespace MovieProject
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors();
+           
+            //get all validater
+            services.AddMvc()
+            .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<Startup>());
 
             services.AddDbContext<MovieStoreContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
 

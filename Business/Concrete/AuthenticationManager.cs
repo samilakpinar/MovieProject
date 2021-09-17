@@ -18,7 +18,7 @@ namespace Business.Concrete
 {
     public class AuthenticationManager : IAuthenticationService
     {
-        //Not Appsettings olayının IConfiguration ile çözümüdür
+        // Appsettings olayının IConfiguration ile çözümüdür
         HttpClient httpClient = new HttpClient();
         private readonly IConfiguration config;
         private readonly IUserService _userService;

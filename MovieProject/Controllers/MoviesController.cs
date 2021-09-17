@@ -3,9 +3,7 @@ using Business.Models;
 using Business.Responses;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MovieProject.Controllers
@@ -60,13 +58,13 @@ namespace MovieProject.Controllers
         /// <param name="movie_id"></param>
         /// <returns>BaseResponse Movie</returns>
         [HttpGet("get-movie-by-id")]
-        public async Task<BaseResponse<Movie>> GetMovieById(string movie_id)
+        public async Task<BaseResponse<Movie>> GetMovieById(int movie_id)
         {
             BaseResponse<Movie> response = new BaseResponse<Movie>();
 
             var logger = NLog.LogManager.GetCurrentClassLogger();
 
-            var movie = await _movieService.GetMovieById(movie_id);
+            var movie = await _movieService.GetMovieById(movie_id.ToString());
 
             if (movie == null)
             {

@@ -1,11 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "5cJb8djTmY7BCsmfSTl1+dvcncCLwFEKlxFTf8y8PTgh5i+u+7hxuLKmZF95RoUHe6HAehWThAgSQIfulU3YFw==",
+  "dgSpecHash": "TqGnWlydxEb/v1LD/DnAwwhqyN2QoYJnMAFeLEQvQO76UfWTaQYAcLX1uZnNDO3yBT7trRiBo85meIFshUt/vw==",
   "success": true,
   "projectFilePath": "C:\\Users\\samil.akpinar\\source\\repos\\MovieProject\\MovieProjectXUnitTests\\MovieProjectXUnitTests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\samil.akpinar\\.nuget\\packages\\castle.core\\4.4.0\\castle.core.4.4.0.nupkg.sha512",
     "C:\\Users\\samil.akpinar\\.nuget\\packages\\coverlet.collector\\3.0.2\\coverlet.collector.3.0.2.nupkg.sha512",
+    "C:\\Users\\samil.akpinar\\.nuget\\packages\\fluentvalidation\\10.3.3\\fluentvalidation.10.3.3.nupkg.sha512",
+    "C:\\Users\\samil.akpinar\\.nuget\\packages\\fluentvalidation.aspnetcore\\10.3.3\\fluentvalidation.aspnetcore.10.3.3.nupkg.sha512",
+    "C:\\Users\\samil.akpinar\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\10.3.3\\fluentvalidation.dependencyinjectionextensions.10.3.3.nupkg.sha512",
     "C:\\Users\\samil.akpinar\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\samil.akpinar\\.nuget\\packages\\log4net\\2.0.8\\log4net.2.0.8.nupkg.sha512",
     "C:\\Users\\samil.akpinar\\.nuget\\packages\\mailkit\\2.14.0\\mailkit.2.14.0.nupkg.sha512",
