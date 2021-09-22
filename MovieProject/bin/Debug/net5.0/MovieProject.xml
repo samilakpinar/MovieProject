@@ -111,6 +111,19 @@
             <param name="rateMovie"></param>
             <returns>string rate movie</returns>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:MovieProject.Controllers.MoviesController.GetUpcomingMovie(System.Int32)" -->
+        <member name="M:MovieProject.Controllers.MoviesController.GetUpcomingMovie(System.Int32)">
+            <summary>
+            Upcoming movie
+            </summary>
+            <param name="page"></param>
+            <returns>List of movie</returns>
+        </member>
+        <member name="M:MovieProject.Controllers.MoviesController.GetMovieVideoById(System.Int32)">
+            <summary>
+            Get movie by id
+            </summary>
+            <param name="movieId"></param>
+            <returns></returns>
+        </member>
     </members>
 </doc>

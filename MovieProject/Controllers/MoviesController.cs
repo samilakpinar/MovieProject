@@ -110,6 +110,7 @@ namespace MovieProject.Controllers
         /// </summary>
         /// <param name="rateMovie"></param>
         /// <returns>string rate movie</returns>
+        [AllowAnonymous]
         [HttpPost("rate-movie")]
         public Task<string> RateMovie([FromBody] RateMovie rateMovie)
         {
@@ -130,10 +131,10 @@ namespace MovieProject.Controllers
 
 
         /// <summary>
-        /// upcoming movie 
+        /// Upcoming movie
         /// </summary>
         /// <param name="page"></param>
-        /// <returns>List<Movie></returns>
+        /// <returns>List of movie</returns>
         [HttpGet("upcoming-movies")]
         public BaseResponse<List<Movie>> GetUpcomingMovie(int page)
         {
@@ -156,6 +157,11 @@ namespace MovieProject.Controllers
 
         }
 
+        /// <summary>
+        /// Get movie by id
+        /// </summary>
+        /// <param name="movieId"></param>
+        /// <returns></returns>
         [AllowAnonymous]
         [HttpGet("get-movie-video-by-id")]
         public BaseResponse<List<MovieVideo>> GetMovieVideoById(int movieId)
@@ -173,8 +179,6 @@ namespace MovieProject.Controllers
 
             response.ErrorMessages = null;
             return response;
-
-
 
         }
 

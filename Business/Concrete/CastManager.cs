@@ -13,7 +13,6 @@ namespace Business.Concrete
     {
         private readonly AppSettings _appSettings;
 
-
         public CastManager(IOptions<AppSettings> appSettings)
         {
             _appSettings = appSettings.Value;

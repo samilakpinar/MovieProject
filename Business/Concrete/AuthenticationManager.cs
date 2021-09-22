@@ -31,7 +31,7 @@ namespace Business.Concrete
 
         public bool Register(Users user)
         {
-            if (user.Email.Length == 0 || user.Password.Length < 8 || user.Name.Length == 0 || user.Surname.Length == 0)
+            if ( user.Password.Length < 8 )
             {
                 return false;
             }
