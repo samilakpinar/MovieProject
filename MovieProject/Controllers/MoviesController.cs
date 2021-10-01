@@ -151,7 +151,7 @@ namespace MovieProject.Controllers
             }
 
             response.ErrorMessages = null;
-            logger.Info("Rate movie sent ", response.IsSuccess);
+            logger.Info("Upcoming movie sent ", response.IsSuccess);
 
             return response;
 
@@ -174,9 +174,11 @@ namespace MovieProject.Controllers
             if (response.Data == null)
             {
                 response.ErrorMessages = "Movie video list didn't send";
+                logger.Error("Movie video list didn't send");
                 return response;
             }
 
+            logger.Info("Movie video list sent");
             response.ErrorMessages = null;
             return response;
 

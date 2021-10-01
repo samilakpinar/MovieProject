@@ -1,0 +1,1 @@
+2021-10-01 12:23:36.2241   10  INFO MovieProject.Controllers.AuthenticationController User create movie-token 

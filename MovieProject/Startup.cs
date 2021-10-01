@@ -1,25 +1,26 @@
 using Business.Abstract;
 using Business.Concrete;
 using Business.Models;
+using DataAccess.Abstract;
+using DataAccess.Concrete;
 using DataAccess.Concrete.Context;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using MovieProject.Extensions;
 using NLog;
 using System;
 using System.IO;
 using System.Reflection;
 using System.Text;
-using Microsoft.EntityFrameworkCore;
-using DataAccess.Concrete;
-using DataAccess.Abstract;
-using FluentValidation.AspNetCore;
 
 namespace MovieProject
 {
@@ -151,7 +152,6 @@ namespace MovieProject
             }
 
 
-
             if (env.IsDevelopment())
             {
 
@@ -173,6 +173,10 @@ namespace MovieProject
             app.UseAuthentication(); //user login
 
             app.UseAuthorization();
+
+            app.UseLogging();
+
+            app.UseExceptionMiddleware();
 
             app.UseEndpoints(endpoints =>
             {

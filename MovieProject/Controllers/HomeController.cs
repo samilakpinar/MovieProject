@@ -1,15 +1,12 @@
 ﻿using Business.Abstract;
-using Business.Models;
 using Business.Responses;
 using Entities.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace MovieProject.Controllers
 {

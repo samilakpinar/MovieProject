@@ -1,0 +1,3 @@
+2021-09-29 23:47:41.8766   24  INFO MovieProject.Controllers.AuthenticationController User create movie-token 
+2021-09-29 23:48:47.1725   21  INFO MovieProject.Controllers.AuthenticationController User token added, User info: samilakpinar6@gmail.com 
+2021-09-29 23:54:04.5511   41  INFO MovieProject.Controllers.AuthenticationController User create movie-token 

@@ -234,8 +234,5 @@ namespace MovieProject.Controllers
 
             return response;
         }
-
-
-
     }
 }
