@@ -16,6 +16,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using MovieProject.Extensions;
+using MovieProject.Middlewares;
 using NLog;
 using System;
 using System.IO;
@@ -133,7 +134,6 @@ namespace MovieProject
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
 
-
             //update database ile zaten deðiþiklik olduðunda kendisi deðiþikliði algýlýyor ve her defasýnda update database yapmýyor.
             //Package managerda update-database gerek kalmaz.
             using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
@@ -147,10 +147,8 @@ namespace MovieProject
 
                     var logger = LogManager.GetCurrentClassLogger();
                     logger.Error("Veritabaný güncellenirken hata oluþtu.Detay:" + ex);
-                    throw;
                 }
             }
-
 
             if (env.IsDevelopment())
             {
@@ -161,6 +159,7 @@ namespace MovieProject
             }
 
             app.UseHttpsRedirection();
+
 
             app.UseRouting();
 
@@ -176,12 +175,13 @@ namespace MovieProject
 
             app.UseLogging();
 
-            app.UseExceptionMiddleware();
+            app.UseMiddleware(typeof(ExceptionHandlingMiddleware));
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
+
         }
     }
 }

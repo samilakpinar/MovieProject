@@ -1,0 +1,2 @@
+2021-10-12 14:35:30.7709   28 ERROR MovieProject.Controllers.MoviesController Movie video list didn't send 
+2021-10-12 14:35:45.9105   33 ERROR MovieProject.Controllers.MoviesController Movie video list didn't send 

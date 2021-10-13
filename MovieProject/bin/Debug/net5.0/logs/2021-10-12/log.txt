@@ -1,0 +1,93 @@
+2021-10-12 14:32:56.3766   16  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-10-12 14:32:56.4599   12  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-10-12 14:33:14.4014    4  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-10-12 14:33:14.4014   13  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-10-12 14:33:41.4572   19  INFO MovieProject.Controllers.AuthenticationController User token added, User info: samilakpinar6@gmail.com 
+2021-10-12 14:33:41.4801   19  INFO MovieProject.Controllers.AuthenticationController User create movie-token 
+2021-10-12 14:33:42.8023   19  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-10-12 14:33:42.8023   26  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-10-12 14:33:53.3953   16  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-10-12 14:33:53.3953   26  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-10-12 14:33:53.7291    5  INFO MovieProject.Controllers.MoviesController Movie list  sent 
+2021-10-12 14:33:53.7523   18  INFO MovieProject.Controllers.MoviesController Upcoming movie sent  
+2021-10-12 14:34:03.4629    5  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-12 14:34:05.4006   17  INFO MovieProject.Controllers.MoviesController Movie list  sent 
+2021-10-12 14:34:06.9944   16  INFO MovieProject.Controllers.MoviesController Upcoming movie sent  
+2021-10-12 14:34:11.1723   16  INFO MovieProject.Controllers.MoviesController Movie video list sent 
+2021-10-12 14:34:11.1886    5  INFO MovieProject.Controllers.MoviesController movie sent 
+2021-10-12 14:34:11.1934   17  INFO MovieProject.Controllers.MoviesController Rate movie sent 
+2021-10-12 14:34:25.3304   27  INFO MovieProject.Controllers.MoviesController Upcoming movie sent  
+2021-10-12 14:34:27.5263   20  INFO MovieProject.Controllers.MoviesController Movie video list sent 
+2021-10-12 14:34:27.5263   10  INFO MovieProject.Controllers.MoviesController movie sent 
+2021-10-12 14:34:27.5741    5  INFO MovieProject.Controllers.MoviesController Rate movie sent 
+2021-10-12 14:35:19.2768   28  INFO MovieProject.Controllers.MoviesController Rate movie sent 
+2021-10-12 14:35:19.9321    5  INFO MovieProject.Controllers.MoviesController Rate movie sent 
+2021-10-12 14:35:20.0951   32  INFO MovieProject.Controllers.MoviesController Movie video list sent 
+2021-10-12 14:35:20.1204   31  INFO MovieProject.Controllers.MoviesController movie sent 
+2021-10-12 14:35:20.2098   31  INFO MovieProject.Controllers.MoviesController Rate movie sent 
+2021-10-12 14:35:25.5511    5  INFO MovieProject.Controllers.MoviesController Movie list  sent 
+2021-10-12 14:35:28.7720    5  INFO MovieProject.Controllers.MoviesController Movie list  sent 
+2021-10-12 14:35:30.7709    5  INFO MovieProject.Controllers.MoviesController movie sent 
+2021-10-12 14:35:30.8013    5  INFO MovieProject.Controllers.MoviesController Rate movie sent 
+2021-10-12 14:35:45.7677   29  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-10-12 14:35:45.8091   34  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-10-12 14:35:45.9105   47  INFO MovieProject.Controllers.MoviesController movie sent 
+2021-10-12 14:35:46.0090   47  INFO MovieProject.Controllers.MoviesController Rate movie sent 
+2021-10-12 14:35:46.0819   34  INFO MovieProject.Controllers.MoviesController Upcoming movie sent  
+2021-10-12 14:35:50.7141   29  INFO MovieProject.Controllers.MoviesController Upcoming movie sent  
+2021-10-12 14:36:01.3765   28  INFO MovieProject.Controllers.MoviesController Upcoming movie sent  
+2021-10-12 14:36:02.6997   16  INFO MovieProject.Controllers.MoviesController Movie list  sent 
+2021-10-12 14:36:05.4958   47  INFO MovieProject.Controllers.MoviesController Rate movie sent 
+2021-10-12 14:36:05.5048   28  INFO MovieProject.Controllers.MoviesController Movie video list sent 
+2021-10-12 14:36:05.5753    5  INFO MovieProject.Controllers.MoviesController movie sent 
+2021-10-12 14:36:13.9163   32  INFO MovieProject.Controllers.MoviesController Rate movie sent 
+2021-10-12 14:36:14.6383    5  INFO MovieProject.Controllers.MoviesController Rate movie sent 
+2021-10-12 14:36:14.7590   42  INFO MovieProject.Controllers.MoviesController Movie video list sent 
+2021-10-12 14:36:14.7708   37  INFO MovieProject.Controllers.MoviesController movie sent 
+2021-10-12 14:36:14.8845   37  INFO MovieProject.Controllers.MoviesController Rate movie sent 
+2021-10-12 14:36:23.4359   47  INFO MovieProject.Controllers.MoviesController Movie list  sent 
+2021-10-12 14:36:31.6940   41  INFO MovieProject.Controllers.MoviesController Movie list  sent 
+2021-10-12 14:36:34.2259   47  INFO MovieProject.Controllers.MoviesController movie sent 
+2021-10-12 14:36:34.2259   32  INFO MovieProject.Controllers.MoviesController Movie video list sent 
+2021-10-12 14:36:34.2745   47  INFO MovieProject.Controllers.MoviesController Rate movie sent 
+2021-10-12 14:37:27.6458   43  INFO MovieProject.Controllers.MoviesController Rate movie sent 
+2021-10-12 14:37:28.3073    5  INFO MovieProject.Controllers.MoviesController Rate movie sent 
+2021-10-12 14:37:36.7960   41  INFO MovieProject.Controllers.MoviesController Rate movie sent 
+2021-10-12 14:37:37.4031   51  INFO MovieProject.Controllers.MoviesController Rate movie sent 
+2021-10-12 14:37:37.5249   50  INFO MovieProject.Controllers.MoviesController movie sent 
+2021-10-12 14:37:37.5249   28  INFO MovieProject.Controllers.MoviesController Movie video list sent 
+2021-10-12 14:37:37.6553   50  INFO MovieProject.Controllers.MoviesController Rate movie sent 
+2021-10-12 14:37:39.3473   43  INFO MovieProject.Controllers.MoviesController Rate movie sent 
+2021-10-12 14:37:39.8355    5  INFO MovieProject.Controllers.MoviesController Rate movie sent 
+2021-10-12 14:37:39.9334   54  INFO MovieProject.Controllers.MoviesController movie sent 
+2021-10-12 14:37:39.9334   29  INFO MovieProject.Controllers.MoviesController Movie video list sent 
+2021-10-12 14:37:40.0794   54  INFO MovieProject.Controllers.MoviesController Rate movie sent 
+2021-10-12 14:37:44.0392   28  INFO MovieProject.Controllers.MoviesController Rate movie sent 
+2021-10-12 14:37:44.6540   54  INFO MovieProject.Controllers.MoviesController Rate movie sent 
+2021-10-12 14:37:44.7587   41  INFO MovieProject.Controllers.MoviesController Movie video list sent 
+2021-10-12 14:37:44.7587   51  INFO MovieProject.Controllers.MoviesController movie sent 
+2021-10-12 14:37:44.9116   51  INFO MovieProject.Controllers.MoviesController Rate movie sent 
+2021-10-12 14:38:10.3969   51  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-12 14:38:11.7538   56  INFO MovieProject.Controllers.MoviesController Movie list  sent 
+2021-10-12 14:38:15.4208   32  INFO MovieProject.Controllers.MoviesController Upcoming movie sent  
+2021-10-12 14:38:18.5223   56  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-12 14:38:19.5763   32  INFO MovieProject.Controllers.MoviesController Upcoming movie sent  
+2021-10-12 14:38:23.9790   29  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-12 14:39:01.7234   59  INFO MovieProject.Controllers.MoviesController Movie list  sent 
+2021-10-12 14:39:16.6686   29  INFO MovieProject.Controllers.AuthenticationController User token added, User info: samilakpinar6@gmail.com 
+2021-10-12 14:39:16.6686   43  INFO MovieProject.Controllers.AuthenticationController User create movie-token 
+2021-10-12 14:39:17.6538   32  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-10-12 14:39:17.6614   40  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-10-12 14:39:17.9068   29  INFO MovieProject.Controllers.MoviesController Upcoming movie sent  
+2021-10-12 14:39:24.8396   62  INFO MovieProject.Controllers.MoviesController movie sent 
+2021-10-12 14:39:24.8495   42  INFO MovieProject.Controllers.MoviesController Movie video list sent 
+2021-10-12 14:39:24.8495   62  INFO MovieProject.Controllers.MoviesController Rate movie sent 
+2021-10-12 14:41:07.0301   32  INFO MovieProject.Controllers.MoviesController Upcoming movie sent  
+2021-10-12 14:41:21.6298   32  INFO MovieProject.Controllers.MoviesController Upcoming movie sent  
+2021-10-12 14:41:23.6429   28  INFO MovieProject.Controllers.MoviesController Upcoming movie sent  
+2021-10-12 14:41:26.1088   29  INFO MovieProject.Controllers.MoviesController Upcoming movie sent  
+2021-10-12 14:41:28.2715   29  INFO MovieProject.Controllers.MoviesController Upcoming movie sent  
+2021-10-12 14:41:30.8207   42  INFO MovieProject.Controllers.MoviesController Upcoming movie sent  
+2021-10-12 14:41:34.0667   68  INFO MovieProject.Controllers.MoviesController Rate movie sent 
+2021-10-12 14:41:34.0667   68  INFO MovieProject.Controllers.MoviesController movie sent 
+2021-10-12 14:41:34.3111   32  INFO MovieProject.Controllers.MoviesController Movie video list sent 
