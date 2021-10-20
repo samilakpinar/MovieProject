@@ -1,12 +1,13 @@
 ﻿using Business.Abstract;
-using Business.Responses;
 using Entities.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using MovieProject.Result;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Net;
 
 namespace MovieProject.Controllers
 {
@@ -26,12 +27,9 @@ namespace MovieProject.Controllers
         /// </summary>
         /// <param name="token"></param>
         /// <returns>menu or menu list</returns>
-        [AllowAnonymous]
         [HttpGet("get-menu")]
-        public BaseResponse<List<Menu>> GetMenu(string token)
+        public ServiceResult<List<Menu>> GetMenu(string token)
         {
-            BaseResponse<List<Menu>> response = new BaseResponse<List<Menu>>();
-
             var logger = NLog.LogManager.GetCurrentClassLogger();
 
             try
@@ -44,27 +42,22 @@ namespace MovieProject.Controllers
 
                 if (menuList == null)
                 {
-                    response.Data = null;
-                    response.ErrorMessages = "Access Denied";
                     logger.Info("Access Denied");
+                    return ServiceResult<List<Menu>>.CreateError(HttpStatusCode.BadRequest, "Access Denied");
+
                 }
 
-                response.Data = menuList;
-                response.ErrorMessages = null;
+                logger.Info("Sidebar menu list sent");
+                return ServiceResult<List<Menu>>.CreateResult(menuList);
 
 
             }
             catch
             {
-                response.Data = null;
-                response.ErrorMessages = "Invalid Token Value";
                 logger.Info("Invalid Token Value");
+                return ServiceResult<List<Menu>>.CreateError(HttpStatusCode.BadRequest, "Invalid Token Value");
 
             }
-
-            logger.Info("Sidebar menu list sent");
-            return response;
         }
-
     }
 }

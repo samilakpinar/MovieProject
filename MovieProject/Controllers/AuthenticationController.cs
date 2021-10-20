@@ -4,8 +4,8 @@ using Business.Responses;
 using Entities.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Threading.Tasks;
+using MovieProject.Result;
+using System.Net;
 
 namespace MovieProject.Controllers
 {
@@ -32,25 +32,20 @@ namespace MovieProject.Controllers
         /// <returns></returns>
         [AllowAnonymous]
         [HttpPost("register")]
-        public BaseResponse<string> Register([FromBody] Users user)
+        public ServiceResult<string> Register([FromBody] Users user)
         {
-            BaseResponse<string> response = new BaseResponse<string>();
+            var logger = NLog.LogManager.GetCurrentClassLogger();
 
             var data = _authenticationService.Register(user);
 
-            if (data)
+            if (!data)
             {
-                response.Data = data.ToString();
-                response.ErrorMessages = null;
-            }
-            else
-            {
-                response.Data = null;
-                response.ErrorMessages = "User didn't add";
+                logger.Error("User didn't add");
+                return ServiceResult<string>.CreateError(HttpStatusCode.BadRequest, "User didn't add");
             }
 
-            return response;
-
+            logger.Info("User added");
+            return ServiceResult<string>.CreateResult(data.ToString());
         }
 
 
@@ -61,41 +56,32 @@ namespace MovieProject.Controllers
         /// <returns>BaseResponse</returns>
         [AllowAnonymous]
         [HttpPost("authenticate")]
-        public BaseResponse<User> Authenticate([FromBody] User user)
+        public ServiceResult<User> Authenticate([FromBody] User user)
         {
             var logger = NLog.LogManager.GetCurrentClassLogger();
-
-            BaseResponse<User> response = new BaseResponse<User>();
-
 
             var findUser = _authenticationService.Authenticate(user);
 
             if (findUser == null)
             {
-                response.Data = null;
-                response.ErrorMessages = "User not Found";
-                return response;
+                logger.Error("User didn't find ");
+                return ServiceResult<User>.CreateError(HttpStatusCode.BadRequest, "User didn't find");
             }
 
             var token = _jwtAuthenticationService.Authenticate(findUser);
+
             if (token == null)
             {
 
-                logger.Info("Access Denied, User info: " + findUser.Email);
-
-                //response.Data = Unauthorized();
-                response.Data = null;
-                response.ErrorMessages = "Access Denied";
-                return response;
+                logger.Error("Access Denied, User info: " + findUser.Email);
+                return ServiceResult<User>.CreateError(HttpStatusCode.BadRequest, "Access Denied");
             }
 
             logger.Info("User token added, User info: " + findUser.Email);
 
             findUser.Token = token;
 
-            response.Data = findUser;
-            response.ErrorMessages = null;
-            return response;
+            return ServiceResult<User>.CreateResult(findUser);
 
         }
 
@@ -105,13 +91,20 @@ namespace MovieProject.Controllers
         /// <returns>BaseResponse</returns>
         [AllowAnonymous]
         [HttpGet("create-token")]
-        public async Task<string> CreateToken()
+        public ServiceResult<string> CreateToken()
         {
             var logger = NLog.LogManager.GetCurrentClassLogger();
-            logger.Info("User create movie-token");
 
+            var token = _authenticationService.CreateToken().Result;
 
-            return await _authenticationService.CreateToken();
+            if (token == null)
+            {
+                logger.Error("Movie token didn't creat");
+                return ServiceResult<string>.CreateError(HttpStatusCode.BadRequest, "Movie token didn't creat");
+            }
+
+            logger.Info("Movie token created");
+            return ServiceResult<string>.CreateResult(token);
         }
 
         /// <summary>
@@ -121,9 +114,20 @@ namespace MovieProject.Controllers
         /// <returns>String session value</returns>
         [AllowAnonymous]
         [HttpPost("create-session")]
-        public Task<string> CreateSession([FromBody] CreateSession token)
+        public ServiceResult<string> CreateSession([FromBody] CreateSession token)
         {
-            return _authenticationService.CreateSession(token);
+            var logger = NLog.LogManager.GetCurrentClassLogger();
+
+            var data = _authenticationService.CreateSession(token).Result;
+
+            if (data == null)
+            {
+                logger.Error("Session didn't creat");
+                return ServiceResult<string>.CreateError(HttpStatusCode.BadRequest, "Session didn't creat");
+            }
+
+            logger.Info("Session created");
+            return ServiceResult<string>.CreateResult(data);
         }
 
         /// <summary>
@@ -133,25 +137,20 @@ namespace MovieProject.Controllers
         /// <returns></returns>
         [AllowAnonymous]
         [HttpPost("create-session-with-login")]
-        public BaseResponse<SessionWithLoginResponse> CreateSessionWithLogin([FromBody] SessionWithLogin sessionWithLogin)
+        public ServiceResult<SessionWithLoginResponse> CreateSessionWithLogin([FromBody] SessionWithLogin sessionWithLogin)
         {
-            BaseResponse<SessionWithLoginResponse> response = new BaseResponse<SessionWithLoginResponse>();
+            var logger = NLog.LogManager.GetCurrentClassLogger();
 
-            var result = _authenticationService.CreateSessionWithLogin(sessionWithLogin);
+            var result = _authenticationService.CreateSessionWithLogin(sessionWithLogin).Result;
 
-            response.Data = result.Result;
-            if (result.Result == null)
+            if (result == null)
             {
-                response.ErrorMessages = "invalid session value";
-
-            }
-            else
-            {
-                response.ErrorMessages = null;
+                logger.Error("Invalid session value");
+                return ServiceResult<SessionWithLoginResponse>.CreateError(HttpStatusCode.BadRequest, "Invalid session value");
             }
 
-
-            return response;
+            logger.Info("Valid session value created");
+            return ServiceResult<SessionWithLoginResponse>.CreateResult(result);
         }
 
         /// <summary>
@@ -161,25 +160,21 @@ namespace MovieProject.Controllers
         /// <returns>Boolean</returns>
         [AllowAnonymous]
         [HttpPost("validation-email")]
-        public BaseResponse<bool> CheckEmail([FromBody] ValidationEmail validationEmail)
+        public ServiceResult<string> CheckEmail([FromBody] ValidationEmail validationEmail)
         {
-            BaseResponse<bool> response = new BaseResponse<bool>();
-
             var logger = NLog.LogManager.GetCurrentClassLogger();
 
             var isSuccess = _authenticationService.ValidationEmail(validationEmail);
 
             if (!isSuccess)
             {
-                logger.Info("Email didn't send to user");
+                logger.Error("Email didn't send to user");
+                return ServiceResult<string>.CreateError(HttpStatusCode.BadRequest, "Email didn't send to user");
             }
 
             logger.Info("Email sent to user");
+            return ServiceResult<string>.CreateResult(isSuccess.ToString());
 
-            response.Data = isSuccess;
-            response.ErrorMessages = null;
-
-            return response;
         }
 
 
@@ -190,24 +185,20 @@ namespace MovieProject.Controllers
         /// <returns>boolean</returns>
         [AllowAnonymous]
         [HttpGet("reset-password")]
-        public BaseResponse<bool> ResetPassword(string email)
+        public ServiceResult<string> ResetPassword(string email)
         {
-            BaseResponse<bool> response = new BaseResponse<bool>();
+            var logger = NLog.LogManager.GetCurrentClassLogger();
 
             var isSuccess = _authenticationService.ResetPassword(email);
 
-            response.Data = isSuccess;
-
-            if (isSuccess)
+            if (!isSuccess)
             {
-                response.ErrorMessages = null;
-            }
-            else
-            {
-                response.ErrorMessages = "Reset Password faild";
+                logger.Error("Password didn't reset");
+                return ServiceResult<string>.CreateError(HttpStatusCode.BadRequest, "Password didn't reset");
             }
 
-            return response;
+            logger.Info("Password reset");
+            return ServiceResult<string>.CreateResult(isSuccess.ToString());
         }
 
         /// <summary>
@@ -217,23 +208,20 @@ namespace MovieProject.Controllers
         /// <returns>boolean</returns>
         [AllowAnonymous]
         [HttpPost("update-password")]
-        public BaseResponse<bool> AddNewPassword(ResetPassword reset)
+        public ServiceResult<string> AddNewPassword(ResetPassword reset)
         {
-            BaseResponse<bool> response = new BaseResponse<bool>();
+            var logger = NLog.LogManager.GetCurrentClassLogger();
 
             var isSuccess = _authenticationService.UpdatePassword(reset);
-            response.Data = isSuccess;
 
-            if (isSuccess)
+            if (!isSuccess)
             {
-                response.ErrorMessages = null;
-            }
-            else
-            {
-                response.ErrorMessages = "Update failed";
+                logger.Error("Password didn't update");
+                return ServiceResult<string>.CreateError(HttpStatusCode.BadRequest, "Password didn't update");
             }
 
-            return response;
+            logger.Info("Pasword updated");
+            return ServiceResult<string>.CreateResult(isSuccess.ToString());
         }
     }
 }

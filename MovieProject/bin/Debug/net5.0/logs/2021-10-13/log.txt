@@ -35,3 +35,4 @@
 2021-10-13 11:21:41.1165   59  INFO MovieProject.Controllers.MoviesController Movie list  sent 
 2021-10-13 11:21:42.6109   58  INFO MovieProject.Controllers.MoviesController Movie list  sent 
 2021-10-13 11:21:46.5416    8  INFO MovieProject.Controllers.MoviesController Movie list  sent 
+2021-10-13 23:12:07.9876   12  INFO MovieProject.Controllers.CastController Cast list sent 

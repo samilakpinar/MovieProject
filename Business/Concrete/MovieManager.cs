@@ -53,11 +53,7 @@ namespace Business.Concrete
 
         public async Task<string> RateMovie(RateMovie rateMovie)
         {
-            //if (rateMovie.value <= 0 || rateMovie.value > 10)
-            //{
-            //    return "Invalid vote value";
-            //}
-
+            
             var url = $"{_appSettings.Url}movie/{rateMovie.MovieId}/rating?api_key={_appSettings.ApiKey}&guest_session_id={rateMovie.GuestId}&session_id={rateMovie.SessionId}";
             var json = System.Text.Json.JsonSerializer.Serialize(rateMovie);
             var content = new StringContent(json, Encoding.UTF8, "application/json");

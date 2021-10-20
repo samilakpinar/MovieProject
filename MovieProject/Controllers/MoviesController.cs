@@ -1,9 +1,10 @@
 ﻿using Business.Abstract;
 using Business.Models;
-using Business.Responses;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using MovieProject.Result;
 using System.Collections.Generic;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace MovieProject.Controllers
@@ -26,10 +27,8 @@ namespace MovieProject.Controllers
         /// <param name="page"></param>
         /// <returns>List Movie</returns>
         [HttpGet("get-populer-movie")]
-        public async Task<BaseResponse<List<Movie>>> GetPopulerMovie(int page)
+        public async Task<ServiceResult<List<Movie>>> GetPopulerMovie(int page)
         {
-            BaseResponse<List<Movie>> movieList = new BaseResponse<List<Movie>>();
-
             var logger = NLog.LogManager.GetCurrentClassLogger();
 
             var movieLists = await _movieService.GetAllPopulerMovies(page);
@@ -37,18 +36,12 @@ namespace MovieProject.Controllers
             if (movieLists == null)
             {
 
-                logger.Info("Movie list didn't send");
-                movieList.Data = null;
-                movieList.ErrorMessages = "Movie list didn't send";
-
-                return movieList;
+                logger.Error("Movie list didn't send");
+                return ServiceResult<List<Movie>>.CreateError(HttpStatusCode.BadRequest, "Movie list didn't send");
             }
 
             logger.Info("Movie list  sent");
-            movieList.Data = movieLists;
-            movieList.ErrorMessages = null;
-
-            return movieList;
+            return ServiceResult<List<Movie>>.CreateResult(movieLists);
         }
 
 
@@ -58,26 +51,20 @@ namespace MovieProject.Controllers
         /// <param name="movie_id"></param>
         /// <returns>BaseResponse Movie</returns>
         [HttpGet("get-movie-by-id")]
-        public async Task<BaseResponse<Movie>> GetMovieById(int movie_id)
+        public async Task<ServiceResult<Movie>> GetMovieById(int movie_id)
         {
-            BaseResponse<Movie> response = new BaseResponse<Movie>();
-
             var logger = NLog.LogManager.GetCurrentClassLogger();
 
             var movie = await _movieService.GetMovieById(movie_id.ToString());
 
             if (movie == null)
             {
-                logger.Info("movie didn't send");
-                response.Data = null;
-                response.ErrorMessages = "movie didn't send";
-                return response;
+                logger.Error("movie didn't send");
+                return ServiceResult<Movie>.CreateError(HttpStatusCode.BadRequest, "movie didn't send");
             }
 
             logger.Info("movie sent");
-            response.Data = movie;
-            response.ErrorMessages = null;
-            return response;
+            return ServiceResult<Movie>.CreateResult(movie);
         }
 
         /// <summary>
@@ -87,21 +74,22 @@ namespace MovieProject.Controllers
         /// <param name="sessionId"></param>
         /// <param name="guestId"></param>
         /// <returns></returns>
+        [AllowAnonymous]
         [HttpGet("get-rate-movie")]
-        public async Task<string> GetRateMovie(int movieId, string sessionId, string guestId)
+        public ServiceResult<string> GetRateMovie(int movieId, string sessionId, string guestId)
         {
             var logger = NLog.LogManager.GetCurrentClassLogger();
 
-            var rate = await _movieService.GetRateMovie(movieId, sessionId, guestId);
+            var rate = _movieService.GetRateMovie(movieId, sessionId, guestId).Result;
 
             if (rate == null)
             {
-                logger.Info("Rate movie didn't send");
-                return null;
+                logger.Error("Rate movie didn't send");
+                return ServiceResult<string>.CreateError(HttpStatusCode.BadRequest, "Rate movie didn't send");
             }
 
             logger.Info("Rate movie sent");
-            return rate;
+            return ServiceResult<string>.CreateResult(rate);
         }
 
 
@@ -112,20 +100,20 @@ namespace MovieProject.Controllers
         /// <returns>string rate movie</returns>
         [AllowAnonymous]
         [HttpPost("rate-movie")]
-        public Task<string> RateMovie([FromBody] RateMovie rateMovie)
+        public ServiceResult<string> RateMovie([FromBody] RateMovie rateMovie)
         {
             var logger = NLog.LogManager.GetCurrentClassLogger();
 
-            var rateMovies = _movieService.RateMovie(rateMovie);
+            var rateMovies = _movieService.RateMovie(rateMovie).Result;
 
             if (rateMovies == null)
             {
-                logger.Info("Rate movie didn't send");
-                return null;
+                logger.Error("Rate movie didn't send");
+                return ServiceResult<string>.CreateError(HttpStatusCode.BadRequest, "Rate movie didn't send");
             }
 
             logger.Info("Rate movie sent");
-            return rateMovies;
+            return ServiceResult<string>.CreateResult(rateMovies);
 
         }
 
@@ -136,24 +124,20 @@ namespace MovieProject.Controllers
         /// <param name="page"></param>
         /// <returns>List of movie</returns>
         [HttpGet("upcoming-movies")]
-        public BaseResponse<List<Movie>> GetUpcomingMovie(int page)
+        public ServiceResult<List<Movie>> GetUpcomingMovie(int page)
         {
-            BaseResponse<List<Movie>> response = new BaseResponse<List<Movie>>();
             var logger = NLog.LogManager.GetCurrentClassLogger();
 
-            response.Data = _movieService.GetUpcomingMovie(page).Result;
+            var upcomingMovie = _movieService.GetUpcomingMovie(page).Result;
 
-            if (response.Data == null)
+            if (upcomingMovie == null)
             {
-                response.ErrorMessages = "Upcoming movie list didn't send";
-                logger.Info("Upcoming movie list didn't send");
-                return response;
+                logger.Error("Upcoming movie list didn't send");
+                return ServiceResult<List<Movie>>.CreateError(HttpStatusCode.BadRequest, "Upcoming movie list didn't send");
             }
 
-            response.ErrorMessages = null;
-            logger.Info("Upcoming movie sent ", response.IsSuccess);
-
-            return response;
+            logger.Info("Upcoming movie sent ");
+            return ServiceResult<List<Movie>>.CreateResult(upcomingMovie);
 
         }
 
@@ -164,25 +148,21 @@ namespace MovieProject.Controllers
         /// <returns></returns>
         [AllowAnonymous]
         [HttpGet("get-movie-video-by-id")]
-        public BaseResponse<List<MovieVideo>> GetMovieVideoById(int movieId)
+        public ServiceResult<List<MovieVideo>> GetMovieVideoById(int movieId)
         {
-            BaseResponse<List<MovieVideo>> response = new BaseResponse<List<MovieVideo>>();
             var logger = NLog.LogManager.GetCurrentClassLogger();
 
-            response.Data = _movieService.GetMovieVideoById(movieId).Result;
+            var movieVideo = _movieService.GetMovieVideoById(movieId).Result;
 
-            if (response.Data == null)
+            if (movieVideo == null)
             {
-                response.ErrorMessages = "Movie video list didn't send";
                 logger.Error("Movie video list didn't send");
-                return response;
+                return ServiceResult<List<MovieVideo>>.CreateError(HttpStatusCode.BadRequest, "Movie video list didn't send");
             }
 
             logger.Info("Movie video list sent");
-            response.ErrorMessages = null;
-            return response;
+            return ServiceResult<List<MovieVideo>>.CreateResult(movieVideo);
 
         }
-
     }
 }
