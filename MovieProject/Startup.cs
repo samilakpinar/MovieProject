@@ -15,6 +15,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using MovieProject.Caching;
 using MovieProject.Extensions;
 using MovieProject.Middlewares;
 using NLog;
@@ -30,7 +31,6 @@ namespace MovieProject
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-
         }
 
         public IConfiguration Configuration { get; }
@@ -39,18 +39,19 @@ namespace MovieProject
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors();
-           
+
+            
+            services.AddDistributedRedisCache(action =>
+            {
+                action.Configuration = "localhost:6379";
+            });
+
             //get all validater
             services.AddMvc()
             .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<Startup>());
 
+            
             services.AddDbContext<MovieStoreContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
-
-            //Database perform database migration
-            //var de =  services.AddDbContext<MovieStoreContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SqlConnection")));
-            //services.BuildServiceProvider().GetService<MovieStoreContext>().Database.Migrate();
-
-
 
             //appsettings tanýmlama 1.yöntem.
             var appSettingsSection = Configuration.GetSection("AppSettings");
@@ -68,6 +69,7 @@ namespace MovieProject
             //Create singleton from instance
             services.AddSingleton<AppSettings>(appSettings);
 
+
             //for dependency injection
             //Bu yapýyý auto fact gibi bir yapýya taþýyarak kullanmamýzda fayda vardýr. Bussiness katmaný içinde kullanýlabilir.
             //Auto fact yapýsý aop'yi desteklediðinden dolayý bu yapýyý auto factte taþýnýr.
@@ -79,6 +81,7 @@ namespace MovieProject
             services.AddTransient<IMenuService, MenuManager>();
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IMenuRepository, MenuRepository>();
+            services.AddTransient<ICacheService, CacheService>();
 
 
 

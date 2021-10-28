@@ -2,7 +2,10 @@
 using Business.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using MovieProject.Caching;
 using MovieProject.Result;
+using Newtonsoft.Json;
+using NLog;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
@@ -15,10 +18,14 @@ namespace MovieProject.Controllers
     public class MoviesController : ControllerBase
     {
         private readonly IMovieService _movieService;
+        private readonly ICacheService _cacheService;
+        private static Logger logger = LogManager.GetCurrentClassLogger();
+        private static string httpContext, jsonString;
 
-        public MoviesController(IMovieService movieService)
+        public MoviesController(IMovieService movieService, ICacheService cacheService)
         {
-            this._movieService = movieService;
+            _movieService = movieService;
+            _cacheService = cacheService;
         }
 
         /// <summary>
@@ -26,22 +33,35 @@ namespace MovieProject.Controllers
         /// </summary>
         /// <param name="page"></param>
         /// <returns>List Movie</returns>
-        [HttpGet("get-populer-movie")]
+        [HttpGet("get-populer-movie/{page}")]
         public async Task<ServiceResult<List<Movie>>> GetPopulerMovie(int page)
         {
-            var logger = NLog.LogManager.GetCurrentClassLogger();
+            List<Movie> movieList;
 
-            var movieLists = await _movieService.GetAllPopulerMovies(page);
+            httpContext = HttpContext.Request.Path.Value;
 
-            if (movieLists == null)
+            jsonString = _cacheService.GetDataFromCache(httpContext).Result;
+
+            if (jsonString != null)
             {
+                movieList = JsonConvert.DeserializeObject<List<Movie>>(jsonString);
+            }
+            else
+            {
+                movieList = _movieService.GetAllPopulerMovies(page).Result;
 
-                logger.Error("Movie list didn't send");
-                return ServiceResult<List<Movie>>.CreateError(HttpStatusCode.BadRequest, "Movie list didn't send");
+                if (movieList == null)
+                {
+                    logger.Error("Movie list didn't send");
+                    return ServiceResult<List<Movie>>.CreateError(HttpStatusCode.BadRequest, "Movie list didn't send");
+                }
+
+                _cacheService.SetDataToCache(httpContext, movieList);
             }
 
             logger.Info("Movie list  sent");
-            return ServiceResult<List<Movie>>.CreateResult(movieLists);
+            return ServiceResult<List<Movie>>.CreateResult(movieList);
+
         }
 
 
@@ -50,21 +70,36 @@ namespace MovieProject.Controllers
         /// </summary>
         /// <param name="movie_id"></param>
         /// <returns>BaseResponse Movie</returns>
-        [HttpGet("get-movie-by-id")]
+        [HttpGet("get-movie-by-id/{movie_id}")]
         public async Task<ServiceResult<Movie>> GetMovieById(int movie_id)
         {
-            var logger = NLog.LogManager.GetCurrentClassLogger();
+            Movie movie;
 
-            var movie = await _movieService.GetMovieById(movie_id.ToString());
+            httpContext = HttpContext.Request.Path.Value;
 
-            if (movie == null)
+            jsonString = _cacheService.GetDataFromCache(httpContext).Result;
+
+            if (jsonString != null)
             {
-                logger.Error("movie didn't send");
-                return ServiceResult<Movie>.CreateError(HttpStatusCode.BadRequest, "movie didn't send");
+                movie = JsonConvert.DeserializeObject<Movie>(jsonString);
+            }
+            else
+            {
+                movie = await _movieService.GetMovieById(movie_id.ToString());
+
+                if (movie == null)
+                {
+                    logger.Error("movie didn't send");
+                    return ServiceResult<Movie>.CreateError(HttpStatusCode.BadRequest, "Movie didn't send");
+                }
+
+                logger.Info("movie sent");
+                _cacheService.SetDataToCache(httpContext, movie);
+
             }
 
-            logger.Info("movie sent");
             return ServiceResult<Movie>.CreateResult(movie);
+
         }
 
         /// <summary>
@@ -74,11 +109,9 @@ namespace MovieProject.Controllers
         /// <param name="sessionId"></param>
         /// <param name="guestId"></param>
         /// <returns></returns>
-        [AllowAnonymous]
         [HttpGet("get-rate-movie")]
         public ServiceResult<string> GetRateMovie(int movieId, string sessionId, string guestId)
         {
-            var logger = NLog.LogManager.GetCurrentClassLogger();
 
             var rate = _movieService.GetRateMovie(movieId, sessionId, guestId).Result;
 
@@ -123,21 +156,35 @@ namespace MovieProject.Controllers
         /// </summary>
         /// <param name="page"></param>
         /// <returns>List of movie</returns>
-        [HttpGet("upcoming-movies")]
+        [HttpGet("upcoming-movies/{page}")]
         public ServiceResult<List<Movie>> GetUpcomingMovie(int page)
         {
-            var logger = NLog.LogManager.GetCurrentClassLogger();
+            List<Movie> movieList;
 
-            var upcomingMovie = _movieService.GetUpcomingMovie(page).Result;
+            httpContext = HttpContext.Request.Path.Value;
 
-            if (upcomingMovie == null)
+            jsonString = _cacheService.GetDataFromCache(httpContext).Result;
+
+            if (jsonString != null)
             {
-                logger.Error("Upcoming movie list didn't send");
-                return ServiceResult<List<Movie>>.CreateError(HttpStatusCode.BadRequest, "Upcoming movie list didn't send");
+                movieList = JsonConvert.DeserializeObject<List<Movie>>(jsonString);
+            }
+            else
+            {
+                movieList = _movieService.GetUpcomingMovie(page).Result;
+
+                if (movieList == null)
+                {
+                    logger.Error("Movie list didn't send");
+                    return ServiceResult<List<Movie>>.CreateError(HttpStatusCode.BadRequest, "Movie list didn't send");
+                }
+
+                _cacheService.SetDataToCache(httpContext, movieList);
+
             }
 
             logger.Info("Upcoming movie sent ");
-            return ServiceResult<List<Movie>>.CreateResult(upcomingMovie);
+            return ServiceResult<List<Movie>>.CreateResult(movieList);
 
         }
 
@@ -147,11 +194,10 @@ namespace MovieProject.Controllers
         /// <param name="movieId"></param>
         /// <returns></returns>
         [AllowAnonymous]
-        [HttpGet("get-movie-video-by-id")]
+        [HttpGet("get-movie-video-by-id/")]
         public ServiceResult<List<MovieVideo>> GetMovieVideoById(int movieId)
         {
-            var logger = NLog.LogManager.GetCurrentClassLogger();
-
+            
             var movieVideo = _movieService.GetMovieVideoById(movieId).Result;
 
             if (movieVideo == null)

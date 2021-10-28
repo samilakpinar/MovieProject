@@ -2,7 +2,10 @@
 using Business.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using MovieProject.Caching;
 using MovieProject.Result;
+using Newtonsoft.Json;
+using NLog;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -16,9 +19,13 @@ namespace MovieProject.Controllers
     public class CastController : Controller
     {
         private readonly ICastService _castService;
-        public CastController(ICastService castService)
+        private readonly ICacheService _cacheService;
+        public static Logger logger = LogManager.GetCurrentClassLogger();
+
+        public CastController(ICastService castService, ICacheService cacheService)
         {
             _castService = castService;
+            _cacheService = cacheService;
         }
 
         /// <summary>
@@ -26,22 +33,37 @@ namespace MovieProject.Controllers
         /// </summary>
         /// <param name="movieId"></param>
         /// <returns>List Cast</returns>
-        [HttpGet("get-populer-cast")]
+        [HttpGet("get-populer-cast/{movieId}")]
         public async Task<ServiceResult<List<Cast>>> GetPopulerCast(int movieId)
         {
+            List<Cast> CastList;
 
-            var logger = NLog.LogManager.GetCurrentClassLogger();
+            var httpContext = HttpContext.Request.Path.Value;
 
-            var castList = await _castService.GetPopulerCast(movieId);
+            //get data from cache
+            var jsonString = _cacheService.GetDataFromCache(httpContext).Result;
 
-            if (castList == null)
+            if (jsonString != null)
             {
-                logger.Info("Cast list didn't send");
-                return ServiceResult<List<Cast>>.CreateError(HttpStatusCode.BadRequest, "Cast list didn't send");
+                CastList = JsonConvert.DeserializeObject<List<Cast>>(jsonString);
+            }
+            else
+            {
+                CastList = await _castService.GetPopulerCast(movieId);
+
+                if (CastList == null)
+                {
+                    logger.Info("Cast list didn't send");
+                    return ServiceResult<List<Cast>>.CreateError(HttpStatusCode.BadRequest, "Cast list didn't send");
+                }
+
+                //set data to cache
+                _cacheService.SetDataToCache(httpContext, CastList);
             }
 
             logger.Info("Cast list sent");
-            return ServiceResult<List<Cast>>.CreateResult(castList);
+            return ServiceResult<List<Cast>>.CreateResult(CastList);
+
         }
 
 
@@ -51,24 +73,38 @@ namespace MovieProject.Controllers
         /// <param name="movieId"></param>
         /// <param name="castId"></param>
         /// <returns>Cast</returns>
-        [HttpGet("get-cast-by-id")]
+        [HttpGet("get-cast-by-id/{movieId}/{castId}")]
         public async Task<ServiceResult<Cast>> GetCastById(int movieId, int castId)
         {
+            Cast cast;
 
-            var logger = NLog.LogManager.GetCurrentClassLogger();
+            var httpContext = HttpContext.Request.Path.Value;
 
-            var castList = await _castService.GetPopulerCast(movieId);
+            var jsonString = _cacheService.GetDataFromCache(httpContext).Result;
 
-            if (castList == null)
+            if (jsonString != null)
             {
-                logger.Info("Cast didn't send");
-                return ServiceResult<Cast>.CreateError(HttpStatusCode.BadRequest, "Cast didn't send");
+                cast = JsonConvert.DeserializeObject<Cast>(jsonString);
             }
+            else
+            {
+                var castList = await _castService.GetPopulerCast(movieId);
 
-            var cast = castList.FirstOrDefault<Cast>(c => c.castId == castId);
+                if (castList == null)
+                {
+                    logger.Info("Cast didn't send");
+                    return ServiceResult<Cast>.CreateError(HttpStatusCode.BadRequest, "Cast didn't send");
+                }
+
+                cast = castList.FirstOrDefault<Cast>(c => c.castId == castId);
+
+                _cacheService.SetDataToCache(httpContext, cast);
+            }
 
             logger.Info("Cast id sent");
             return ServiceResult<Cast>.CreateResult(cast);
+
+
         }
 
     }

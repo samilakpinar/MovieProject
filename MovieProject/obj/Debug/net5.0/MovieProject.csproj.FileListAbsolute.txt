@@ -79,3 +79,5 @@ C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\bin\Debug\net5.0\M
 C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\bin\Debug\net5.0\FluentValidation.dll
 C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\bin\Debug\net5.0\FluentValidation.AspNetCore.dll
 C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\bin\Debug\net5.0\FluentValidation.DependencyInjectionExtensions.dll
+C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\bin\Debug\net5.0\Microsoft.Extensions.Caching.Redis.dll
+C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\bin\Debug\net5.0\StackExchange.Redis.StrongName.dll

@@ -3,6 +3,7 @@ using Entities.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MovieProject.Result;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -16,7 +17,9 @@ namespace MovieProject.Controllers
     [ApiController]
     public class HomeController : Controller
     {
-        private IMenuService _menuService;
+        private readonly IMenuService _menuService;
+        private static Logger logger = LogManager.GetCurrentClassLogger();
+
         public HomeController(IMenuService menuService)
         {
             _menuService = menuService;
@@ -30,8 +33,6 @@ namespace MovieProject.Controllers
         [HttpGet("get-menu")]
         public ServiceResult<List<Menu>> GetMenu(string token)
         {
-            var logger = NLog.LogManager.GetCurrentClassLogger();
-
             try
             {
                 var tokenValue = new JwtSecurityToken(jwtEncodedString: token);
@@ -49,7 +50,6 @@ namespace MovieProject.Controllers
 
                 logger.Info("Sidebar menu list sent");
                 return ServiceResult<List<Menu>>.CreateResult(menuList);
-
 
             }
             catch

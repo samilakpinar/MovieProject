@@ -1,9 +1,13 @@
 ﻿using Business.Abstract;
 using Business.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MovieProject.Caching;
 using MovieProject.Result;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Net;
+using System.Threading.Tasks;
 
 namespace MovieProject.Controllers
 {
@@ -13,27 +17,47 @@ namespace MovieProject.Controllers
     public class TempController : Controller
     {
         private readonly IMovieService _movieService;
+        private readonly ICacheService _cacheService;
 
-        public TempController(IMovieService movieService)
+        public TempController(IMovieService movieService, ICacheService cacheService)
         {
             _movieService = movieService;
+            _cacheService = cacheService;
         }
 
 
-        [HttpGet]
-        public ServiceResult<List<Movie>> GetMovies()
+        [HttpGet("get-populer-movies/{page}")]
+        public async Task<ServiceResult<List<Movie>>> GetMovies(int page)
         {
+            List<Movie> listMovie;
 
-            var movies = _movieService.GetAllPopulerMovies(1).Result;
+            var httpContext = HttpContext.Request.Path.Value;
 
-            if (movies == null)
+            //get data from cache
+            var jsonString = _cacheService.GetDataFromCache(httpContext).Result;
+
+
+            if (jsonString != null)
             {
-                return ServiceResult<List<Movie>>.CreateError(HttpStatusCode.BadRequest, "Movie list didn't get");
+                listMovie = JsonConvert.DeserializeObject<List<Movie>>(jsonString);
+
+            }
+            else
+            {
+                listMovie = _movieService.GetAllPopulerMovies(page).Result;
+
+                if (listMovie == null)
+                {
+                    return ServiceResult<List<Movie>>.CreateError(HttpStatusCode.BadRequest, "movie list didn't get");
+                }
+
+                //set data to cache.
+                _cacheService.SetDataToCache(httpContext, listMovie);
+
             }
 
-            //throw new System.Exception("movie list error"); for exception middleware 
+            return ServiceResult<List<Movie>>.CreateResult(listMovie);
 
-            return ServiceResult<List<Movie>>.CreateResult(movies);
         }
     }
 }

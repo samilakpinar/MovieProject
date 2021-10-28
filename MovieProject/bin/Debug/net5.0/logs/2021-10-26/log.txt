@@ -1,0 +1,143 @@
+2021-10-26 15:55:51.9376   36  INFO MovieProject.Controllers.AuthenticationController User token added, User info: samilakpinar6@gmail.com 
+2021-10-26 15:55:52.7708   22  INFO MovieProject.Controllers.AuthenticationController Movie token created 
+2021-10-26 15:55:53.2153    4  INFO MovieProject.Controllers.AuthenticationController Valid session value created 
+2021-10-26 15:55:53.6346   42  INFO MovieProject.Controllers.AuthenticationController Session created 
+2021-10-26 15:55:53.7354    4  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-10-26 15:55:53.7697   22  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-10-26 15:56:05.2585   26  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 15:56:14.8072   11  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-10-26 15:56:14.8181   11  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-10-26 15:56:15.0405   23  INFO MovieProject.Controllers.MoviesController Movie list  sent 
+2021-10-26 15:56:26.1397   26  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 15:56:28.0595   22  INFO MovieProject.Controllers.MoviesController Upcoming movie sent  
+2021-10-26 15:57:00.9752   23  INFO MovieProject.Controllers.MoviesController Movie list  sent 
+2021-10-26 15:57:03.2324    9  INFO MovieProject.Controllers.MoviesController Movie list  sent 
+2021-10-26 15:59:12.5201   45  INFO MovieProject.Controllers.MoviesController Movie list  sent 
+2021-10-26 15:59:14.3506    5  INFO MovieProject.Controllers.MoviesController Movie list  sent 
+2021-10-26 15:59:17.0755   48  INFO MovieProject.Controllers.MoviesController Movie list  sent 
+2021-10-26 15:59:53.4975   50  INFO MovieProject.Controllers.MoviesController Movie list  sent 
+2021-10-26 15:59:56.2195   48  INFO MovieProject.Controllers.MoviesController Movie list  sent 
+2021-10-26 16:56:56.4684   20  INFO MovieProject.Controllers.CastController Cast list didn't send 
+2021-10-26 16:57:19.0260   15  INFO MovieProject.Controllers.CastController Cast list didn't send 
+2021-10-26 16:58:09.0417    6  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 17:12:42.8620   22  INFO MovieProject.Controllers.CastController Cast id sent 
+2021-10-26 17:13:01.8381    4  INFO MovieProject.Controllers.CastController Cast id sent 
+2021-10-26 17:17:28.6316    5  INFO MovieProject.Controllers.CastController Cast id sent 
+2021-10-26 17:19:23.5740    6  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 17:22:45.9809   27  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-10-26 17:22:46.1581    5  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-10-26 17:23:10.2159   10  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-10-26 17:23:10.2276    6  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-10-26 17:23:13.2775    6  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 17:23:18.4593   33  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-10-26 17:23:18.4593    5  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-10-26 17:23:19.3414   36  INFO MovieProject.Controllers.MoviesController Movie list  sent 
+2021-10-26 17:23:19.3414   27  INFO MovieProject.Controllers.MoviesController Movie list  sent 
+2021-10-26 17:23:19.5743   33  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 17:23:20.7014    9  INFO MovieProject.Controllers.MoviesController Movie list  sent 
+2021-10-26 17:23:21.8909   10  INFO MovieProject.Controllers.MoviesController Upcoming movie sent  
+2021-10-26 17:23:23.0196   28  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 17:23:24.4267   36  INFO MovieProject.Controllers.CastController Cast id sent 
+2021-10-26 17:23:26.3088   33  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 17:23:27.5699   31  INFO MovieProject.Controllers.CastController Cast id sent 
+2021-10-26 17:23:37.3244   27  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 17:23:39.2781   36  INFO MovieProject.Controllers.CastController Cast id sent 
+2021-10-26 17:26:11.6942   33  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 17:26:20.3345   48  INFO MovieProject.Controllers.CastController Cast id sent 
+2021-10-26 17:26:40.3209   43  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 17:26:44.4540    6  INFO MovieProject.Controllers.CastController Cast id sent 
+2021-10-26 17:26:47.8136   45  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 17:26:50.8947   50  INFO MovieProject.Controllers.CastController Cast id sent 
+2021-10-26 17:26:55.0215   45  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 17:26:58.4954   45  INFO MovieProject.Controllers.CastController Cast id sent 
+2021-10-26 17:27:00.1416   33  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 17:27:03.4999    6  INFO MovieProject.Controllers.CastController Cast id sent 
+2021-10-26 17:27:05.1358   33  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 17:27:07.5343   42  INFO MovieProject.Controllers.MoviesController Movie list  sent 
+2021-10-26 17:27:11.2006   44  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 17:27:13.0101   49  INFO MovieProject.Controllers.MoviesController Movie list  sent 
+2021-10-26 17:27:14.0775   44  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 17:27:19.3081   44  INFO MovieProject.Controllers.CastController Cast id sent 
+2021-10-26 17:27:20.6828    6  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 17:27:23.1793    6  INFO MovieProject.Controllers.CastController Cast id sent 
+2021-10-26 17:27:24.5102    6  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 17:27:47.3707   43  INFO MovieProject.Controllers.CastController Cast id sent 
+2021-10-26 17:27:48.7763    6  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 17:27:49.5947    6  INFO MovieProject.Controllers.CastController Cast id sent 
+2021-10-26 17:27:50.8768   43  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 17:27:51.7517    6  INFO MovieProject.Controllers.CastController Cast id sent 
+2021-10-26 17:27:52.9584    6  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 17:27:54.2565   53  INFO MovieProject.Controllers.CastController Cast id sent 
+2021-10-26 17:27:55.8916   32  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 17:27:56.8515   45  INFO MovieProject.Controllers.CastController Cast id sent 
+2021-10-26 17:27:58.4611   32  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 17:28:20.8894   52  INFO MovieProject.Controllers.CastController Cast id sent 
+2021-10-26 17:28:23.0697   33  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 17:28:27.8281   55  INFO MovieProject.Controllers.CastController Cast id sent 
+2021-10-26 17:28:31.8037    6  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 17:28:35.9192   43  INFO MovieProject.Controllers.CastController Cast id sent 
+2021-10-26 17:28:37.7804   32  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 17:30:26.0920   62  INFO MovieProject.Controllers.CastController Cast id sent 
+2021-10-26 17:30:27.2818   32  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 17:30:28.1791   63  INFO MovieProject.Controllers.CastController Cast id sent 
+2021-10-26 17:30:29.2914   63  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 17:30:30.3253   32  INFO MovieProject.Controllers.CastController Cast id sent 
+2021-10-26 17:30:31.5699   32  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 17:30:33.2242   57  INFO MovieProject.Controllers.CastController Cast id sent 
+2021-10-26 17:30:58.5103   45  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 17:31:01.9927   45  INFO MovieProject.Controllers.CastController Cast id sent 
+2021-10-26 17:31:03.5523   60  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 17:31:04.8459   67  INFO MovieProject.Controllers.CastController Cast id sent 
+2021-10-26 17:31:07.4228   45  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 17:31:12.2565   60  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-10-26 17:31:12.2565   61  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-10-26 17:31:15.5877   60  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 17:31:19.5298   57  INFO MovieProject.Controllers.MoviesController Movie list  sent 
+2021-10-26 17:31:20.8290   60  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 17:31:28.2954   45  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-10-26 17:31:28.2995   45  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-10-26 17:31:30.0135   60  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 17:31:32.2512   32  INFO MovieProject.Controllers.MoviesController Upcoming movie sent  
+2021-10-26 17:31:41.3896   45  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 17:34:30.1672   19  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-10-26 17:34:30.3180   22  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-10-26 17:34:32.6556   23  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 17:34:35.5781   20  INFO MovieProject.Controllers.MoviesController Upcoming movie sent  
+2021-10-26 17:34:36.5111   13  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 17:34:40.8435   21  INFO MovieProject.Controllers.CastController Cast id sent 
+2021-10-26 17:34:42.1434   13  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 17:34:43.5738   20  INFO MovieProject.Controllers.CastController Cast id sent 
+2021-10-26 17:34:44.9058   20  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 17:34:49.5418   19  INFO MovieProject.Controllers.CastController Cast id sent 
+2021-10-26 17:34:50.8796   21  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 17:34:53.3645   20  INFO MovieProject.Controllers.CastController Cast id sent 
+2021-10-26 17:34:54.6760   21  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 17:34:55.4371   31  INFO MovieProject.Controllers.CastController Cast id sent 
+2021-10-26 17:34:56.6404   30  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 17:35:06.0287   14  INFO MovieProject.Controllers.CastController Cast id sent 
+2021-10-26 17:35:07.5672   30  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 17:35:09.1234   19  INFO MovieProject.Controllers.CastController Cast id sent 
+2021-10-26 17:35:10.4586   19  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 17:35:14.7817   13  INFO MovieProject.Controllers.MoviesController Movie list  sent 
+2021-10-26 17:35:21.2469   13  INFO MovieProject.Controllers.MoviesController Upcoming movie sent  
+2021-10-26 17:35:23.4766   13  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 17:42:50.1376    6  INFO MovieProject.Controllers.MoviesController Movie list  sent 
+2021-10-26 17:42:52.9103    5  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 17:42:54.7679    5  INFO MovieProject.Controllers.CastController Cast id sent 
+2021-10-26 17:42:56.2703   11  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 17:42:57.1447    9  INFO MovieProject.Controllers.CastController Cast id sent 
+2021-10-26 17:42:58.2383    9  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 17:43:01.5482    6  INFO MovieProject.Controllers.CastController Cast id sent 
+2021-10-26 17:43:02.6791   17  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 17:43:05.1476    6  INFO MovieProject.Controllers.CastController Cast id sent 
+2021-10-26 17:43:06.2448   11  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 17:43:08.0003   25  INFO MovieProject.Controllers.CastController Cast id sent 
+2021-10-26 17:43:09.2580    6  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 17:43:10.4887   17  INFO MovieProject.Controllers.CastController Cast id sent 
+2021-10-26 17:44:08.3741    6  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 17:44:10.5953   25  INFO MovieProject.Controllers.CastController Cast id sent 
+2021-10-26 17:44:12.4998   10  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 17:44:14.3999   15  INFO MovieProject.Controllers.CastController Cast id sent 
+2021-10-26 17:44:16.0943   15  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-10-26 17:44:29.2158    5  INFO MovieProject.Controllers.CastController Cast id sent 
+2021-10-26 17:44:43.9460    6  INFO MovieProject.Controllers.CastController Cast list sent 

@@ -1,0 +1,6 @@
+2021-10-26 15:54:47.9336   30 ERROR MovieProject.Controllers.AuthenticationController User didn't find  
+2021-10-26 15:55:19.9116   22 ERROR MovieProject.Controllers.AuthenticationController User didn't find  
+2021-10-26 15:55:21.7102   22 ERROR MovieProject.Controllers.AuthenticationController User didn't find  
+2021-10-26 15:55:21.9018   30 ERROR MovieProject.Controllers.AuthenticationController User didn't find  
+2021-10-26 15:55:22.0645   30 ERROR MovieProject.Controllers.AuthenticationController User didn't find  
+2021-10-26 15:55:43.5698   42 ERROR MovieProject.Controllers.AuthenticationController User didn't find  
