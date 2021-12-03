@@ -20,7 +20,7 @@ namespace MovieProject.Controllers
         private readonly IMovieService _movieService;
         private readonly ICacheService _cacheService;
         private static Logger logger = LogManager.GetCurrentClassLogger();
-        private static string httpContext, jsonString;
+        
 
         public MoviesController(IMovieService movieService, ICacheService cacheService)
         {
@@ -38,9 +38,9 @@ namespace MovieProject.Controllers
         {
             List<Movie> movieList;
 
-            httpContext = HttpContext.Request.Path.Value;
+            var httpContext = HttpContext.Request.Path.Value;
 
-            jsonString = _cacheService.GetDataFromCache(httpContext).Result;
+            var jsonString = await _cacheService.GetDataFromCache(httpContext);
 
             if (jsonString != null)
             {
@@ -75,9 +75,9 @@ namespace MovieProject.Controllers
         {
             Movie movie;
 
-            httpContext = HttpContext.Request.Path.Value;
+            var httpContext = HttpContext.Request.Path.Value;
 
-            jsonString = _cacheService.GetDataFromCache(httpContext).Result;
+            var jsonString = await _cacheService.GetDataFromCache(httpContext);
 
             if (jsonString != null)
             {
@@ -135,8 +135,6 @@ namespace MovieProject.Controllers
         [HttpPost("rate-movie")]
         public ServiceResult<string> RateMovie([FromBody] RateMovie rateMovie)
         {
-            var logger = NLog.LogManager.GetCurrentClassLogger();
-
             var rateMovies = _movieService.RateMovie(rateMovie).Result;
 
             if (rateMovies == null)
@@ -157,13 +155,13 @@ namespace MovieProject.Controllers
         /// <param name="page"></param>
         /// <returns>List of movie</returns>
         [HttpGet("upcoming-movies/{page}")]
-        public ServiceResult<List<Movie>> GetUpcomingMovie(int page)
+        public async Task<ServiceResult<List<Movie>>> GetUpcomingMovie(int page)
         {
             List<Movie> movieList;
 
-            httpContext = HttpContext.Request.Path.Value;
+            var httpContext  = HttpContext.Request.Path.Value;
 
-            jsonString = _cacheService.GetDataFromCache(httpContext).Result;
+            var jsonString = await _cacheService.GetDataFromCache(httpContext);
 
             if (jsonString != null)
             {
@@ -171,7 +169,7 @@ namespace MovieProject.Controllers
             }
             else
             {
-                movieList = _movieService.GetUpcomingMovie(page).Result;
+                movieList = await _movieService.GetUpcomingMovie(page);
 
                 if (movieList == null)
                 {
@@ -179,11 +177,11 @@ namespace MovieProject.Controllers
                     return ServiceResult<List<Movie>>.CreateError(HttpStatusCode.BadRequest, "Movie list didn't send");
                 }
 
-                _cacheService.SetDataToCache(httpContext, movieList);
+             await _cacheService.SetDataToCache(httpContext, movieList);
 
             }
 
-            logger.Info("Upcoming movie sent ");
+            logger.Info("Upcoming movie sent");
             return ServiceResult<List<Movie>>.CreateResult(movieList);
 
         }
@@ -194,7 +192,7 @@ namespace MovieProject.Controllers
         /// <param name="movieId"></param>
         /// <returns></returns>
         [AllowAnonymous]
-        [HttpGet("get-movie-video-by-id/")]
+        [HttpGet("get-movie-video-by-id/{movieId}")]
         public ServiceResult<List<MovieVideo>> GetMovieVideoById(int movieId)
         {
             

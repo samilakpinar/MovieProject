@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/movieprojectdbserver/databases/MovieProject_db",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:DevConnection",
+      "secretStore": "AzureAppSettings"
+    },
+    "redis1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Cache/Redis/MovieProjectcache",
+      "type": "redis.azure",
+      "connectionId": "CacheConnection",
+      "secretStore": "AzureAppSettings"
+    }
+  }
+}

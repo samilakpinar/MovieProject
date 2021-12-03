@@ -17,7 +17,6 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using MovieProject.Caching;
 using MovieProject.Extensions;
-using MovieProject.Middlewares;
 using NLog;
 using System;
 using System.IO;
@@ -40,17 +39,18 @@ namespace MovieProject
         {
             services.AddCors();
 
-            
-            services.AddDistributedRedisCache(action =>
+
+            services.AddDistributedRedisCache(option =>
             {
-                action.Configuration = "localhost:6379";
+                option.Configuration = "localhost:6379";
             });
+
 
             //get all validater
             services.AddMvc()
             .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<Startup>());
 
-            
+
             services.AddDbContext<MovieStoreContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
 
             //appsettings tanýmlama 1.yöntem.
@@ -130,6 +130,10 @@ namespace MovieProject
                 c.IncludeXmlComments(xmlPath);
 
             });
+            services.AddDistributedRedisCache(option =>
+            {
+                option.Configuration = Configuration["CacheConnection"];
+            });
 
         }
 
@@ -178,7 +182,7 @@ namespace MovieProject
 
             app.UseLogging();
 
-            app.UseMiddleware(typeof(ExceptionHandlingMiddleware));
+            //app.UseMiddleware(typeof(ExceptionHandlingMiddleware));
 
             app.UseEndpoints(endpoints =>
             {

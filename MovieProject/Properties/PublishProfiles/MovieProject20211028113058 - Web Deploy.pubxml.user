@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA11ojd8pNvESkgBl+UVzJrgAAAAACAAAAAAADZgAAwAAAABAAAADbhGDZb96Xd/pGfQKrqcGuAAAAAASAAACgAAAAEAAAALt+iGGp3VhDvMZ2JpFY0RqAAAAA+8pUQwV8sx7gpPCKcxz6Cg5p8suZPOzJPuJY/TxoqxYbycmm8frglnvauYj/vkJln7eIf633zs+6faAwdecEEJQJUWZIhJdtsCSbZk5UTHaIQjl6R8J99uiv1B/irhDwOcCtVVQwuQ+p+7N4e8hIEwz0qbq+6lKm11KFGV+bAT0UAAAAHAfHuNuB8XRSpbcBvVpA3e8A2zk=</EncryptedPassword>
+    <History>False|2021-12-03T06:48:26.4869699Z;False|2021-12-02T16:50:40.7110074+03:00;False|2021-12-02T16:33:17.2143371+03:00;False|2021-12-02T13:51:07.5577302+03:00;False|2021-12-02T13:15:45.4781960+03:00;False|2021-12-02T13:13:08.9393484+03:00;False|2021-12-02T13:08:06.9873996+03:00;False|2021-12-02T13:05:59.4684595+03:00;False|2021-12-02T13:02:20.6845372+03:00;False|2021-12-02T12:13:57.9123580+03:00;False|2021-12-02T12:08:42.8434219+03:00;False|2021-12-02T11:45:46.1034263+03:00;False|2021-12-02T11:28:36.0320954+03:00;False|2021-12-02T11:24:11.3402448+03:00;False|2021-12-02T11:21:27.4936316+03:00;True|2021-12-01T12:09:18.0432167+03:00;True|2021-11-19T16:56:59.9685047+03:00;True|2021-11-19T16:24:19.5805586+03:00;True|2021-11-19T16:16:46.7846104+03:00;False|2021-11-19T16:15:17.5981858+03:00;True|2021-11-19T16:08:56.2972178+03:00;True|2021-11-19T16:01:03.6139992+03:00;True|2021-11-19T15:11:42.0869536+03:00;True|2021-11-19T13:43:45.3194905+03:00;True|2021-11-16T11:49:04.3260365+03:00;True|2021-11-16T10:55:49.8640562+03:00;True|2021-11-02T14:32:04.1725800+03:00;True|2021-10-28T13:13:23.9356036+03:00;</History>
+  </PropertyGroup>
+  <ItemGroup>
+    <EFMigrations Include="DataAccess.Concrete.Context.MovieStoreContext">
+      <Value>Data Source=tcp:movieprojectdbserver.database.windows.net,1433%3bInitial Catalog=MovieProject_db%3bUser Id=samil%40movieprojectdbserver%3bPassword=Ad15091978</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>

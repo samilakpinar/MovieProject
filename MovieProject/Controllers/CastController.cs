@@ -41,7 +41,7 @@ namespace MovieProject.Controllers
             var httpContext = HttpContext.Request.Path.Value;
 
             //get data from cache
-            var jsonString = _cacheService.GetDataFromCache(httpContext).Result;
+            var jsonString = await _cacheService.GetDataFromCache(httpContext);
 
             if (jsonString != null)
             {
@@ -80,7 +80,7 @@ namespace MovieProject.Controllers
 
             var httpContext = HttpContext.Request.Path.Value;
 
-            var jsonString = _cacheService.GetDataFromCache(httpContext).Result;
+            var jsonString = await _cacheService.GetDataFromCache(httpContext);
 
             if (jsonString != null)
             {

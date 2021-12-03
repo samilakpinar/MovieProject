@@ -1,0 +1,10 @@
+2021-11-19 13:29:13.2342   10  INFO MovieProject.Controllers.AuthenticationController Password reset 
+2021-11-19 13:34:33.5467    4  INFO MovieProject.Controllers.AuthenticationController Password reset 
+2021-11-19 14:56:02.7260   19  INFO MovieProject.Controllers.AuthenticationController Password reset 
+2021-11-19 17:15:12.1405    9  INFO Business.Concrete.AuthenticationManager reset password email sorgulama 
+2021-11-19 17:15:12.6488    9  INFO Business.Concrete.AuthenticationManager email veritabanı sorgualama:samilakpinar7@gmail.com 
+2021-11-19 17:15:12.6488    9  INFO Business.Concrete.AuthenticationManager md5 hashleme giriş 
+2021-11-19 17:15:12.6488    9  INFO Business.Concrete.AuthenticationManager System.Net.Mail.SmtpClient smtp neweleme yapılması 
+2021-11-19 17:15:12.6819    9  INFO Business.Concrete.AuthenticationManager MailMessage new işlemi 
+2021-11-19 17:15:14.9262    9  INFO Business.Concrete.AuthenticationManager fonkaiyon çıkışı 
+2021-11-19 17:15:14.9262    9  INFO MovieProject.Controllers.AuthenticationController Password reset 

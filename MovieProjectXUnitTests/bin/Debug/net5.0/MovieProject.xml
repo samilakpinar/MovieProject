@@ -31,6 +31,13 @@
             <param name="token"></param>
             <returns>String session value</returns>
         </member>
+        <member name="M:MovieProject.Controllers.AuthenticationController.CreateSessionWithLogin(Business.Models.SessionWithLogin)">
+            <summary>
+            Create session with login
+            </summary>
+            <param name="sessionWithLogin"></param>
+            <returns></returns>
+        </member>
         <member name="M:MovieProject.Controllers.AuthenticationController.CheckEmail(Business.Models.ValidationEmail)">
             <summary>
             User validation email for create session
@@ -38,12 +45,34 @@
             <param name="validationEmail"></param>
             <returns>Boolean</returns>
         </member>
+        <member name="M:MovieProject.Controllers.AuthenticationController.ResetPassword(System.String)">
+            <summary>
+            reset password
+            </summary>
+            <param name="email"></param>
+            <returns>boolean</returns>
+        </member>
+        <member name="M:MovieProject.Controllers.AuthenticationController.AddNewPassword(Business.Models.ResetPassword)">
+            <summary>
+            update password
+            </summary>
+            <param name="reset"></param>
+            <returns>boolean</returns>
+        </member>
         <member name="M:MovieProject.Controllers.CastController.GetPopulerCast(System.Int32)">
             <summary>
             Get populer cast
             </summary>
             <param name="movieId"></param>
             <returns>List Cast</returns>
+        </member>
+        <member name="M:MovieProject.Controllers.CastController.GetCastById(System.Int32,System.Int32)">
+            <summary>
+            Get cast by id
+            </summary>
+            <param name="movieId"></param>
+            <param name="castId"></param>
+            <returns>Cast</returns>
         </member>
         <member name="M:MovieProject.Controllers.HomeController.GetMenu(System.String)">
             <summary>
@@ -59,7 +88,7 @@
             <param name="page"></param>
             <returns>List Movie</returns>
         </member>
-        <member name="M:MovieProject.Controllers.MoviesController.GetMovieById(System.String)">
+        <member name="M:MovieProject.Controllers.MoviesController.GetMovieById(System.Int32)">
             <summary>
             Get Movie By Id
             </summary>
@@ -81,6 +110,68 @@
             </summary>
             <param name="rateMovie"></param>
             <returns>string rate movie</returns>
+        </member>
+        <member name="M:MovieProject.Controllers.MoviesController.GetUpcomingMovie(System.Int32)">
+            <summary>
+            Upcoming movie
+            </summary>
+            <param name="page"></param>
+            <returns>List of movie</returns>
+        </member>
+        <member name="M:MovieProject.Controllers.MoviesController.GetMovieVideoById(System.Int32)">
+            <summary>
+            Get movie by id
+            </summary>
+            <param name="movieId"></param>
+            <returns></returns>
+        </member>
+        <member name="P:MovieProject.Result.ServiceResult`1.StatusCode">
+            <summary>
+            The HttpStatusCode
+            </summary>
+        </member>
+        <member name="P:MovieProject.Result.ServiceResult`1.Result">
+            <summary>
+            If no error returns true
+            </summary>
+        </member>
+        <member name="P:MovieProject.Result.ServiceResult`1.Data">
+            <summary>
+            Returns null if error occured
+            </summary>
+        </member>
+        <member name="P:MovieProject.Result.ServiceResult`1.ErrorMessage">
+            <summary>
+            The error message
+            </summary>
+        </member>
+        <member name="P:MovieProject.Result.ServiceResult`1.IsError">
+            <summary>
+            Returns true if any status code exist and this value
+            </summary>
+        </member>
+        <member name="M:MovieProject.Result.ServiceResult`1.#ctor(`0,System.Nullable{System.Int32},System.String)">
+            <summary>
+            ServiceResult constructor with parameters
+            </summary>
+            <param name="data">Any class</param>
+            <param name="statusCode">The httpStatusCode</param>
+            <param name="errorMessage">Error Message</param>
+        </member>
+        <member name="M:MovieProject.Result.ServiceResult`1.CreateError(System.Net.HttpStatusCode,System.String)">
+            <summary>
+            Factory methods - Create new instance of ServiceResult passing the http status code and error messages
+            </summary>
+            <param name="statusCode">The httpStatusCode</param>
+            <param name="errorMesagge">Error Message</param>
+            <returns></returns>
+        </member>
+        <member name="M:MovieProject.Result.ServiceResult`1.CreateResult(`0)">
+            <summary>
+            Factory method - Create new instance of ServiceResult with 200 OK status code and passed object
+            </summary>
+            <param name="data">Response Data</param>
+            <returns></returns>
         </member>
     </members>
 </doc>

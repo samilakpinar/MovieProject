@@ -189,16 +189,25 @@ namespace MovieProject.Controllers
         {
             var logger = NLog.LogManager.GetCurrentClassLogger();
 
-            var isSuccess = _authenticationService.ResetPassword(email);
+            try
+            {
+                var isSuccess = _authenticationService.ResetPassword(email);
 
-            if (!isSuccess)
+                if (!isSuccess)
+                {
+                    logger.Error("Password didn't reset");
+                    return ServiceResult<string>.CreateError(HttpStatusCode.BadRequest, "Password didn't reset");
+                }
+
+                logger.Info("Password reset");
+                return ServiceResult<string>.CreateResult(isSuccess.ToString());
+            }
+            catch (System.Exception ee)
             {
                 logger.Error("Password didn't reset");
-                return ServiceResult<string>.CreateError(HttpStatusCode.BadRequest, "Password didn't reset");
+                return ServiceResult<string>.CreateError(HttpStatusCode.BadRequest, ee.Message);
             }
 
-            logger.Info("Password reset");
-            return ServiceResult<string>.CreateResult(isSuccess.ToString());
         }
 
         /// <summary>

@@ -29,12 +29,14 @@ namespace MovieProject.Controllers
         [HttpGet("get-populer-movies/{page}")]
         public async Task<ServiceResult<List<Movie>>> GetMovies(int page)
         {
+
+
             List<Movie> listMovie;
 
             var httpContext = HttpContext.Request.Path.Value;
 
             //get data from cache
-            var jsonString = _cacheService.GetDataFromCache(httpContext).Result;
+            var jsonString = await _cacheService.GetDataFromCache(httpContext);
 
 
             if (jsonString != null)

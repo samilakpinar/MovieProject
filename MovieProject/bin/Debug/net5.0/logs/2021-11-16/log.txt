@@ -1,0 +1,6 @@
+2021-11-16 10:47:38.0734    4  INFO MovieProject.Controllers.AuthenticationController User added 
+2021-11-16 10:48:42.6032   24  INFO MovieProject.Controllers.AuthenticationController User added 
+2021-11-16 10:49:12.5246   31  INFO MovieProject.Controllers.AuthenticationController User added 
+2021-11-16 11:46:48.7815   11  INFO MovieProject.Controllers.AuthenticationController User added 
+2021-11-16 13:56:29.8436   17  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-11-16 13:56:30.1712    5  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 

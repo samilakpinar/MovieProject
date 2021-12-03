@@ -8,8 +8,12 @@ using Microsoft.Extensions.DependencyInjection;
 using MimeKit;
 using MimeKit.Text;
 using Newtonsoft.Json;
+using SendGrid;
+using SendGrid.Helpers.Mail;
 using System;
+using System.Net;
 using System.Net.Http;
+using System.Net.Mail;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -142,48 +146,14 @@ namespace Business.Concrete
 
         public bool ValidationEmail(ValidationEmail validationEmail)
         {
-
-            if (validationEmail.Email.Length == 0 || validationEmail.Token.Length == 0)
-            {
-                return false;
-            }
-
-            //create email message
-            var email = new MimeMessage();
-            email.From.Add(MailboxAddress.Parse("samilakpinar8@gmail.com"));
-            email.To.Add(MailboxAddress.Parse(validationEmail.Email));
-            email.Subject = "Validation Email";
-
-
-            var url = "https://www.themoviedb.org/authenticate/" + validationEmail.Token + "/allow";
-
-            email.Body = new TextPart(TextFormat.Html) { Text = "Validation Email: " + url + " " };
-
-            //send email
-            using var smtp = new SmtpClient();
-            smtp.Connect("smtp.gmail.com", 587, false);
-
-
-            try
-            {
-                smtp.Authenticate("samilakpinar8@gmail.com", "Youtube1");
-                smtp.Send(email);
-                smtp.Disconnect(true);
-            }
-            catch (Exception ex)
-            {
-
-                Console.WriteLine("message gitmedi " + ex.Message);
-                return false;
-            }
-
             return true;
         }
 
         public bool ResetPassword(string email)
         {
-            //checkEmail
-            if (email == null)
+            var logger = NLog.LogManager.GetCurrentClassLogger();
+
+            if (email == "" || email == null)
             {
                 return false;
             }
@@ -195,43 +165,168 @@ namespace Business.Concrete
                 return false;
             }
 
+            //email md5 hash function
+            var verify = MD5Hash(email);
 
+
+
+
+            //send grid eklenmesi gereklidir.
+            var client = new SendGridClient("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");
+            var msg = new SendGridMessage()
+            {
+                From = new EmailAddress("samil5807@hotmail.com", "Movie-Trailer"),
+                Subject = "Reset Password",
+                HtmlContent = "<strong>Dear " + findUser.Name + ",</strong><br><p>Please enter the link for reset password: https://trailer-movies.netlify.app/reset/" + email + "/" + verify +"</p>"
+                
+            };
+            msg.AddTo(new EmailAddress(email, "Test user"));
+            var response = client.SendEmailAsync(msg);
+
+
+            return true;
+
+
+            /*
+
+            logger.Info("reset password email sorgulama");
+
+            
+
+            
+
+            logger.Info("email veritabanı sorgualama:" + findUser.Email);
+
+
+            var fromAddress = new MailAddress("samilakpinar8@gmail.com");
+            var fromPassword = "Youtube1";
+            var toAddress = new MailAddress(email);
+
+            logger.Info("md5 hashleme giriş");
+            //email md5 hash function
+            var verify = MD5Hash(email);
+
+            string subject = "Reset Password";
+            var url = "https://trailer-movies.netlify.app/reset/" + email + "/" + verify;
+
+            string body = "Reset Password:" + url; // new TextPart(TextFormat.Html) { Text = "Reset Password: " + url };
+
+            logger.Info("System.Net.Mail.SmtpClient smtp neweleme yapılması");
+
+            System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+
+            };
+
+            logger.Info("MailMessage new işlemi");
+
+            using (var message = new MailMessage(fromAddress, toAddress)
+            {
+                Subject = subject,
+                Body = body
+            })
+            {
+                logger.Info("aa");
+                smtp.Send(message);
+            }
+
+
+
+
+            logger.Info("fonkaiyon çıkışı");
+            return true;
+
+            */
+        }
+
+        
+
+        /*
+        public bool ResetPassword(string email)
+        {
+            var logger = NLog.LogManager.GetCurrentClassLogger();
+
+            //checkEmail
+            if (email == null)
+            {
+                return false;
+            }
+
+            var findUser = _userService.GetByEmail(email);
+            logger.Info("veritabanı kullanıcı email adresi" + findUser.Email);
+
+            if (findUser == null)
+            {
+                return false;
+            }
+
+            logger.Info("email gönderi oluşturuluyor.");
+            
             //create email message
             var emailSend = new MimeMessage();
             emailSend.From.Add(MailboxAddress.Parse("samilakpinar8@gmail.com"));
             emailSend.To.Add(MailboxAddress.Parse(email));
             emailSend.Subject = "Reset Password";
 
+            logger.Info("email oluşturuldu. md5 oluşturuluyor.");
+
             //email md5 hash function
             var verify = MD5Hash(email);
 
-            var url = "http://localhost:4200/reset/" + email + "/" + verify;
+            logger.Info("md5 oluşturuldu. url oluşturluyor");
+
+            var url = "https://trailer-movies.netlify.app/reset/" + email + "/" + verify;
+
+            logger.Info("url oluşturuldu");
 
             emailSend.Body = new TextPart(TextFormat.Html) { Text = "Reset Password: " + url };
+
+            logger.Info("email body oluşturuldu, SmtpClient() new leme oluşturuluyor.");
 
             //send email
             using var smtp = new SmtpClient();
             smtp.Connect("smtp.gmail.com", 587, false);
 
+            logger.Info("smtp connect edildi");
+
 
             try
             {
+                logger.Info("try içerisine girdi");
+
                 smtp.Authenticate("samilakpinar8@gmail.com", "Youtube1");
+
+                logger.Info("Authenticaion edildi");
+
                 smtp.Send(emailSend);
+
+                logger.Info("smtp.send edildi");
+
                 smtp.Disconnect(true);
+
+                logger.Info("mail gönderildi");
             }
             catch (Exception ex)
             {
+                
+                logger.Error("email gönderilemedi ", ex.Message);
 
-                Console.WriteLine("message gitmedi " + ex.Message);
                 return false;
             }
 
+            logger.Info("fonksiyon çıkışı.");
 
             return true;
 
 
         }
+        */
 
         //md5 for reset password
         public static string MD5Hash(string text)

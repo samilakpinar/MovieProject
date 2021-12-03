@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="MovieProject20211028113058" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\samil\.akpinar\\source\\repos\\MovieProject\\MovieProject\\obj\\Release\\net5\.0\\PubTmp\\Out\\$" />
+  </parameter>
+  <parameter name="DataAccess.Concrete.Context.MovieStoreContext" description="" value="Data Source=tcp:movieprojectdbserver.database.windows.net,1433;Initial Catalog=MovieProject_db;User Id=samil@movieprojectdbserver;Password=Ad15091978" tags="dbfullsql">
+    <parameterEntry kind="ProviderPath" scope="dbfullsql" match="^C:\\Users\\samil\.akpinar\\source\\repos\\MovieProject\\MovieProject\\obj\\Release\\net5\.0\\PubTmp\\EFSQLScripts\\DataAccess\.Concrete\.Context\.MovieStoreContext\.sql$" />
+  </parameter>
+</parameters>
