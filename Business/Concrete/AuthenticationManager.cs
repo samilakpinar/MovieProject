@@ -2,18 +2,12 @@
 using Business.Models;
 using Business.Responses;
 using Entities.Concrete;
-using MailKit.Net.Smtp;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using MimeKit;
-using MimeKit.Text;
 using Newtonsoft.Json;
 using SendGrid;
 using SendGrid.Helpers.Mail;
-using System;
-using System.Net;
 using System.Net.Http;
-using System.Net.Mail;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,8 +16,8 @@ namespace Business.Concrete
 {
     public class AuthenticationManager : IAuthenticationService
     {
-        // Appsettings olayının IConfiguration ile çözümüdür
-        HttpClient httpClient = new HttpClient();
+    
+        private static HttpClient httpClient = new HttpClient();
         private readonly IConfiguration config;
         private readonly IUserService _userService;
 
@@ -35,7 +29,7 @@ namespace Business.Concrete
 
         public bool Register(Users user)
         {
-            if ( user.Password.Length < 8 )
+            if (user.Password.Length < 8)
             {
                 return false;
             }
@@ -121,8 +115,7 @@ namespace Business.Concrete
 
         public async Task<SessionWithLoginResponse> CreateSessionWithLogin(SessionWithLogin sessionLogin)
         {
-            //session için url linkleri için geliştirme yapılamsı sağlanacak.
-
+            
             string httpUrl = config.GetSection("AppSettings").GetSection("Url").Value;
             string apiKey = config.GetSection("AppSettings").GetSection("ApiKey").Value;
 
@@ -141,12 +134,6 @@ namespace Business.Concrete
 
             return result;
 
-        }
-
-
-        public bool ValidationEmail(ValidationEmail validationEmail)
-        {
-            return true;
         }
 
         public bool ResetPassword(string email)
@@ -171,14 +158,14 @@ namespace Business.Concrete
 
 
 
-            //send grid eklenmesi gereklidir.
+            //send Grid structre for azure.
             var client = new SendGridClient("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");
             var msg = new SendGridMessage()
             {
                 From = new EmailAddress("samil5807@hotmail.com", "Movie-Trailer"),
                 Subject = "Reset Password",
-                HtmlContent = "<strong>Dear " + findUser.Name + ",</strong><br><p>Please enter the link for reset password: https://trailer-movies.netlify.app/reset/" + email + "/" + verify +"</p>"
-                
+                HtmlContent = "<strong>Dear " + findUser.Name + ",</strong><br><p>Please enter the link for reset password: https://trailer-movies.netlify.app/reset/" + email + "/" + verify + "</p>"
+
             };
             msg.AddTo(new EmailAddress(email, "Test user"));
             var response = client.SendEmailAsync(msg);
@@ -186,15 +173,8 @@ namespace Business.Concrete
 
             return true;
 
-
+            //send mail for localhost
             /*
-
-            logger.Info("reset password email sorgulama");
-
-            
-
-            
-
             logger.Info("email veritabanı sorgualama:" + findUser.Email);
 
 
@@ -238,95 +218,14 @@ namespace Business.Concrete
 
 
 
-
             logger.Info("fonkaiyon çıkışı");
             return true;
 
             */
         }
 
-        
-
-        /*
-        public bool ResetPassword(string email)
-        {
-            var logger = NLog.LogManager.GetCurrentClassLogger();
-
-            //checkEmail
-            if (email == null)
-            {
-                return false;
-            }
-
-            var findUser = _userService.GetByEmail(email);
-            logger.Info("veritabanı kullanıcı email adresi" + findUser.Email);
-
-            if (findUser == null)
-            {
-                return false;
-            }
-
-            logger.Info("email gönderi oluşturuluyor.");
-            
-            //create email message
-            var emailSend = new MimeMessage();
-            emailSend.From.Add(MailboxAddress.Parse("samilakpinar8@gmail.com"));
-            emailSend.To.Add(MailboxAddress.Parse(email));
-            emailSend.Subject = "Reset Password";
-
-            logger.Info("email oluşturuldu. md5 oluşturuluyor.");
-
-            //email md5 hash function
-            var verify = MD5Hash(email);
-
-            logger.Info("md5 oluşturuldu. url oluşturluyor");
-
-            var url = "https://trailer-movies.netlify.app/reset/" + email + "/" + verify;
-
-            logger.Info("url oluşturuldu");
-
-            emailSend.Body = new TextPart(TextFormat.Html) { Text = "Reset Password: " + url };
-
-            logger.Info("email body oluşturuldu, SmtpClient() new leme oluşturuluyor.");
-
-            //send email
-            using var smtp = new SmtpClient();
-            smtp.Connect("smtp.gmail.com", 587, false);
-
-            logger.Info("smtp connect edildi");
 
 
-            try
-            {
-                logger.Info("try içerisine girdi");
-
-                smtp.Authenticate("samilakpinar8@gmail.com", "Youtube1");
-
-                logger.Info("Authenticaion edildi");
-
-                smtp.Send(emailSend);
-
-                logger.Info("smtp.send edildi");
-
-                smtp.Disconnect(true);
-
-                logger.Info("mail gönderildi");
-            }
-            catch (Exception ex)
-            {
-                
-                logger.Error("email gönderilemedi ", ex.Message);
-
-                return false;
-            }
-
-            logger.Info("fonksiyon çıkışı.");
-
-            return true;
-
-
-        }
-        */
 
         //md5 for reset password
         public static string MD5Hash(string text)
@@ -389,7 +288,6 @@ namespace Business.Concrete
             }
 
         }
-
 
     }
 }

@@ -85,7 +85,7 @@ namespace MovieProject.Controllers
             }
             else
             {
-                movie = await _movieService.GetMovieById(movie_id.ToString());
+                movie = await _movieService.GetMovieById(movie_id);
 
                 if (movie == null)
                 {

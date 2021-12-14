@@ -1,0 +1,1 @@
+2021-12-09 09:54:40.8422   32 ERROR MovieProject.Controllers.AuthenticationController User didn't find  

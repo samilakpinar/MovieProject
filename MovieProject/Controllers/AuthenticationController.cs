@@ -153,31 +153,7 @@ namespace MovieProject.Controllers
             return ServiceResult<SessionWithLoginResponse>.CreateResult(result);
         }
 
-        /// <summary>
-        /// User validation email for create session
-        /// </summary>
-        /// <param name="validationEmail"></param>
-        /// <returns>Boolean</returns>
-        [AllowAnonymous]
-        [HttpPost("validation-email")]
-        public ServiceResult<string> CheckEmail([FromBody] ValidationEmail validationEmail)
-        {
-            var logger = NLog.LogManager.GetCurrentClassLogger();
-
-            var isSuccess = _authenticationService.ValidationEmail(validationEmail);
-
-            if (!isSuccess)
-            {
-                logger.Error("Email didn't send to user");
-                return ServiceResult<string>.CreateError(HttpStatusCode.BadRequest, "Email didn't send to user");
-            }
-
-            logger.Info("Email sent to user");
-            return ServiceResult<string>.CreateResult(isSuccess.ToString());
-
-        }
-
-
+        
         /// <summary>
         /// reset password
         /// </summary>

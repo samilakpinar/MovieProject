@@ -2,7 +2,6 @@
 using Entities.Concrete;
 using System.Collections.Generic;
 
-//Repository tasarım deseni sadece veri erişimde kullanılıyor.
 
 namespace Business.Abstract
 {

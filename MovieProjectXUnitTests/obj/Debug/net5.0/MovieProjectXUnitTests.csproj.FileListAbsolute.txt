@@ -174,3 +174,5 @@ C:\Users\samil.akpinar\source\repos\MovieProject\MovieProjectXUnitTests\bin\Debu
 C:\Users\samil.akpinar\source\repos\MovieProject\MovieProjectXUnitTests\bin\Debug\net5.0\Microsoft.Identity.Web.UI.Views.dll
 C:\Users\samil.akpinar\source\repos\MovieProject\MovieProjectXUnitTests\bin\Debug\net5.0\Microsoft.Identity.Web.UI.dll
 C:\Users\samil.akpinar\source\repos\MovieProject\MovieProjectXUnitTests\bin\Debug\net5.0\StackExchange.Redis.StrongName.dll
+C:\Users\samil.akpinar\source\repos\MovieProject\MovieProjectXUnitTests\bin\Debug\net5.0\SendGrid.dll
+C:\Users\samil.akpinar\source\repos\MovieProject\MovieProjectXUnitTests\bin\Debug\net5.0\StarkbankEcdsa.dll

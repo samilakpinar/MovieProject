@@ -23,6 +23,10 @@ namespace Business.Concrete
 
         public async Task<List<Movie>> GetAllPopulerMovies(int page)
         {
+            if (page <= 0)
+            {
+                return null;
+            }
 
             var url = $"{_appSettings.Url}movie/popular?api_key={_appSettings.ApiKey}&language=en-US&page={page}";
             var response = await httpClient.GetAsync(url);
@@ -31,8 +35,13 @@ namespace Business.Concrete
             return movies.Results;
         }
 
-        public async Task<Movie> GetMovieById(string movie_id)
+        public async Task<Movie> GetMovieById(int movie_id)
         {
+            if (movie_id < 0)
+            {
+                return null;
+            }
+
             var url = $"{_appSettings.Url}movie/{movie_id}?api_key={_appSettings.ApiKey}";
             var response = await httpClient.GetAsync(url);
             var jsonAsString = await response.Content.ReadAsStringAsync();
@@ -43,6 +52,11 @@ namespace Business.Concrete
 
         public async Task<string> GetRateMovie(int movieId, string sessionId, string guestId)
         {
+            if (movieId < 0 || sessionId.Length == 0)
+            {
+                return null;
+            }
+
             var url = $"{_appSettings.Url}movie/{movieId}/account_states?api_key={_appSettings.ApiKey}&session_id={sessionId}&guest_session_id={guestId}";
             var response = await httpClient.GetAsync(url);
 
@@ -53,6 +67,10 @@ namespace Business.Concrete
 
         public async Task<string> RateMovie(RateMovie rateMovie)
         {
+            if (rateMovie.MovieId < 0 || (rateMovie.value <= 0 || rateMovie.value > 10))
+            {
+                return null;
+            }
             
             var url = $"{_appSettings.Url}movie/{rateMovie.MovieId}/rating?api_key={_appSettings.ApiKey}&guest_session_id={rateMovie.GuestId}&session_id={rateMovie.SessionId}";
             var json = System.Text.Json.JsonSerializer.Serialize(rateMovie);
@@ -63,6 +81,11 @@ namespace Business.Concrete
 
         public async Task<List<Movie>> GetUpcomingMovie(int page)
         {
+            if (page <= 0)
+            {
+                return null;
+            }
+
             var url = $"{_appSettings.Url}movie/upcoming?api_key={_appSettings.ApiKey}&language=en-US&page={page}";
             var response = await httpClient.GetAsync(url);
             var jsonAsString = await response.Content.ReadAsStringAsync();
@@ -78,6 +101,10 @@ namespace Business.Concrete
 
         public async Task<List<MovieVideo>> GetMovieVideoById(int movieId)
         {
+            if (movieId < 0)
+            {
+                return null;
+            }
 
             var url = $"{_appSettings.Url}movie/{movieId}/videos?api_key={_appSettings.ApiKey}";
             var response = await httpClient.GetAsync(url);
@@ -90,7 +117,6 @@ namespace Business.Concrete
             }
 
             return movies.Results;
-
 
 
         }

@@ -10,7 +10,7 @@ namespace Business.Concrete
 {
     public class UserManager : IUserService
     {
-        private readonly IUserRepository _userRepository; //Veri erişim katmanını kullanırız. Özellik ile userDalı kullanıyoruz.
+        private readonly IUserRepository _userRepository; 
 
         public UserManager(IUserRepository userRepository)
         {
