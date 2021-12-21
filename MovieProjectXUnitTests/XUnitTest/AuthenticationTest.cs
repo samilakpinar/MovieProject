@@ -80,10 +80,12 @@ namespace MovieProjectXUnitTests.ControllersTest
 
             //Act
             var result = authenticationManager.CreateSession(tokenValue).Result;
+            var session = new Mock<IAuthenticationService>();
+            session.Setup(s => s.CreateSession(It.IsAny<CreateSession>())); //take CreateSession class.
 
+                          
             //Assert
             Assert.Null(result);
-
         }
 
     }

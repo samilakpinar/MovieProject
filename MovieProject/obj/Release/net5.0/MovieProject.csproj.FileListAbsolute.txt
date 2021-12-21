@@ -92,3 +92,4 @@ C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\obj\Release\net5.0
 C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\obj\Release\net5.0\MovieProject.genruntimeconfig.cache
 C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\bin\Release\net5.0\SendGrid.dll
 C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\bin\Release\net5.0\StarkbankEcdsa.dll
+C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\bin\Release\net5.0\libman.json

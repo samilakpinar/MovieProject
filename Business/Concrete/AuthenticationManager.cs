@@ -7,7 +7,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using SendGrid;
 using SendGrid.Helpers.Mail;
+using System.Net;
 using System.Net.Http;
+using System.Net.Mail;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -153,11 +155,11 @@ namespace Business.Concrete
             }
 
             //email md5 hash function
-            var verify = MD5Hash(email);
+            //var verify = MD5Hash(email);
 
 
 
-
+            /*
             //send Grid structre for azure.
             var client = new SendGridClient("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");
             var msg = new SendGridMessage()
@@ -172,9 +174,10 @@ namespace Business.Concrete
 
 
             return true;
+            */
 
             //send mail for localhost
-            /*
+            
             logger.Info("email veritabanı sorgualama:" + findUser.Email);
 
 
@@ -221,7 +224,7 @@ namespace Business.Concrete
             logger.Info("fonkaiyon çıkışı");
             return true;
 
-            */
+            
         }
 
 

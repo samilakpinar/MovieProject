@@ -93,3 +93,4 @@ C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\bin\Debug\net5.0\H
 C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\bin\Debug\net5.0\SendGrid.dll
 C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\bin\Debug\net5.0\StarkbankEcdsa.dll
+C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\bin\Debug\net5.0\libman.json

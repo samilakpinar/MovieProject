@@ -1,0 +1,2 @@
+2021-12-16 11:41:48.5055   11  INFO MovieProject.Controllers.AuthenticationController User added 
+2021-12-16 11:42:27.5733   22  INFO MovieProject.Controllers.AuthenticationController User token added, User info: ali@gmail.com 

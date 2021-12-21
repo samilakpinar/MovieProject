@@ -1,0 +1,6 @@
+2021-12-17 10:01:58.4618   10 ERROR MovieProject.Controllers.AuthenticationController User didn't add 
+2021-12-17 10:02:17.3643   12 ERROR MovieProject.Controllers.AuthenticationController User didn't add 
+2021-12-17 14:38:31.2389   16 ERROR MovieProject.Controllers.AuthenticationController User didn't find  
+2021-12-17 14:38:47.4055   15 ERROR MovieProject.Controllers.AuthenticationController User didn't find  
+2021-12-17 14:39:10.0364   20 ERROR MovieProject.Controllers.AuthenticationController User didn't find  
+2021-12-17 14:40:07.0016   26 ERROR MovieProject.Controllers.AuthenticationController User didn't add 

@@ -59,5 +59,23 @@ namespace MovieProject.Controllers
 
             }
         }
+
+        [AllowAnonymous]
+        [HttpPost("add-menu")]
+        public ServiceResult<object> AddMenu(Menu menu)
+        {
+            var result = _menuService.Add(menu);
+            
+            if (result.Status)
+            {
+                return ServiceResult<object>.CreateResult(null);
+            }
+            else
+            {
+                return ServiceResult<object>.CreateError(HttpStatusCode.BadRequest, result.ErrorMessage);
+            }
+            
+
+        }
     }
 }

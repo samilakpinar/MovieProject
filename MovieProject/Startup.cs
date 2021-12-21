@@ -27,6 +27,9 @@ namespace MovieProject
 {
     public class Startup
     {
+
+        readonly string ApiCorsPolicy = "_apiCorsPolicy";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -112,13 +115,31 @@ namespace MovieProject
                 });
 
 
-
+            /*
             services.AddControllers();
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowOrigin",
                     builder => builder.WithOrigins("http://localhost:4200"));
             });
+            */
+
+            services.AddCors(options => options.AddPolicy(ApiCorsPolicy, builder => {
+                builder.WithOrigins(
+                    "http://localhost:4200",
+                    "https://www.trailer-movie.somee.com/api/v1/temp/get-populer-movies/3",
+                    "https://trailer-movies.netlify.com",
+                    "https://trailer-movies.netlify.app",
+                    "http://trailer-movie.somee.com"
+                    ).AllowAnyOrigin();
+                //.AllowAnyMethod()
+                //.AllowAnyHeader()
+                //.AllowCredentials();
+            }));
+
+
+
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "MovieProject", Version = "v1" });
@@ -169,12 +190,16 @@ namespace MovieProject
 
 
             app.UseRouting();
+            
 
             app.UseCors(x => x
             .AllowAnyMethod()
             .AllowAnyHeader()
             .SetIsOriginAllowed(origin => true)
             .AllowCredentials());
+            
+
+            app.UseCors(ApiCorsPolicy);
 
             app.UseAuthentication(); //user login
 
