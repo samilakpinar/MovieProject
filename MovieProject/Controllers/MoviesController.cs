@@ -1,4 +1,5 @@
-﻿using Business.Abstract;
+﻿using BenchmarkDotNet.Attributes;
+using Business.Abstract;
 using Business.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -21,7 +22,7 @@ namespace MovieProject.Controllers
         private readonly ICacheService _cacheService;
         private static Logger logger = LogManager.GetCurrentClassLogger();
         
-
+        
         public MoviesController(IMovieService movieService, ICacheService cacheService)
         {
             _movieService = movieService;

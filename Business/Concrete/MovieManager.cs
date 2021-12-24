@@ -1,4 +1,5 @@
-﻿using Business.Abstract;
+﻿using BenchmarkDotNet.Attributes;
+using Business.Abstract;
 using Business.Models;
 using Business.Responses;
 using Microsoft.Extensions.Options;
@@ -21,6 +22,7 @@ namespace Business.Concrete
             _appSettings = appSettings.Value;
         }
 
+        
         public async Task<List<Movie>> GetAllPopulerMovies(int page)
         {
             if (page <= 0)
@@ -49,7 +51,7 @@ namespace Business.Concrete
             return movie;
         }
 
-
+        
         public async Task<string> GetRateMovie(int movieId, string sessionId, string guestId)
         {
             if (movieId < 0 || sessionId.Length == 0)

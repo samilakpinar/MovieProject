@@ -15,3 +15,16 @@ C:\Users\samil.akpinar\source\repos\MovieProject\Business\obj\Release\net5.0\Bus
 C:\Users\samil.akpinar\source\repos\MovieProject\Business\obj\Release\net5.0\Business.dll
 C:\Users\samil.akpinar\source\repos\MovieProject\Business\obj\Release\net5.0\ref\Business.dll
 C:\Users\samil.akpinar\source\repos\MovieProject\Business\obj\Release\net5.0\Business.pdb
+C:\Users\samil.akpinar\source\repos\MovieProject\Business\bin\Release\net5.0\x86\KernelTraceControl.dll
+C:\Users\samil.akpinar\source\repos\MovieProject\Business\bin\Release\net5.0\x86\KernelTraceControl.Win61.dll
+C:\Users\samil.akpinar\source\repos\MovieProject\Business\bin\Release\net5.0\x86\msdia140.dll
+C:\Users\samil.akpinar\source\repos\MovieProject\Business\bin\Release\net5.0\x86\msvcp140.dll
+C:\Users\samil.akpinar\source\repos\MovieProject\Business\bin\Release\net5.0\x86\vcruntime140.dll
+C:\Users\samil.akpinar\source\repos\MovieProject\Business\bin\Release\net5.0\amd64\KernelTraceControl.dll
+C:\Users\samil.akpinar\source\repos\MovieProject\Business\bin\Release\net5.0\amd64\msdia140.dll
+C:\Users\samil.akpinar\source\repos\MovieProject\Business\bin\Release\net5.0\amd64\msvcp140.dll
+C:\Users\samil.akpinar\source\repos\MovieProject\Business\bin\Release\net5.0\amd64\vcruntime140.dll
+C:\Users\samil.akpinar\source\repos\MovieProject\Business\bin\Release\net5.0\amd64\vcruntime140_1.dll
+C:\Users\samil.akpinar\source\repos\MovieProject\Business\bin\Release\net5.0\TraceReloggerLib.dll
+C:\Users\samil.akpinar\source\repos\MovieProject\Business\bin\Release\net5.0\Dia2Lib.dll
+C:\Users\samil.akpinar\source\repos\MovieProject\Business\bin\Release\net5.0\OSExtensions.dll

@@ -1,11 +1,8 @@
+using BenchmarkDotNet.Running;
+using Business.Concrete;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using MovieProject.Controllers;
 
 namespace MovieProject
 {
@@ -13,6 +10,7 @@ namespace MovieProject
     {
         public static void Main(string[] args)
         {
+            //var summary = BenchmarkRunner.Run<MovieUrlPerformanceTest>();
             CreateHostBuilder(args).Build().Run();
         }
 

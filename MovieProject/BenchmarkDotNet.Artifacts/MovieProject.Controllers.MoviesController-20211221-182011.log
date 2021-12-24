@@ -1,0 +1,8 @@
+// Validating benchmarks:
+No exporters defined, results will not be persisted.
+// ***** BenchmarkRunner: Start   *****
+// ***** Found 1 benchmark(s) in total *****
+// ***** Building 1 exe(s) in Parallel: Start   *****
+// start dotnet restore  /p:UseSharedCompilation=false /p:BuildInParallel=false /m:1 /p:Deterministic=true /p:Optimize=true in C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\bin\Debug\net5.0\32ad079c-fc14-425a-9de4-23f335d8cf0d
+// command took 6,14s and exited with 0
+// start dotnet build -c Release  --no-restore /p:UseSharedCompilation=false /p:BuildInParallel=false /m:1 /p:Deterministic=true /p:Optimize=true in C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\bin\Debug\net5.0\32ad079c-fc14-425a-9de4-23f335d8cf0d
