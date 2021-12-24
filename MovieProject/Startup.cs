@@ -17,6 +17,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using MovieProject.Caching;
 using MovieProject.Extensions;
+using MovieProject.MapperProfiles;
 using NLog;
 using System;
 using System.IO;
@@ -155,6 +156,9 @@ namespace MovieProject
             {
                 option.Configuration = Configuration["CacheConnection"];
             });
+
+            //Imapper interface for dependency injection 
+            services.AddAutoMapper(typeof(UserProfile));
 
         }
 

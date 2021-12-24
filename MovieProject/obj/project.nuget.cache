@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "IPQyW321dWwFQtYC4Guxkvdq9DhDQrEnleY1I1p++qQUJxWEJnfO/iHqq3zDzBvKRQQbN6eVKkYkzlBq6zzmPA==",
+  "dgSpecHash": "Cv9n88YhUanG7bs7Cwmn/vrxIaA4pZp69/Xt8nPqQrGW1KSeg/AkQfaNfMSCOZRuxwYPgE4ZUXtvib52DIniig==",
   "success": true,
   "projectFilePath": "C:\\Users\\samil.akpinar\\source\\repos\\MovieProject\\MovieProject\\MovieProject.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\samil.akpinar\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
+    "C:\\Users\\samil.akpinar\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
     "C:\\Users\\samil.akpinar\\.nuget\\packages\\azure.core\\1.4.1\\azure.core.1.4.1.nupkg.sha512",
     "C:\\Users\\samil.akpinar\\.nuget\\packages\\azure.identity\\1.2.3\\azure.identity.1.2.3.nupkg.sha512",
     "C:\\Users\\samil.akpinar\\.nuget\\packages\\azure.security.keyvault.certificates\\4.1.0\\azure.security.keyvault.certificates.4.1.0.nupkg.sha512",
@@ -155,7 +157,7 @@
     "C:\\Users\\samil.akpinar\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
     "C:\\Users\\samil.akpinar\\.nuget\\packages\\system.objectmodel\\4.3.0\\system.objectmodel.4.3.0.nupkg.sha512",
     "C:\\Users\\samil.akpinar\\.nuget\\packages\\system.reflection\\4.3.0\\system.reflection.4.3.0.nupkg.sha512",
-    "C:\\Users\\samil.akpinar\\.nuget\\packages\\system.reflection.emit\\4.3.0\\system.reflection.emit.4.3.0.nupkg.sha512",
+    "C:\\Users\\samil.akpinar\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512",
     "C:\\Users\\samil.akpinar\\.nuget\\packages\\system.reflection.emit.ilgeneration\\4.3.0\\system.reflection.emit.ilgeneration.4.3.0.nupkg.sha512",
     "C:\\Users\\samil.akpinar\\.nuget\\packages\\system.reflection.emit.lightweight\\4.3.0\\system.reflection.emit.lightweight.4.3.0.nupkg.sha512",
     "C:\\Users\\samil.akpinar\\.nuget\\packages\\system.reflection.extensions\\4.3.0\\system.reflection.extensions.4.3.0.nupkg.sha512",

@@ -148,3 +148,5 @@ C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\bin\Debug\net5.0\t
 C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
 C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
 C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\bin\Debug\net5.0\runtimes\win\lib\netcoreapp2.0\System.Management.dll
+C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\bin\Debug\net5.0\AutoMapper.dll
+C:\Users\samil.akpinar\source\repos\MovieProject\MovieProject\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

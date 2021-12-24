@@ -1,4 +1,5 @@
-﻿using Business.Abstract;
+﻿using AutoMapper;
+using Business.Abstract;
 using Business.Models;
 using Business.Responses;
 using Entities.Concrete;
@@ -16,11 +17,13 @@ namespace MovieProject.Controllers
     {
         private readonly IAuthenticationService _authenticationService;
         private readonly IJwtAuthenticationService _jwtAuthenticationService;
+        private readonly IMapper _mapper;
 
-        public AuthenticationController(IAuthenticationService authenticationService, IJwtAuthenticationService jwtAuthenticationService)
+        public AuthenticationController(IAuthenticationService authenticationService, IJwtAuthenticationService jwtAuthenticationService, IMapper mapper)
         {
             _authenticationService = authenticationService;
             _jwtAuthenticationService = jwtAuthenticationService;
+            _mapper = mapper;
 
         }
 
@@ -56,16 +59,17 @@ namespace MovieProject.Controllers
         /// <returns>BaseResponse</returns>
         [AllowAnonymous]
         [HttpPost("authenticate")]
-        public ServiceResult<User> Authenticate([FromBody] User user)
+        public ServiceResult<UserInfoDto> Authenticate([FromBody] User user)
         {
             var logger = NLog.LogManager.GetCurrentClassLogger();
 
+            //findUser comes database, but some values are null. for this, we will use mapper.
             var findUser = _authenticationService.Authenticate(user);
 
             if (findUser == null)
             {
                 logger.Error("User didn't find ");
-                return ServiceResult<User>.CreateError(HttpStatusCode.BadRequest, "User didn't find");
+                return ServiceResult<UserInfoDto>.CreateError(HttpStatusCode.BadRequest, "User didn't find");
             }
 
             var token = _jwtAuthenticationService.Authenticate(findUser);
@@ -74,14 +78,18 @@ namespace MovieProject.Controllers
             {
 
                 logger.Error("Access Denied, User info: " + findUser.Email);
-                return ServiceResult<User>.CreateError(HttpStatusCode.BadRequest, "Access Denied");
+                return ServiceResult<UserInfoDto>.CreateError(HttpStatusCode.BadRequest, "Access Denied");
             }
 
             logger.Info("User token added, User info: " + findUser.Email);
 
             findUser.Token = token;
 
-            return ServiceResult<User>.CreateResult(findUser);
+            //AutoMapper 
+            var userInfo = _mapper.Map<UserInfoDto>(findUser);
+            
+
+            return ServiceResult<UserInfoDto>.CreateResult(userInfo);
 
         }
 

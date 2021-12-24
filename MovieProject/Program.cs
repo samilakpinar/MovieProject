@@ -1,8 +1,5 @@
-using BenchmarkDotNet.Running;
-using Business.Concrete;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
-using MovieProject.Controllers;
 
 namespace MovieProject
 {

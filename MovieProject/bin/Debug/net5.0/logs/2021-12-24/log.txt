@@ -1,0 +1,94 @@
+2021-12-24 16:11:12.1640    4  INFO MovieProject.Controllers.AuthenticationController User token added, User info: samil@gmail.com 
+2021-12-24 16:50:13.5759   17  INFO MovieProject.Controllers.AuthenticationController User token added, User info: samil@gmail.com 
+2021-12-24 16:52:49.1312   15  INFO MovieProject.Controllers.AuthenticationController User token added, User info: samil@gmail.com 
+2021-12-24 16:52:55.9653   14  INFO MovieProject.Controllers.AuthenticationController Movie token created 
+2021-12-24 16:52:56.4685   12  INFO MovieProject.Controllers.AuthenticationController Valid session value created 
+2021-12-24 16:52:56.8047    9  INFO MovieProject.Controllers.AuthenticationController Session created 
+2021-12-24 16:52:57.0985   15  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-12-24 16:52:57.1120   16  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-12-24 16:52:57.3895   25  INFO MovieProject.Controllers.MoviesController Upcoming movie sent 
+2021-12-24 16:56:34.7642   21  INFO MovieProject.Controllers.AuthenticationController User token added, User info: samil@gmail.com 
+2021-12-24 16:56:35.4418   24  INFO MovieProject.Controllers.AuthenticationController Movie token created 
+2021-12-24 16:56:35.8973   19  INFO MovieProject.Controllers.AuthenticationController Valid session value created 
+2021-12-24 16:56:36.2431   26  INFO MovieProject.Controllers.AuthenticationController Session created 
+2021-12-24 16:56:36.5330   19  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-12-24 16:56:36.7043   21  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-12-24 16:56:36.9373   19  INFO MovieProject.Controllers.MoviesController Upcoming movie sent 
+2021-12-24 16:58:36.3879   11  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-12-24 16:58:36.3949   18  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-12-24 16:58:36.9036   16  INFO MovieProject.Controllers.MoviesController Upcoming movie sent 
+2021-12-24 17:00:12.1130    4  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-12-24 17:00:12.1130   34  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-12-24 17:00:12.6886    5  INFO MovieProject.Controllers.MoviesController Upcoming movie sent 
+2021-12-24 17:00:43.3016   42  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-12-24 17:00:43.3155   42  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-12-24 17:00:43.6946    5  INFO MovieProject.Controllers.MoviesController Upcoming movie sent 
+2021-12-24 17:02:57.2401   32  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-12-24 17:02:57.2401   32  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-12-24 17:02:57.7985    5  INFO MovieProject.Controllers.MoviesController Upcoming movie sent 
+2021-12-24 17:06:24.2581    5  INFO MovieProject.Controllers.MoviesController Upcoming movie sent 
+2021-12-24 17:06:24.2581    4  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-12-24 17:06:24.4073    9  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-12-24 17:06:31.6619   12  INFO MovieProject.Controllers.MoviesController Movie list  sent 
+2021-12-24 17:06:39.5283   11  INFO MovieProject.Controllers.AuthenticationController User token added, User info: samil@gmail.com 
+2021-12-24 17:06:39.8831    4  INFO MovieProject.Controllers.AuthenticationController Movie token created 
+2021-12-24 17:06:40.2465    4  INFO MovieProject.Controllers.AuthenticationController Valid session value created 
+2021-12-24 17:06:40.5996   11  INFO MovieProject.Controllers.AuthenticationController Session created 
+2021-12-24 17:06:40.6393   11  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-12-24 17:06:40.6477    9  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-12-24 17:06:41.0712    5  INFO MovieProject.Controllers.MoviesController Upcoming movie sent 
+2021-12-24 17:07:47.9880   15  INFO MovieProject.Controllers.MoviesController Upcoming movie sent 
+2021-12-24 17:07:47.9880   12  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-12-24 17:07:48.1377   10  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-12-24 17:08:36.7453    4  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-12-24 17:08:36.7536   23  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-12-24 17:08:37.1735    5  INFO MovieProject.Controllers.MoviesController Upcoming movie sent 
+2021-12-24 17:09:34.1979   22  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-12-24 17:09:34.2047   16  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-12-24 17:09:34.6861    5  INFO MovieProject.Controllers.MoviesController Upcoming movie sent 
+2021-12-24 17:10:18.0928   34  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-12-24 17:10:18.0928   31  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-12-24 17:10:18.4936   29  INFO MovieProject.Controllers.MoviesController Upcoming movie sent 
+2021-12-24 17:17:33.5057    8  INFO MovieProject.Controllers.AuthenticationController User token added, User info: samil@gmail.com 
+2021-12-24 17:17:34.2290   10  INFO MovieProject.Controllers.AuthenticationController Movie token created 
+2021-12-24 17:17:34.6873    8  INFO MovieProject.Controllers.AuthenticationController Valid session value created 
+2021-12-24 17:17:35.0230    8  INFO MovieProject.Controllers.AuthenticationController Session created 
+2021-12-24 17:17:35.1878   11  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-12-24 17:17:35.1878   10  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-12-24 17:17:35.5812    5  INFO MovieProject.Controllers.MoviesController Upcoming movie sent 
+2021-12-24 17:17:39.8447    8  INFO MovieProject.Controllers.MoviesController Movie list  sent 
+2021-12-24 17:17:40.8077   12  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-12-24 17:17:41.9902   12  INFO MovieProject.Controllers.MoviesController Upcoming movie sent 
+2021-12-24 17:18:09.8046   28  INFO MovieProject.Controllers.AuthenticationController User added 
+2021-12-24 17:18:19.1008   26  INFO MovieProject.Controllers.AuthenticationController User token added, User info: veli@gmail.com 
+2021-12-24 17:18:19.3227   29  INFO MovieProject.Controllers.AuthenticationController Movie token created 
+2021-12-24 17:18:19.6580   24  INFO MovieProject.Controllers.AuthenticationController Valid session value created 
+2021-12-24 17:18:19.9705   10  INFO MovieProject.Controllers.AuthenticationController Session created 
+2021-12-24 17:18:20.0046   10  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-12-24 17:18:20.0046   28  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-12-24 17:18:20.4042    5  INFO MovieProject.Controllers.MoviesController Upcoming movie sent 
+2021-12-24 17:18:31.0452    4  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-12-24 17:18:31.0532   26  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-12-24 17:18:31.4123   22  INFO MovieProject.Controllers.MoviesController Upcoming movie sent 
+2021-12-24 17:18:32.4209    4  INFO MovieProject.Controllers.MoviesController Movie list  sent 
+2021-12-24 17:18:33.2999    5  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-12-24 17:19:10.5279   29  INFO MovieProject.Controllers.AuthenticationController User added 
+2021-12-24 17:19:18.5932   37  INFO MovieProject.Controllers.AuthenticationController User token added, User info: melike.naz1@gmail.com 
+2021-12-24 17:19:18.8031   35  INFO MovieProject.Controllers.AuthenticationController Movie token created 
+2021-12-24 17:19:19.1286   29  INFO MovieProject.Controllers.AuthenticationController Valid session value created 
+2021-12-24 17:19:19.4625   29  INFO MovieProject.Controllers.AuthenticationController Session created 
+2021-12-24 17:19:19.4919   35  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-12-24 17:19:19.4992   39  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-12-24 17:19:20.1140   33  INFO MovieProject.Controllers.MoviesController Upcoming movie sent 
+2021-12-24 17:19:38.8906   37  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-12-24 17:19:38.8906   39  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-12-24 17:19:39.2822   33  INFO MovieProject.Controllers.MoviesController Upcoming movie sent 
+2021-12-24 17:19:50.2713   29  INFO MovieProject.Controllers.AuthenticationController User token added, User info: melike.naz1@gmail.com 
+2021-12-24 17:19:50.4742   40  INFO MovieProject.Controllers.AuthenticationController Movie token created 
+2021-12-24 17:19:50.6666   37  INFO MovieProject.Controllers.AuthenticationController Valid session value created 
+2021-12-24 17:19:50.9748    4  INFO MovieProject.Controllers.AuthenticationController Session created 
+2021-12-24 17:19:50.9972   29  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-12-24 17:19:51.0068   40  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-12-24 17:19:51.4260   34  INFO MovieProject.Controllers.MoviesController Upcoming movie sent 
+2021-12-24 17:19:53.2366    4  INFO MovieProject.Controllers.MoviesController Movie list  sent 
+2021-12-24 17:19:54.0231   34  INFO MovieProject.Controllers.CastController Cast list sent 
