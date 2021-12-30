@@ -13,5 +13,6 @@ namespace MovieProject.MapperProfiles
                 .ForMember(destination => destination.FullName, operation => operation.MapFrom(source => source.Name + " " + source.Surname)); //FullName = Name + Surname
     
         }
+
     }
 }

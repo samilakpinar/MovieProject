@@ -33,7 +33,7 @@
     ".NETCoreApp,Version=v5.0": {
       "MovieProject/1.0.0": {
         "dependencies": {
-          "AutoMapper": "10.1.1",
+          "AspNetCoreRateLimit": "4.0.1",
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.1.1",
           "BenchmarkDotNet": "0.13.1",
           "Business": "1.0.0",
@@ -335,6 +335,23 @@
         },
         "compile": {
           "MovieProject.dll": {}
+        }
+      },
+      "AspNetCoreRateLimit/4.0.1": {
+        "dependencies": {
+          "Microsoft.Extensions.Caching.Abstractions": "5.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "5.0.0",
+          "Microsoft.Extensions.Options": "5.0.0",
+          "Newtonsoft.Json": "13.0.1"
+        },
+        "runtime": {
+          "lib/net5.0/AspNetCoreRateLimit.dll": {
+            "assemblyVersion": "4.0.1.0",
+            "fileVersion": "4.0.1.0"
+          }
+        },
+        "compile": {
+          "lib/net5.0/AspNetCoreRateLimit.dll": {}
         }
       },
       "AutoMapper/10.1.1": {
@@ -4372,6 +4389,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "AspNetCoreRateLimit/4.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-UYcf0m3RuFBFJJz9dvwsbId4HWOpnDBxFoQNV8JHKs5mh2NUTLcaZbgUpog7zkO0/vk/R56e47x2EeeGkBRtsA==",
+      "path": "aspnetcoreratelimit/4.0.1",
+      "hashPath": "aspnetcoreratelimit.4.0.1.nupkg.sha512"
     },
     "AutoMapper/10.1.1": {
       "type": "package",

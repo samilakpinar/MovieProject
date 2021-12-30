@@ -1,3 +1,4 @@
+using AspNetCoreRateLimit;
 using Business.Abstract;
 using Business.Concrete;
 using Business.Models;
@@ -41,8 +42,10 @@ namespace MovieProject
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+           
             services.AddCors();
 
+           
 
             services.AddDistributedRedisCache(option =>
             {
@@ -125,6 +128,9 @@ namespace MovieProject
             });
             */
 
+            //Imapper interface for dependency injection 
+            services.AddAutoMapper(typeof(UserProfile));
+
             services.AddCors(options => options.AddPolicy(ApiCorsPolicy, builder => {
                 builder.WithOrigins(
                     "http://localhost:4200",
@@ -157,15 +163,23 @@ namespace MovieProject
                 option.Configuration = Configuration["CacheConnection"];
             });
 
-            //Imapper interface for dependency injection 
-            services.AddAutoMapper(typeof(UserProfile));
+            //For Ratelimit
+            services.AddOptions();
+            services.AddMemoryCache(); //Limit durum bilgileri cache de tutulur.
+            services.Configure<IpRateLimitOptions>(Configuration.GetSection("IpRateLimiting")); //Genel configrasyon ayarý
+            services.AddSingleton<IIpPolicyStore, MemoryCacheIpPolicyStore>(); //IP kurallarý ve politikalarý yüklenir
+            services.AddSingleton<IRateLimitCounterStore, MemoryCacheRateLimitCounterStore>();
+            services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>(); //ana servisin eklenmesi
+            services.AddSingleton<IProcessingStrategy, AsyncKeyLockProcessingStrategy>();
+            services.AddHttpContextAccessor();
+
 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
-
+            
             //update database ile zaten deðiþiklik olduðunda kendisi deðiþikliði algýlýyor ve her defasýnda update database yapmýyor.
             //Package managerda update-database gerek kalmaz.
             using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
@@ -190,8 +204,8 @@ namespace MovieProject
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "MovieProject v1"));
             }
 
+            
             app.UseHttpsRedirection();
-
 
             app.UseRouting();
             
@@ -205,12 +219,14 @@ namespace MovieProject
 
             app.UseCors(ApiCorsPolicy);
 
-            app.UseAuthentication(); //user login
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
             app.UseLogging();
 
+            //For RateLimit
+            app.UseIpRateLimiting();
             //app.UseMiddleware(typeof(ExceptionHandlingMiddleware));
 
             app.UseEndpoints(endpoints =>

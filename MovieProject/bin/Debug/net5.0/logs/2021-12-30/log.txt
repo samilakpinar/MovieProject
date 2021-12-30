@@ -1,0 +1,1 @@
+2021-12-30 10:58:47.4353    5  INFO MovieProject.Controllers.AuthenticationController User token added, User info: samil@gmail.com 

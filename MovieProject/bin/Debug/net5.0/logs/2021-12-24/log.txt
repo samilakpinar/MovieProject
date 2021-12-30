@@ -92,3 +92,13 @@
 2021-12-24 17:19:51.4260   34  INFO MovieProject.Controllers.MoviesController Upcoming movie sent 
 2021-12-24 17:19:53.2366    4  INFO MovieProject.Controllers.MoviesController Movie list  sent 
 2021-12-24 17:19:54.0231   34  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-12-24 17:52:54.0665   12  INFO MovieProject.Controllers.AuthenticationController User token added, User info: melike.naz1@gmail.com 
+2021-12-24 17:52:54.9397    4  INFO MovieProject.Controllers.AuthenticationController Movie token created 
+2021-12-24 17:52:55.8576    4  INFO MovieProject.Controllers.AuthenticationController Valid session value created 
+2021-12-24 17:52:56.2565   17  INFO MovieProject.Controllers.AuthenticationController Session created 
+2021-12-24 17:52:56.6017    9  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-12-24 17:52:56.6267    4  INFO MovieProject.Controllers.HomeController Sidebar menu list sent 
+2021-12-24 17:52:57.1668    5  INFO MovieProject.Controllers.MoviesController Upcoming movie sent 
+2021-12-24 17:53:00.5842    4  INFO MovieProject.Controllers.MoviesController Movie list  sent 
+2021-12-24 17:53:02.7188   13  INFO MovieProject.Controllers.CastController Cast list sent 
+2021-12-24 17:53:28.6550    5  INFO MovieProject.Controllers.MoviesController Upcoming movie sent 
